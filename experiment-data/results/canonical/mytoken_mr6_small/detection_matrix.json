@@ -1,0 +1,35 @@
+{
+ "baseline": {
+  "MR6.1": "pass",
+  "MR6.4": "pass",
+  "MR6.6": "pass"
+ },
+ "matrix": {
+  "MR6.1": {
+   "MUT-01": 0,
+   "MUT-07": 0,
+   "MUT-08": 1
+  },
+  "MR6.4": {
+   "MUT-01": 0,
+   "MUT-07": 0,
+   "MUT-08": 0
+  },
+  "MR6.6": {
+   "MUT-01": 0,
+   "MUT-07": 0,
+   "MUT-08": 1
+  }
+ },
+ "mr_ids": [
+  "MR6.1",
+  "MR6.4",
+  "MR6.6"
+ ],
+ "mutant_ids": [
+  "MUT-01",
+  "MUT-07",
+  "MUT-08"
+ ],
+ "schema_version": 1
+}

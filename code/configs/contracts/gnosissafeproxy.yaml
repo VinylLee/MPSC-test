@@ -1,0 +1,35 @@
+schema_version: 1
+contract_id: gnosissafeproxy
+source: experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol
+compiler: "0.7.6"
+contract_name: GnosisSafeProxy
+profile_status: abi_verified
+deployment:
+ constructor_args:
+  - {name: _singleton, type: address, value_from: role_address, role: singleton}
+ deployer_role: owner
+roles:
+ owner: account_0
+ singleton: account_1
+ user: account_2
+initialization: []
+role_model:
+ owner: deployment_sender_only
+ singleton: constructor_master_copy
+ user: fallback_caller
+mr_binding_status: verified_without_instance_records
+functions:
+ fallback:
+  abi_type: fallback
+  solidity_name: null
+  mutability: payable
+  parameters: []
+state_observers:
+ - id: singleton
+   kind: raw_selector
+   function: fallback
+   signature: masterCopy()
+   selector: "0xa619486e"
+   decode: address
+   arguments: []
+mutable_parameters: [caller, singleton, calldata, value, gas_limit]

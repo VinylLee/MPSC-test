@@ -1,0 +1,16 @@
+{
+ "mutant_id": "AVR-S0008-V01",
+ "authoritative_record": "MyToken::AVR-S0008-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/AVR-S0008-V01/MyToken.sol",
+ "mutant_sha256": "8925571e846189831ad9dd2d78e745ea9bc5719e7567ebd13c64140675ff88f9",
+ "operator": "AVR",
+ "line": 1,
+ "original_text": "pragma solidity ^0.4.11;",
+ "mutated_text": "// Mutant AVR-S0008-V01",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,16 @@
+{
+ "mutant_id": "AVR-S0002-V01",
+ "authoritative_record": "BecToken::AVR-S0002-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/AVR-S0002-V01/BecToken.sol",
+ "mutant_sha256": "42fe5767522750d4dfb33738f26076751f652fb19f788deaef951c65bf5669b9",
+ "operator": "AVR",
+ "line": 70,
+ "original_text": "balances[msg.sender] = balances[msg.sender].sub(_value);",
+ "mutated_text": "balances[tx.origin] = balances[msg.sender].sub(_value);",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

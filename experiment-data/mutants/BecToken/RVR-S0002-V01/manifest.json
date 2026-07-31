@@ -1,0 +1,16 @@
+{
+ "mutant_id": "RVR-S0002-V01",
+ "authoritative_record": "BecToken::RVR-S0002-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/RVR-S0002-V01/BecToken.sol",
+ "mutant_sha256": "67bca30d43097cc6f1105c9abd87ee19b89f7162a56b44ce51dd41e4ef9507bf",
+ "operator": "RVR",
+ "line": 125,
+ "original_text": "return true;",
+ "mutated_text": "return false;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

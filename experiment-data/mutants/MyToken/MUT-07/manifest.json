@@ -1,0 +1,16 @@
+{
+ "mutant_id": "MUT-07",
+ "authoritative_record": "MyToken::MUT-07",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/MUT-07/MyToken.sol",
+ "mutant_sha256": "b26424f2cfb952974e0f2bd5c463b8e40e2e2d2ffa841075765cb7f5a9631f6a",
+ "operator": "SDL",
+ "line": 21,
+ "original_text": "balances[msg.sender] -= amount;",
+ "mutated_text": "//     balances[msg.sender] -= amount;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

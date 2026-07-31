@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ROR-S0002-V04",
+ "authoritative_record": "PERSONAL_BANK::ROR-S0002-V04",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/ROR-S0002-V04/PERSONAL_BANK.sol",
+ "mutant_sha256": "91fd68f80cf2669cd8e88d17017222825c8fef92a3f01a28449dd0a05dccd968",
+ "operator": "ROR",
+ "line": 51,
+ "original_text": "if(balances[msg.sender]>=MinSum && balances[msg.sender]>=_am)",
+ "mutated_text": "if(balances[msg.sender]>=MinSum && balances[msg.sender]==_am)",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

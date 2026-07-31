@@ -1,0 +1,104 @@
+category: MR6
+description: Transfer-Amount-Based Metamorphic Relations
+contract:
+  path: experiment-data/subjects/MyToken.sol
+  name: MyToken
+  compiler: "0.4.11"
+backend:
+  type: eth_tester
+  state_strategy: fresh_deployment_pair
+initial_state:
+  sender_balance: 10000
+  receiver_balance: 0
+default_source_amount: 100
+mrs:
+  - id: MR6.1
+    source_amount: 100
+    transform:
+      type: subtract_from_constant
+      constant: 1000
+    followup_amount: 900
+    predicates:
+      mu: "mu_f == mu_s"
+      epsilon_sender: "epsilon_from_f = 2*epsilon_from_s - 1000"
+      epsilon_receiver: "epsilon_to_f = 2*epsilon_to_s + 1000"
+      delta: "delta_f == delta_s"
+    constraints:
+      - source_amount_in_range
+      - followup_amount_non_negative
+      - sender_balance_sufficient_for_both
+  - id: MR6.2
+    source_amount: 9501
+    transform:
+      type: add_constant
+      constant: 1000
+    followup_amount: 10501
+    predicates:
+      mu: "mu_f != mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    constraints:
+      - sender_balance_sufficient_for_source
+  - id: MR6.3
+    source_amount: 100
+    transform:
+      type: multiply_constant
+      constant: 1000
+    followup_amount: 100000
+    predicates:
+      mu: "mu_f != mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    constraints:
+      - sender_balance_sufficient_for_source
+  - id: MR6.4
+    source_amount: 100
+    transform:
+      type: power_minus_source
+      n: 1
+    followup_amount: 156
+    predicates:
+      mu: "mu_f == mu_s"
+      epsilon_sender: "epsilon_from_f = 2*epsilon_from_s - 256"
+      epsilon_receiver: "epsilon_to_f = 2*epsilon_to_s + 256"
+      delta: "delta_f == delta_s"
+    constraints:
+      - source_amount_in_range
+      - followup_amount_non_negative
+      - sender_balance_sufficient_for_both
+  - id: MR6.5
+    source_amount: 100
+    transform:
+      type: power_minus_source
+      n: 2
+    followup_amount: 65436
+    predicates:
+      mu: "mu_f != mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    constraints:
+      - sender_balance_sufficient_for_source
+  - id: MR6.6
+    source_amount: 100
+    transform:
+      type: power_plus_source
+      n: 1
+    followup_amount: 356
+    predicates:
+      mu: "mu_f == mu_s"
+      epsilon_sum: "epsilon_from_f + epsilon_to_f == epsilon_from_s + epsilon_to_s"
+      delta: "delta_f == delta_s"
+    constraints:
+      - sender_balance_sufficient_for_both
+  - id: MR6.7
+    source_amount: 100
+    transform:
+      type: power_plus_source
+      n: 2
+    followup_amount: 65636
+    predicates:
+      mu: "mu_f != mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    constraints:
+      - sender_balance_sufficient_for_source

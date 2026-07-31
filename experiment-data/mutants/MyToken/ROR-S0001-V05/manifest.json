@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ROR-S0001-V05",
+ "authoritative_record": "MyToken::ROR-S0001-V05",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/ROR-S0001-V05/MyToken.sol",
+ "mutant_sha256": "58a3e04970fa01c9600c2ebe6ff8c27a41e69a0f789872c79dd61d3a5b8915c8",
+ "operator": "ROR",
+ "line": 19,
+ "original_text": "if (balances[msg.sender] < amount) return false;",
+ "mutated_text": "if (balances[msg.sender] != amount) return false;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

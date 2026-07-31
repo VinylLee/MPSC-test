@@ -1,0 +1,24 @@
+schema_version: 2
+protocol_id: mpsc-llm-human-review-v2
+evidence_class: control
+status: frozen_before_control_run
+minimum_independent_reviewers: 2
+rules:
+ - Review candidate-level evidence without consulting Table 5 or Table 6 aggregates.
+ - Use stable pseudonymous reviewer IDs beginning with reviewer-.
+ - Record votes from at least two different role=reviewer pseudonyms for every parsed candidate; adjudicators do not cast ordinary votes.
+ - Match accepted candidates to at most one independently prepared ground-truth item.
+ - Treat any disagreement in decision or matched ground-truth identity as a conflict and require a role=adjudicator pseudonym to record the final decision and match.
+ - Count every unmatched ground-truth item as a false negative.
+ - Do not delete failed, retried, or empty provider responses.
+redaction:
+ optional_file: redaction_log.json
+ forbidden_artifacts:
+  - parsed_candidates.json
+  - ground_truth.json
+  - review.json
+  - evaluation.json
+  - timing.json
+ invariant: >-
+  Redaction must not alter candidate source spans, identities, decisions,
+  adjudication, metric inputs, or timing.

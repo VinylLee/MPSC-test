@@ -1,0 +1,16 @@
+{
+ "mutant_id": "GVC-S0003-V01",
+ "authoritative_record": "PERSONAL_BANK::GVC-S0003-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/GVC-S0003-V01/PERSONAL_BANK.sol",
+ "mutant_sha256": "f2313158645f5b740e02ed8cd3dcc69859315e1d570f8a7e9ffcfca03c2f9472",
+ "operator": "GVC",
+ "line": 91,
+ "original_text": "LastMsg.Time = now;",
+ "mutated_text": "LastMsg.Time = block.number;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

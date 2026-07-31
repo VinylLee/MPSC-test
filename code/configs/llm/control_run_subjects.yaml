@@ -1,0 +1,14 @@
+schema_version: 1
+evidence_class: control
+status: frozen_preparation_inputs
+subjects:
+  - contract_id: MyToken
+    source_path: experiment-data/subjects/MyToken.sol
+  - contract_id: Rubixi
+    source_path: experiment-data/subjects/Rubixi/Rubixi.sol
+  - contract_id: BecToken
+    source_path: experiment-data/subjects/BecToken/BecToken.sol
+  - contract_id: GnosisSafeProxy
+    source_path: experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol
+  - contract_id: PERSONAL_BANK
+    source_path: experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol

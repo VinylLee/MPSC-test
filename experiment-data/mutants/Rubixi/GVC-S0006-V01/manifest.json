@@ -1,0 +1,16 @@
+{
+ "mutant_id": "GVC-S0006-V01",
+ "authoritative_record": "Rubixi::GVC-S0006-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/GVC-S0006-V01/Rubixi.sol",
+ "mutant_sha256": "e05fe439186db728027554115165e4d2755dd5d9ee8d81f67d2a1eb8a36d65ec",
+ "operator": "GVC",
+ "line": 69,
+ "original_text": "collectedFees += (msg.value * _fee) / 100;",
+ "mutated_text": "collectedFees += (block.timestamp * _fee) / 100;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0014-V01",
+ "authoritative_record": "PERSONAL_BANK::SDL-S0014-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/SDL-S0014-V01/PERSONAL_BANK.sol",
+ "mutant_sha256": "bea8794517da567abe30136f8b875da16f78d526d03a67899d0ee3f5c045c269",
+ "operator": "SDL",
+ "line": 66,
+ "original_text": "Deposit();",
+ "mutated_text": "// MPSC-COMPAT-SDL Deposit();",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

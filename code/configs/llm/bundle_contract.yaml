@@ -1,0 +1,27 @@
+schema_version: 2
+evidence_class: control
+status: frozen_protocol_schema
+completed_evidence_class: control
+completed_status: completed
+required_files:
+ - request.json
+ - response.json
+ - parsed_candidates.json
+ - ground_truth.json
+ - review.json
+ - evaluation.json
+ - timing.json
+optional_files:
+ - redaction_log.json
+preparation_suffix: .template.json
+template_status: template_not_completed
+rules:
+ - A prepared request or blank template is not an experiment output.
+ - Every response attempt, including failure, retry, and empty response, is retained.
+ - Parsed candidates contain stable IDs and exact character spans into a raw response.
+ - Candidate semantic fields are typed and non-empty; null or empty placeholders are invalid.
+ - Ground truth is prepared independently of supplied aggregate values.
+ - Every candidate has at least two independent reviewer votes; disagreements in decision or matched identity require adjudication.
+ - Every ground-truth item is matched or a false negative.
+ - Completed requests record concrete temperature, top_p, max_tokens, and consistent seed support/value.
+ - The verifier is read-only and rejects a mismatched declared evaluation or timing.

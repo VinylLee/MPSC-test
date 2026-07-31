@@ -1,0 +1,16 @@
+{
+ "mutant_id": "GVC-S0002-V01",
+ "authoritative_record": "PERSONAL_BANK::GVC-S0002-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/GVC-S0002-V01/PERSONAL_BANK.sol",
+ "mutant_sha256": "2d10190a52afbac9d9466af0a65d8b3036b08c11f2a32214f40254138766b5bc",
+ "operator": "GVC",
+ "line": 44,
+ "original_text": "Log.AddMessage(msg.sender,msg.value,\"Put\");",
+ "mutated_text": "Log.AddMessage(msg.sender,block.timestamp,\"Put\");",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

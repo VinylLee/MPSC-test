@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ROR-S0002-V03",
+ "authoritative_record": "GnosisSafeProxy::ROR-S0002-V03",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+ "source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+ "mutant_file": "experiment-data/mutants/GnosisSafeProxy/ROR-S0002-V03/GnosisSafeProxy.sol",
+ "mutant_sha256": "01f4894e0b8f701c6cb42762a5d0e4ca4d1e7b3c5871a4bcafc5c0553564d9a1",
+ "operator": "ROR",
+ "line": 1,
+ "original_text": "// SPDX-License-Identifier: LGPL-3.0-only",
+ "mutated_text": "// Mutant ROR-S0002-V03",
+ "generation_success": true,
+ "compile_success": false,
+ "equivalence_status": "non_equivalent"
+}

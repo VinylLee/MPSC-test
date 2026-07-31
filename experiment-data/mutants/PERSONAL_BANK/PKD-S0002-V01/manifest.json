@@ -1,0 +1,16 @@
+{
+ "mutant_id": "PKD-S0002-V01",
+ "authoritative_record": "PERSONAL_BANK::PKD-S0002-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/PKD-S0002-V01/PERSONAL_BANK.sol",
+ "mutant_sha256": "3ac921b8d38fafb7076fdca99efed27b94bea90bc5d0ba71d1533285aa73c046",
+ "operator": "PKD",
+ "line": 1,
+ "original_text": "/*",
+ "mutated_text": "/*",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

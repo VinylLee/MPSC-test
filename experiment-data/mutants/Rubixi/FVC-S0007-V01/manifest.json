@@ -1,0 +1,16 @@
+{
+ "mutant_id": "FVC-S0007-V01",
+ "authoritative_record": "Rubixi::FVC-S0007-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/FVC-S0007-V01/Rubixi.sol",
+ "mutant_sha256": "1e10ae16cb7780f2eac9eea3414c5fa7105505b5d004ee4d28043c65add8a50f",
+ "operator": "FVC",
+ "line": 36,
+ "original_text": "Participant[] private participants;",
+ "mutated_text": "Participant[] internal participants;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

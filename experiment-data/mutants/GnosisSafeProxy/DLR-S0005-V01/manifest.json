@@ -1,0 +1,16 @@
+{
+ "mutant_id": "DLR-S0005-V01",
+ "authoritative_record": "GnosisSafeProxy::DLR-S0005-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+ "source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+ "mutant_file": "experiment-data/mutants/GnosisSafeProxy/DLR-S0005-V01/GnosisSafeProxy.sol",
+ "mutant_sha256": "57ac3b486ba4b3c7095bb56a23a93d32bf0145d1628d55196937225f11c1e778",
+ "operator": "DLR",
+ "line": 88,
+ "original_text": "bytes memory deploymentData = abi.encodePacked(type(GnosisSafeProxy).creationCode, uint256(uint160(_singleton)));",
+ "mutated_text": "bytes storage deploymentData = abi.encodePacked(type(GnosisSafeProxy).creationCode, uint256(uint160(_singleton)));",
+ "generation_success": true,
+ "compile_success": false,
+ "equivalence_status": "non_equivalent"
+}

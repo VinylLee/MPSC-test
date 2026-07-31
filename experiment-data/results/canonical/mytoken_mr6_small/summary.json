@@ -1,0 +1,175 @@
+{
+ "baseline": {
+  "MR6.1": "pass",
+  "MR6.4": "pass",
+  "MR6.6": "pass"
+ },
+ "baseline_eligible": true,
+ "cells": [
+  {
+   "cell_id": "MR6.1__original",
+   "detection": 0,
+   "evidence": "cells/MR6.1/original.json",
+   "mr_id": "MR6.1",
+   "status": "completed",
+   "subject_id": "original",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.1__MUT-01",
+   "detection": 0,
+   "evidence": "cells/MR6.1/MUT-01.json",
+   "mr_id": "MR6.1",
+   "status": "completed",
+   "subject_id": "MUT-01",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.1__MUT-07",
+   "detection": 0,
+   "evidence": "cells/MR6.1/MUT-07.json",
+   "mr_id": "MR6.1",
+   "status": "completed",
+   "subject_id": "MUT-07",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.1__MUT-08",
+   "detection": 1,
+   "evidence": "cells/MR6.1/MUT-08.json",
+   "mr_id": "MR6.1",
+   "status": "completed",
+   "subject_id": "MUT-08",
+   "verdict": "violation"
+  },
+  {
+   "cell_id": "MR6.4__original",
+   "detection": 0,
+   "evidence": "cells/MR6.4/original.json",
+   "mr_id": "MR6.4",
+   "status": "completed",
+   "subject_id": "original",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.4__MUT-01",
+   "detection": 0,
+   "evidence": "cells/MR6.4/MUT-01.json",
+   "mr_id": "MR6.4",
+   "status": "completed",
+   "subject_id": "MUT-01",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.4__MUT-07",
+   "detection": 0,
+   "evidence": "cells/MR6.4/MUT-07.json",
+   "mr_id": "MR6.4",
+   "status": "completed",
+   "subject_id": "MUT-07",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.4__MUT-08",
+   "detection": 0,
+   "evidence": "cells/MR6.4/MUT-08.json",
+   "mr_id": "MR6.4",
+   "status": "completed",
+   "subject_id": "MUT-08",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.6__original",
+   "detection": 0,
+   "evidence": "cells/MR6.6/original.json",
+   "mr_id": "MR6.6",
+   "status": "completed",
+   "subject_id": "original",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.6__MUT-01",
+   "detection": 0,
+   "evidence": "cells/MR6.6/MUT-01.json",
+   "mr_id": "MR6.6",
+   "status": "completed",
+   "subject_id": "MUT-01",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.6__MUT-07",
+   "detection": 0,
+   "evidence": "cells/MR6.6/MUT-07.json",
+   "mr_id": "MR6.6",
+   "status": "completed",
+   "subject_id": "MUT-07",
+   "verdict": "pass"
+  },
+  {
+   "cell_id": "MR6.6__MUT-08",
+   "detection": 1,
+   "evidence": "cells/MR6.6/MUT-08.json",
+   "mr_id": "MR6.6",
+   "status": "completed",
+   "subject_id": "MUT-08",
+   "verdict": "violation"
+  }
+ ],
+ "compiler_version": "0.4.11",
+ "completed_cells": 12,
+ "environment": {
+  "eth-tester": "0.13.0b1",
+  "mpsc": "0.1.0",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "py-evm": "0.12.1b1",
+  "py-solc-x": "2.0.5",
+  "python": "3.13.12",
+  "web3": "7.16.0"
+ },
+ "experiment": "canonical_mytoken_mr6_small",
+ "git_commit": "129627f7ec5b6896bd84b18225671d90c7343351",
+ "indeterminate_mutants": [],
+ "killed_mutants": [
+  "MUT-08"
+ ],
+ "mr_ids": [
+  "MR6.1",
+  "MR6.4",
+  "MR6.6"
+ ],
+ "pass_cells": 10,
+ "schema_version": 1,
+ "seed": 20260727,
+ "subjects": {
+  "MUT-01": {
+   "compile_errors": [],
+   "compile_success": true,
+   "path": "data/generated/mutants/MyToken/MUT-01/MyToken.sol",
+   "sha256": "c78742bf67fc22c51cbd5658a533b4545d03bdd439d9b7eedd681a3e44b22b37"
+  },
+  "MUT-07": {
+   "compile_errors": [],
+   "compile_success": true,
+   "path": "data/generated/mutants/MyToken/MUT-07/MyToken.sol",
+   "sha256": "cedb17f8bde97753e032ad82bf31e1527d0730a8b007c25ad181f5aa730d98cb"
+  },
+  "MUT-08": {
+   "compile_errors": [],
+   "compile_success": true,
+   "path": "data/generated/mutants/MyToken/MUT-08/MyToken.sol",
+   "sha256": "fff0c17691380c8b98c91adb997cf5bc379e91d4f3ca57da6688a6eff9bb3dcd"
+  },
+  "original": {
+   "compile_errors": [],
+   "compile_success": true,
+   "path": "subjects/MyToken.sol",
+   "sha256": "eebf20e26ca6391f12decda44c889deccfc667c9da0da24da47d4e56edfc89b4"
+  }
+ },
+ "surviving_mutants": [
+  "MUT-01",
+  "MUT-07"
+ ],
+ "total_cells": 12,
+ "violation_cells": 2
+}

@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0049-V01",
+ "authoritative_record": "Rubixi::SDL-S0049-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/SDL-S0049-V01/Rubixi.sol",
+ "mutant_sha256": "338c100e5351f1c60002f2bf7a852a6c9f5a8957d4fccaf4e0017888d4fa2cd7",
+ "operator": "SDL",
+ "line": 137,
+ "original_text": "info = 'All balance values are measured in Ethers, note that due to no decimal placing, these values show up as integers only, within the contract itself you will get the exact decimal value you are supposed to';",
+ "mutated_text": "// MPSC-COMPAT-SDL info = 'All balance values are measured in Ethers, note that due to no decimal placing, these values show up as integers only, within the contract itself you will get the exact decimal value you are supposed to';",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

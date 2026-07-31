@@ -1,0 +1,16 @@
+﻿contract,tc_per_mr,source_test_case_count,killed_mutants,valid_mutants,mutation_score_percent,source_role,source_path,source_locator,source_sha256
+MyToken,1,38,41,49,83.673469,supplied_office,实验数据/Mytoken变异体.docx,paragraph 43,c179d8422df8b51730d0720258c96b78abef9edd320a492fb81cf10287e366d1
+MyToken,5,190,44,49,89.795918,supplied_office,实验数据/Mytoken变异体.docx,paragraph 43,c179d8422df8b51730d0720258c96b78abef9edd320a492fb81cf10287e366d1
+MyToken,10,380,46,49,93.877551,supplied_office,实验数据/Mytoken变异体.docx,paragraph 43,c179d8422df8b51730d0720258c96b78abef9edd320a492fb81cf10287e366d1
+Rubixi,1,59,109,153,71.24183,supplied_office,实验数据/Rubixi变异体.docx,table 1 rows 10-11,99fddce7d54d39aecef3152f558e5644eed376edcfd1f7641f216f702be8a663
+Rubixi,5,295,114,153,74.509804,supplied_office,实验数据/Rubixi变异体.docx,table 1 rows 10-11,99fddce7d54d39aecef3152f558e5644eed376edcfd1f7641f216f702be8a663
+Rubixi,10,590,129,153,84.313725,supplied_office,实验数据/Rubixi变异体.docx,table 1 rows 10-11,99fddce7d54d39aecef3152f558e5644eed376edcfd1f7641f216f702be8a663
+BecToken,1,102,109,142,76.760563,supplied_office,实验数据/BecToken变异体数量.docx,table 1 rows 17-18,a0ce7943f345f1a67b8bc574197438e7a7332694c9a6044d27a09043ac7e7aa3
+BecToken,5,510,123,142,86.619718,supplied_office,实验数据/BecToken变异体数量.docx,table 1 rows 17-18,a0ce7943f345f1a67b8bc574197438e7a7332694c9a6044d27a09043ac7e7aa3
+BecToken,10,1020,129,142,90.84507,supplied_office,实验数据/BecToken变异体数量.docx,table 1 rows 17-18,a0ce7943f345f1a67b8bc574197438e7a7332694c9a6044d27a09043ac7e7aa3
+GnosisSafeProxy,1,66,54,70,77.142857,supplied_office,实验数据/GnosisSafepRroxy变异体.docx,table 1 rows 19-20,b31eeb2b3f4169b3ac370dd4918565e22d34ca6ad76c28894f07e91185b06cd0
+GnosisSafeProxy,5,330,62,70,88.571429,supplied_office,实验数据/GnosisSafepRroxy变异体.docx,table 1 rows 19-20,b31eeb2b3f4169b3ac370dd4918565e22d34ca6ad76c28894f07e91185b06cd0
+GnosisSafeProxy,10,660,64,70,91.428571,supplied_office,实验数据/GnosisSafepRroxy变异体.docx,table 1 rows 19-20,b31eeb2b3f4169b3ac370dd4918565e22d34ca6ad76c28894f07e91185b06cd0
+PERSONAL_BANK,1,37,60,81,74.074074,supplied_office,实验数据/PERSONAL_BANK变异体.docx,table 1 rows 20-21,8cf9bc9fbc3099a401693d47a65a19dbfab8744f99b467f3349a5ae4a58187de
+PERSONAL_BANK,5,185,67,81,82.716049,supplied_office,实验数据/PERSONAL_BANK变异体.docx,table 1 rows 20-21,8cf9bc9fbc3099a401693d47a65a19dbfab8744f99b467f3349a5ae4a58187de
+PERSONAL_BANK,10,370,72,81,88.888889,supplied_office,实验数据/PERSONAL_BANK变异体.docx,table 1 rows 20-21,8cf9bc9fbc3099a401693d47a65a19dbfab8744f99b467f3349a5ae4a58187de

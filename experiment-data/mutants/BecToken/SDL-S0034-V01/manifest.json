@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0034-V01",
+ "authoritative_record": "BecToken::SDL-S0034-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/SDL-S0034-V01/BecToken.sol",
+ "mutant_sha256": "f7fc3ae5d1ebc8f5e7eee2dc4259b3995fa176948b347e420d6f46fbb886544e",
+ "operator": "SDL",
+ "line": 139,
+ "original_text": "allowed[msg.sender][_spender] = _value;",
+ "mutated_text": "// MPSC-COMPAT-SDL allowed[msg.sender][_spender] = _value;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

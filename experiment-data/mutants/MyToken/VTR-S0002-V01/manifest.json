@@ -1,0 +1,16 @@
+{
+ "mutant_id": "VTR-S0002-V01",
+ "authoritative_record": "MyToken::VTR-S0002-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/VTR-S0002-V01/MyToken.sol",
+ "mutant_sha256": "f34de12bc6194409273d8d788691402228d3837db9d99b379e4f745757f4b8b4",
+ "operator": "VTR",
+ "line": 9,
+ "original_text": "uint256 _value",
+ "mutated_text": "uint8 _value",
+ "generation_success": true,
+ "compile_success": false,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,16 @@
+{
+ "mutant_id": "GVC-S0001-V01",
+ "authoritative_record": "Rubixi::GVC-S0001-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/GVC-S0001-V01/Rubixi.sol",
+ "mutant_sha256": "f8f029b130129a51c10d995e6a804057de1746cebd70295a342b8bda9eeb1a8a",
+ "operator": "GVC",
+ "line": 46,
+ "original_text": "if (msg.value < 1 ether) {",
+ "mutated_text": "if (block.timestamp < 1 ether) {",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

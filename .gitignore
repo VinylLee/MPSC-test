@@ -1,0 +1,59 @@
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Office temp files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+~$*.xls
+
+# Origin temp files
+*.opju.bak
+*.opju~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+.tmp/
+
+# Misc
+*.tmp
+*.log
+*.cache
+
+# Private manuscript/source artifacts and generated experiment runs
+.research/
+MPSC.pdf
+实验数据/
+实验数据origin/
+experiment-data/raw/
+experiment-data/runs/
+docs/

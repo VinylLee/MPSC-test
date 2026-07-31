@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ROR-S0005-V01",
+ "authoritative_record": "PERSONAL_BANK::ROR-S0005-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/ROR-S0005-V01/PERSONAL_BANK.sol",
+ "mutant_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "operator": "ROR",
+ "line": 1,
+ "original_text": "/*",
+ "mutated_text": "/*",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "equivalent"
+}

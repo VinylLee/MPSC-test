@@ -1,0 +1,9 @@
+schema_version: 1
+scenario_id: mytoken_canonical_demonstration_v1
+claim_scope: control_only
+parameters:
+ tau: 0.1
+ tau_c: 0.45
+ min_set_size: 2
+ ms_weight: 0.5
+ ds_weight: 0.5

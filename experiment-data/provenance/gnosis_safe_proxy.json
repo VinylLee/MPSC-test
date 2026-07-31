@@ -1,0 +1,49 @@
+{
+ "schema_version": 1,
+ "claim_status": "source_and_runtime_verified",
+ "subject": "GnosisSafeProxy",
+ "chain": {
+  "name": "Ethereum mainnet",
+  "chain_id": 1,
+  "address": "0x61cdc61b6ff5d009aff909b67fcfa84c040d5481",
+  "observation_block": 25623882,
+  "runtime_byte_length": 171,
+  "runtime_sha256": "5b8bff324e02136edb0775bd77aa0fe773c1e23092305fe63f50a9e92f5b8faf",
+  "metadata_stripped_byte_length": 118,
+  "metadata_stripped_runtime_sha256": "9354b6b299263e49363ced298d512b1719feb70a5b911ca27d2850b77d9f35b6",
+  "storage_slot_0": "0x000000000000000000000000d9db270c1b5e3bd161e8c8503c55ceabee709552",
+  "singleton_address": "0xd9db270c1b5e3bd161e8c8503c55ceabee709552"
+ },
+ "verified_source": {
+  "explorer_url": "https://etherscan.io/address/0x61cdc61b6ff5d009aff909b67fcfa84c040d5481#code",
+  "retrieved_at": "",
+  "contract_name": "GnosisSafeProxy",
+  "compiler": "v0.7.6+commit.7338295f",
+  "optimizer_enabled": false,
+  "optimizer_runs_displayed": 200,
+  "evm_version": "default",
+  "license_displayed": "GNU LGPLv3",
+  "spdx_identifier": "LGPL-3.0-only",
+  "etherscan_source_sha256": "b09ceff4153c2d8ebc77f1e84b65bdfc1de51608c8781568633e50b5ef87abbc",
+  "etherscan_lf_source_sha256": "e074931a93e0ff8778ed51415c616b8d62a29fdcc4059dd2dc9de34404ae271a",
+  "repository_path": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+  "repository_transformation": "Line endings normalized to LF",
+  "repository_lf_source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335"
+ },
+ "upstream": {
+  "repository": "https://github.com/safe-global/safe-contracts",
+  "release": "https://github.com/safe-global/safe-contracts/releases/tag/v1.3.0",
+  "release_commit_short": "186a21a",
+  "version_evidence": "The verified implementation source declares VERSION = 1.3.0 and storage slot 0 points to the known v1.3.0 singleton."
+ },
+ "verification": {
+  "source_compiles_with_recorded_settings": true,
+  "compiled_runtime_matches_onchain_without_metadata": true,
+  "full_runtime_metadata_matches": false,
+  "full_runtime_metadata_note": "The repository compiles the verified standalone source with a conventional trailing newline; Solidity IPFS metadata therefore differs while all 118 executable runtime bytes match.",
+  "local_deployment_and_master_copy_probe": true
+ },
+"limitations": [
+   "This resolves the source/compiler/license blocker only."
+  ]
+}

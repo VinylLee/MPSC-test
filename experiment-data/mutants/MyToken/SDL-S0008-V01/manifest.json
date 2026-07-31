@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0008-V01",
+ "authoritative_record": "MyToken::SDL-S0008-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/SDL-S0008-V01/MyToken.sol",
+ "mutant_sha256": "a57c5909321142ae5972950f97a8270611477c982f39197a97f906ea9e529ea7",
+ "operator": "SDL",
+ "line": 24,
+ "original_text": "return true;",
+ "mutated_text": "// MPSC-COMPAT-SDL return true;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,7 @@
+﻿left_mr,right_mr,mrd,source_role,source_path,source_locator,source_sha256
+MR4.1,MR4.2,0.275533,supplied_office,实验数据origin/mYTOKEN_results.xlsx,Sheet5!C2,83b81242a968593081c0ed949dd97b732181f2e15505af0c36bd5eb082b94a3f
+MR4.1,MR6.1,0.559336,supplied_office,实验数据origin/mYTOKEN_results.xlsx,Sheet5!D2,83b81242a968593081c0ed949dd97b732181f2e15505af0c36bd5eb082b94a3f
+MR4.1,MR6.5,0.5851914042361155,supplied_office,实验数据origin/mYTOKEN_results.xlsx,Sheet5!E2,83b81242a968593081c0ed949dd97b732181f2e15505af0c36bd5eb082b94a3f
+MR4.2,MR6.1,0.5829201646600904,supplied_office,实验数据origin/mYTOKEN_results.xlsx,Sheet5!D3,83b81242a968593081c0ed949dd97b732181f2e15505af0c36bd5eb082b94a3f
+MR4.2,MR6.5,0.567126664036549,supplied_office,实验数据origin/mYTOKEN_results.xlsx,Sheet5!E3,83b81242a968593081c0ed949dd97b732181f2e15505af0c36bd5eb082b94a3f
+MR6.1,MR6.5,0.3798495942945237,supplied_office,实验数据origin/mYTOKEN_results.xlsx,Sheet5!E4,83b81242a968593081c0ed949dd97b732181f2e15505af0c36bd5eb082b94a3f

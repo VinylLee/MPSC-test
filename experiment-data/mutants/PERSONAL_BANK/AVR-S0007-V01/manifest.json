@@ -1,0 +1,16 @@
+{
+ "mutant_id": "AVR-S0007-V01",
+ "authoritative_record": "PERSONAL_BANK::AVR-S0007-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/AVR-S0007-V01/PERSONAL_BANK.sol",
+ "mutant_sha256": "b86f83d49a4b162d4a0f6297615e346ea06550a06751d95a905e131df650312c",
+ "operator": "AVR",
+ "line": 57,
+ "original_text": "Log.AddMessage(msg.sender,_am,\"Collect\");",
+ "mutated_text": "Log.AddMessage(tx.origin,_am,\"Collect\");",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

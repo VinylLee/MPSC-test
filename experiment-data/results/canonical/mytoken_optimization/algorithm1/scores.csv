@@ -1,0 +1,4 @@
+mr_id,mutation_score,difference_score,combined_score,retained
+MR6.1,0.333333333333,0.5,0.416666666667,false
+MR6.4,0,1,0.5,true
+MR6.6,0.333333333333,0.5,0.416666666667,true

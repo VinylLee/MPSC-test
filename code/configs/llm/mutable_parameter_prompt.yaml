@@ -1,0 +1,59 @@
+schema_version: 1
+template_id: mpsc-mutable-parameter-v1
+limitations:
+  - Prompt examples are illustrative, not the exact request transcript.
+
+system_message: >-
+  You assist a human analyst in identifying candidate mutable parameters for
+  metamorphic testing. Treat state variables as dependency information, not as
+  independently controllable parameters unless an external factor controls them.
+  Return candidates for human review; do not treat your output as ground truth.
+stages:
+  - id: execution_factor_extraction
+    instruction: >-
+      Analyze the Solidity smart contract below. Identify state variables,
+      function parameter lists, external inputs, external calls, global
+      variables, and other context-dependent factors that may affect execution.
+      Explain which items are externally controllable.
+  - id: deployment_environment_analysis
+    instruction: >-
+      Analyze compilation, deployment, and invocation factors for the Solidity
+      smart contract below. Include required deployment parameters, initialization
+      values, deployment accounts, compiler versions, gas-related settings,
+      caller identities, network constraints, transaction fees, and other
+      external factors affecting deployment or execution.
+  - id: perturbability_and_mr_suitability
+    instruction: >-
+      Using the earlier factor lists and the Solidity source below, identify
+      candidate mutable parameters. Retain a factor only if it can be
+      intentionally varied, has a meaningful variation space, and produces
+      behavior that can be observed and compared across executions. For every
+      candidate provide its source, type, feasible values, valid/boundary/invalid
+      perturbations, affected operation and state, and observable outcomes.
+source_delimiter: "----- SOLIDITY SOURCE -----"
+candidate_required_fields:
+  - candidate_id
+  - name
+  - source
+  - parameter_type
+  - feasible_values
+  - valid_perturbations
+  - boundary_perturbations
+  - invalid_perturbations
+  - affected_operation
+  - affected_state
+  - observable_outcomes
+candidate_field_contract:
+  nonempty_string:
+    - candidate_id
+    - name
+    - source
+    - parameter_type
+    - affected_operation
+    - affected_state
+  nonempty_list_or_object:
+    - feasible_values
+    - valid_perturbations
+    - boundary_perturbations
+    - invalid_perturbations
+    - observable_outcomes

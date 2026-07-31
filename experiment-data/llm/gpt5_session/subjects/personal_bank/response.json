@@ -1,0 +1,147 @@
+{
+ "schema_version": 1,
+ "run_id": "gpt5",
+ "subject_id": "personal_bank",
+ "generated_at": "T18:30:38+08:00",
+ "request": {
+  "prompt_template": "code/configs/llm/mutable_parameter_prompt.yaml",
+  "source_path": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+  "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25"
+ },
+ "response": {
+  "raw_output_format": "application/json",
+  "analysis_summary": "Controllable factors are the pre-initialization minimum and log address, initialization order, deposit invocation path, log contract call behavior, depositor/caller identity, deposit value, collection amount and the combined eligibility constraint, and the caller contract's fallback behavior. Balances, log history, and initialization state are dependent state.",
+  "candidates": [
+   {
+    "candidate_id": "PBK-C001",
+    "name": "minimum collection threshold",
+    "source": "SetMinSum(uint _val) before Initialized",
+    "parameter_type": "uint256 configuration argument",
+    "feasible_values": [0, 1, "1 ether", "larger than a test deposit"],
+    "valid_perturbations": ["set different nonnegative thresholds before initialization"],
+    "boundary_perturbations": [0, "deposit amount", "deposit amount + 1"],
+    "invalid_perturbations": ["negative integer", "call after initialization"],
+    "affected_operation": "Collect eligibility",
+    "affected_state": "MinSum",
+    "observable_outcomes": ["collect success path", "caller balance", "bank accounting balance"]
+   },
+   {
+    "candidate_id": "PBK-C002",
+    "name": "external log contract address",
+    "source": "SetLogFile(address _log) before Initialized",
+    "parameter_type": "address configuration argument",
+    "feasible_values": ["valid LogFile contract", "zero address", "externally owned account", "reverting contract"],
+    "valid_perturbations": ["replace one compatible log contract with another"],
+    "boundary_perturbations": ["zero address", "address without code", "contract whose AddMessage reverts"],
+    "invalid_perturbations": ["malformed address", "call after initialization"],
+    "affected_operation": "Deposit and successful Collect logging",
+    "affected_state": "Log reference and external log history",
+    "observable_outcomes": ["transaction success/revert", "History length and entries", "bank balances"]
+   },
+   {
+    "candidate_id": "PBK-C003",
+    "name": "initialization sequence",
+    "source": "SetMinSum, SetLogFile, and Initialized",
+    "parameter_type": "transaction ordering",
+    "feasible_values": ["configure then initialize", "initialize immediately", "repeat Initialized", "attempt configuration after initialization"],
+    "valid_perturbations": ["permute pre-initialization configuration calls"],
+    "boundary_perturbations": ["configuration immediately before versus after Initialized"],
+    "invalid_perturbations": ["sequence containing transactions that cannot pay gas"],
+    "affected_operation": "configuration mutability",
+    "affected_state": "intitalized, MinSum, Log",
+    "observable_outcomes": ["transaction revert/success", "effective minimum", "selected log target"]
+   },
+   {
+    "candidate_id": "PBK-C004",
+    "name": "deposit value",
+    "source": "Deposit payable uses msg.value",
+    "parameter_type": "payable transaction value",
+    "feasible_values": [0, 1, "MinSum - 1", "MinSum", "MinSum + 1"],
+    "valid_perturbations": ["increase or decrease a funded deposit"],
+    "boundary_perturbations": [0, "one wei below MinSum", "exactly MinSum"],
+    "invalid_perturbations": ["negative value", "value above caller funds"],
+    "affected_operation": "Deposit and later Collect eligibility",
+    "affected_state": "balances[msg.sender] and external log history",
+    "observable_outcomes": ["recorded bank balance", "contract ether balance", "Put log message"]
+   },
+   {
+    "candidate_id": "PBK-C005",
+    "name": "collection amount",
+    "source": "Collect(uint _am)",
+    "parameter_type": "uint256 function argument",
+    "feasible_values": [0, 1, "recorded balance", "recorded balance + 1"],
+    "valid_perturbations": ["change amount within the caller's recorded balance"],
+    "boundary_perturbations": [0, "exact balance", "one above balance", "amount when balance is one below MinSum"],
+    "invalid_perturbations": ["negative integer", "value larger than uint256"],
+    "affected_operation": "external value call and post-call balance decrement",
+    "affected_state": "balances[msg.sender], contract ether balance, log history",
+    "observable_outcomes": ["ether received", "recorded balance after call", "Collect log message", "transaction success"]
+   },
+   {
+    "candidate_id": "PBK-C006",
+    "name": "collector caller behavior",
+    "source": "msg.sender.call.value(_am)() occurs before balances decrement",
+    "parameter_type": "caller identity and fallback implementation",
+    "feasible_values": ["externally owned account", "contract with inert payable fallback", "contract that reenters Collect", "contract whose fallback reverts"],
+    "valid_perturbations": ["invoke Collect through caller contracts with different payable fallback behavior"],
+    "boundary_perturbations": ["single reentry", "reentry until gas or contract funds limit", "fallback returns false"],
+    "invalid_perturbations": ["caller unable to fund prerequisite deposit or gas"],
+    "affected_operation": "Collect external call and reentrancy window",
+    "affected_state": "bank accounting balance and contract ether balance",
+    "observable_outcomes": ["number and value of withdrawals", "nested call trace", "final recorded balance", "log entries"]
+   },
+   {
+    "candidate_id": "PBK-C007",
+    "name": "caller identity across deposits and collections",
+    "source": "balances mapping keyed by msg.sender",
+    "parameter_type": "caller account identity",
+    "feasible_values": ["same account for deposit and collect", "different collecting account", "multiple funded depositors"],
+    "valid_perturbations": ["switch caller while holding value and amount constant"],
+    "boundary_perturbations": ["caller with zero recorded balance", "caller exactly at MinSum"],
+    "invalid_perturbations": ["caller unable to pay gas"],
+    "affected_operation": "Deposit and Collect mapping selection",
+    "affected_state": "balances entries for each caller",
+    "observable_outcomes": ["per-caller recorded balances", "collect success", "log Sender fields"]
+   },
+   {
+    "candidate_id": "PBK-C008",
+    "name": "deposit invocation path",
+    "source": "fallback() payable { Deposit(); }",
+    "parameter_type": "transaction calldata routing",
+    "feasible_values": ["explicit Deposit call", "empty-calldata fallback deposit", "Deposit with extra data"],
+    "valid_perturbations": ["send value via the fallback instead of calling Deposit directly"],
+    "boundary_perturbations": ["empty calldata", "unknown selector", "direct ether transfer"],
+    "invalid_perturbations": ["calldata that cannot be ABI-encoded"],
+    "affected_operation": "deposit credit path",
+    "affected_state": "balances[msg.sender] and log history",
+    "observable_outcomes": ["recorded bank balance", "contract ether balance", "Put log message"]
+   },
+   {
+    "candidate_id": "PBK-C009",
+    "name": "log contract call failure",
+    "source": "Deposit and Collect call Log.AddMessage(...) ignoring the return value",
+    "parameter_type": "external log call behavior",
+    "feasible_values": ["working LogFile", "log contract that reverts", "EOA without AddMessage"],
+    "valid_perturbations": ["point Log at a contract whose AddMessage reverts"],
+    "boundary_perturbations": ["AddMessage reverts after Deposit credit", "AddMessage reverts inside Collect"],
+    "invalid_perturbations": ["malformed address", "call after initialization"],
+    "affected_operation": "Deposit and Collect logging step",
+    "affected_state": "external log history and bank balances",
+    "observable_outcomes": ["transaction revert or success", "bank balance", "History length"]
+   },
+   {
+    "candidate_id": "PBK-C010",
+    "name": "collection eligibility dual constraint",
+    "source": "Collect: balances[msg.sender] >= MinSum && balances[msg.sender] >= _am",
+    "parameter_type": "combined eligibility comparison",
+    "feasible_values": ["balance above both constraints", "balance equal to MinSum", "balance below MinSum but above _am"],
+    "valid_perturbations": ["reach the boundary via deposit amount and threshold combinations"],
+    "boundary_perturbations": ["balance exactly MinSum", "balance exactly _am", "balance one wei below MinSum"],
+    "invalid_perturbations": ["negative value", "value larger than uint256"],
+    "affected_operation": "Collect eligibility gate",
+    "affected_state": "balances[msg.sender] and contract ether balance",
+    "observable_outcomes": ["collect success or no-op", "caller balance", "log entries"]
+   }
+  ]
+ }
+}

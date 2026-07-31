@@ -1,0 +1,118 @@
+{
+ "algorithm_1": {
+  "iterations": [
+   {
+    "combined_scores": {
+     "MR6.1": 0.41666666666666663,
+     "MR6.4": 0.5,
+     "MR6.6": 0.41666666666666663
+    },
+    "decision": "remove",
+    "difference_scores": {
+     "MR6.1": 0.5,
+     "MR6.4": 1.0,
+     "MR6.6": 0.5
+    },
+    "iteration": 1,
+    "retained_before": [
+     "MR6.1",
+     "MR6.4",
+     "MR6.6"
+    ],
+    "threshold_tau_c": 0.45,
+    "weakest_mr": "MR6.1",
+    "weakest_score": 0.41666666666666663
+   }
+  ],
+  "mutation_scores": {
+   "MR6.1": 0.3333333333333333,
+   "MR6.4": 0.0,
+   "MR6.6": 0.3333333333333333
+  },
+  "optimized_mrs": [
+   "MR6.4",
+   "MR6.6"
+  ],
+  "original_mrs": [
+   "MR6.1",
+   "MR6.4",
+   "MR6.6"
+  ],
+  "parameters": {
+   "ds_weight": 0.5,
+   "min_set_size": 2,
+   "ms_weight": 0.5,
+   "tau_c": 0.45
+  },
+  "removed_mrs": [
+   "MR6.1"
+  ],
+  "stop_reason": "min_set_size"
+ },
+ "claim_scope": "control_only",
+ "config_source": "configs/experiments/mytoken_canonical_optimization.yaml",
+ "experiment": "canonical_mytoken_algorithm_1",
+ "initial_combined_scores": {
+  "MR6.1": 0.41666666666666663,
+  "MR6.4": 0.5,
+  "MR6.6": 0.41666666666666663
+ },
+ "initial_difference_scores": {
+  "MR6.1": 0.5,
+  "MR6.4": 1.0,
+  "MR6.6": 0.5
+ },
+ "kill_vectors": {
+  "MR6.1": {
+   "MUT-01": 0,
+   "MUT-07": 0,
+   "MUT-08": 1
+  },
+  "MR6.4": {
+   "MUT-01": 0,
+   "MUT-07": 0,
+   "MUT-08": 0
+  },
+  "MR6.6": {
+   "MUT-01": 0,
+   "MUT-07": 0,
+   "MUT-08": 1
+  }
+ },
+ "mr_ids": [
+  "MR6.1",
+  "MR6.4",
+  "MR6.6"
+ ],
+ "mutant_ids": [
+  "MUT-01",
+  "MUT-07",
+  "MUT-08"
+ ],
+ "pairwise_mrd": {
+  "MR6.1": {
+   "MR6.1": 0.0,
+   "MR6.4": 1.0,
+   "MR6.6": 0.0
+  },
+  "MR6.4": {
+   "MR6.1": 1.0,
+   "MR6.4": 0.0,
+   "MR6.6": 1.0
+  },
+  "MR6.6": {
+   "MR6.1": 0.0,
+   "MR6.4": 1.0,
+   "MR6.6": 0.0
+  }
+ },
+"parameter_provenance": {
+   "min_set_size": "demonstration_value",
+    "tau": "explicit",
+   "tau_c": "demonstration_value",
+    "weights": "explicit"
+  },
+ "scenario_id": "mytoken_canonical_demonstration_v1",
+ "schema_version": 1,
+ "scores_source": "outputs/canonical/mytoken_optimization/scores/kill_vectors.json"
+}

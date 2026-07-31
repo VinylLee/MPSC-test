@@ -1,0 +1,16 @@
+{
+ "mutant_id": "FSC-S0001-V01",
+ "authoritative_record": "BecToken::FSC-S0001-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/FSC-S0001-V01/BecToken.sol",
+ "mutant_sha256": "dc526df6a79351f8fb10c2e533b979608b0b4e8f1a21a4266ab3539bf257622f",
+ "operator": "FSC",
+ "line": 14,
+ "original_text": "function mul(uint256 a, uint256 b) internal constant returns (uint256) {",
+ "mutated_text": "function mul(uint256 a, uint256 b) internal pure returns (uint256) {",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

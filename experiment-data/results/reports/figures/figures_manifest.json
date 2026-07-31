@@ -1,0 +1,56 @@
+{
+  "claim_status": "computed",
+  "figure_count": 7,
+  "figures": [
+    {
+      "path": "experiment-data/results/reports/figures/mr_counts.png",
+      "size_bytes": 60618,
+      "source_csvs": [
+        "experiment-data/processed/subject_mr_counts.csv"
+      ]
+    },
+    {
+      "path": "experiment-data/results/reports/figures/method_comparison.png",
+      "size_bytes": 72135,
+      "source_csvs": [
+        "experiment-data/processed/mr_method_comparison.csv"
+      ]
+    },
+    {
+      "path": "experiment-data/results/reports/figures/vulnerability_comparison.png",
+      "size_bytes": 63021,
+      "source_csvs": [
+        "experiment-data/processed/computed/vulnerability_totals.csv"
+      ]
+    },
+    {
+      "path": "experiment-data/results/reports/figures/optimization.png",
+      "size_bytes": 135852,
+      "source_csvs": [
+        "experiment-data/processed/computed/optimization.csv"
+      ]
+    },
+    {
+      "path": "experiment-data/results/reports/figures/method_time.png",
+      "size_bytes": 79826,
+      "source_csvs": [
+        "experiment-data/processed/method_time_comparison.csv"
+      ]
+    },
+    {
+      "path": "experiment-data/results/reports/figures/appendix_mr_sensitivity.png",
+      "size_bytes": 69439,
+      "source_csvs": [
+        "experiment-data/processed/mytoken_mr_sensitivity.csv"
+      ]
+    },
+    {
+      "path": "experiment-data/results/reports/figures/appendix_mrd_distribution.png",
+      "size_bytes": 54288,
+      "source_csvs": [
+        "experiment-data/processed/mytoken_mrd_pairs.csv"
+      ]
+    }
+  ],
+  "schema_version": 1
+}

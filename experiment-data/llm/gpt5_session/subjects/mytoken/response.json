@@ -1,0 +1,271 @@
+{
+ "schema_version": 1,
+ "run_id": "gpt5",
+ "subject_id": "mytoken",
+ "generated_at": "T18:30:38+08:00",
+ "request": {
+  "prompt_template": "code/configs/llm/mutable_parameter_prompt.yaml",
+  "source_path": "experiment-data/subjects/MyToken.sol",
+  "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91"
+ },
+ "response": {
+  "raw_output_format": "application/json",
+  "analysis_summary": "Externally controllable factors include the deployment origin and initial supply value, the transaction caller and its account type, the transfer recipient and amount, the transaction gas budget, and the queried balance address. Contract balances are dependent state and should be observed rather than treated as independently mutable inputs.",
+  "candidates": [
+   {
+    "candidate_id": "MYT-C001",
+    "name": "deployment origin",
+    "source": "MyToken constructor: balances[tx.origin] = 10000",
+    "parameter_type": "deployment account identity",
+    "feasible_values": [
+     "externally owned account A",
+     "externally owned account B",
+     "deployment relayed through another account or contract where supported"
+    ],
+    "valid_perturbations": [
+     "deploy from a different funded account"
+    ],
+    "boundary_perturbations": [
+     "deploy through a call path where msg.sender and tx.origin differ"
+    ],
+    "invalid_perturbations": [
+     "zero-address transaction origin",
+     "unfunded account unable to pay deployment gas"
+    ],
+    "affected_operation": "constructor initialization",
+    "affected_state": "balances entry receiving the initial 10000 tokens",
+    "observable_outcomes": [
+     "getBalance for each candidate owner",
+     "subsequent sendCoin success from the initialized account"
+    ]
+   },
+   {
+    "candidate_id": "MYT-C002",
+    "name": "transfer recipient",
+    "source": "sendCoin(address to, uint256 amount)",
+    "parameter_type": "address function argument",
+    "feasible_values": [
+     "distinct externally owned account",
+     "sender address",
+     "zero address",
+     "deployed contract address"
+    ],
+    "valid_perturbations": [
+     "replace one nonzero recipient with another"
+    ],
+    "boundary_perturbations": [
+     "recipient equals sender",
+     "recipient is zero address"
+    ],
+    "invalid_perturbations": [
+     "malformed value that cannot be ABI-encoded as address"
+    ],
+    "affected_operation": "sendCoin",
+    "affected_state": "balances[msg.sender] and balances[to]",
+    "observable_outcomes": [
+     "boolean return",
+     "Transfer event fields",
+     "sender and recipient balances"
+    ]
+   },
+   {
+    "candidate_id": "MYT-C003",
+    "name": "transfer amount",
+    "source": "sendCoin(address to, uint256 amount)",
+    "parameter_type": "uint256 function argument",
+    "feasible_values": [
+     0,
+     1,
+     "current sender balance",
+     "current sender balance + 1",
+     "uint256 maximum"
+    ],
+    "valid_perturbations": [
+     "increase or decrease within the sender balance"
+    ],
+    "boundary_perturbations": [
+     0,
+     "exact balance",
+     "balance + 1"
+    ],
+    "invalid_perturbations": [
+     "negative integer",
+     "value larger than uint256"
+    ],
+    "affected_operation": "sendCoin",
+    "affected_state": "sender and recipient balances",
+    "observable_outcomes": [
+     "boolean return",
+     "balance deltas",
+     "Transfer event presence and value"
+    ]
+   },
+   {
+    "candidate_id": "MYT-C004",
+    "name": "transaction caller",
+    "source": "sendCoin uses balances[msg.sender]",
+    "parameter_type": "caller identity / global variable",
+    "feasible_values": [
+     "initial token holder",
+     "account with partial balance",
+     "account with zero balance"
+    ],
+    "valid_perturbations": [
+     "invoke the same transfer from accounts with different balances"
+    ],
+    "boundary_perturbations": [
+     "caller balance equals amount",
+     "caller balance is one below amount"
+    ],
+    "invalid_perturbations": [
+     "caller without funds for transaction gas"
+    ],
+    "affected_operation": "sendCoin authorization by available balance",
+    "affected_state": "balances entry selected by msg.sender",
+    "observable_outcomes": [
+     "boolean return",
+     "selected caller balance",
+     "recipient balance",
+     "event emission"
+    ]
+   },
+   {
+    "candidate_id": "MYT-C005",
+    "name": "queried balance address",
+    "source": "getBalance(address addr)",
+    "parameter_type": "address view-function argument",
+    "feasible_values": [
+     "initialized owner",
+     "transfer recipient",
+     "unused address",
+     "zero address"
+    ],
+    "valid_perturbations": [
+     "query different known participants"
+    ],
+    "boundary_perturbations": [
+     "unused address",
+     "zero address"
+    ],
+    "invalid_perturbations": [
+     "malformed non-address input"
+    ],
+    "affected_operation": "getBalance",
+    "affected_state": "read-only selection of balances[addr]",
+    "observable_outcomes": [
+     "returned uint balance"
+    ]
+   },
+   {
+    "candidate_id": "MYT-C006",
+    "name": "initial token supply value",
+    "source": "MyToken constructor: balances[tx.origin] = 10000",
+    "parameter_type": "deployment-time supply constant",
+    "feasible_values": [
+     0,
+     10000,
+     "a value exceeding a test recipient's expectation"
+    ],
+    "valid_perturbations": [
+     "deploy with a different initial allocation"
+    ],
+    "boundary_perturbations": [
+     0,
+     "exactly the deployed 10000",
+     "a value above the uint storage limit"
+    ],
+    "invalid_perturbations": [
+     "negative integer",
+     "value larger than uint256"
+    ],
+    "affected_operation": "constructor allocation",
+    "affected_state": "balances[tx.origin] initial entry",
+    "observable_outcomes": [
+     "getBalance for the deployment account",
+     "subsequent sendCoin capacity"
+    ]
+   },
+   {
+    "candidate_id": "MYT-C007",
+    "name": "transaction gas budget",
+    "source": "sendCoin execution and Transfer event emission",
+    "parameter_type": "transaction environment parameter",
+    "feasible_values": [
+     "sufficient gas",
+     "near the sendCoin cost",
+     "insufficient gas"
+    ],
+    "valid_perturbations": [
+     "vary gas limit above the required cost"
+    ],
+    "boundary_perturbations": [
+     "minimum gas that completes sendCoin",
+     "one gas below that minimum"
+    ],
+    "invalid_perturbations": [
+     "gas limit below intrinsic transaction cost"
+    ],
+    "affected_operation": "sendCoin and event emission",
+    "affected_state": "all-or-nothing balance updates and event",
+    "observable_outcomes": [
+     "transaction success or out-of-gas revert",
+     "event emission"
+    ]
+   },
+   {
+    "candidate_id": "MYT-C008",
+    "name": "transferring contract account",
+    "source": "sendCoin called with msg.sender being a contract",
+    "parameter_type": "caller account type",
+    "feasible_values": [
+     "externally owned account",
+     "contract without payable fallback",
+     "contract with payable fallback"
+    ],
+    "valid_perturbations": [
+     "call sendCoin from a contract rather than an account"
+    ],
+    "boundary_perturbations": [
+     "contract with no payable fallback",
+     "contract consuming excessive gas"
+    ],
+    "invalid_perturbations": [
+     "caller unable to pay gas"
+    ],
+    "affected_operation": "sendCoin authorization by caller",
+    "affected_state": "balances[msg.sender] for the contract caller",
+    "observable_outcomes": [
+     "boolean return",
+     "contract-caller balance",
+     "Transfer event"
+    ]
+   },
+   {
+    "candidate_id": "MYT-C009",
+    "name": "queried contract balance address",
+    "source": "getBalance(address addr) on a contract address",
+    "parameter_type": "address view-function argument",
+    "feasible_values": [
+     "token-holding contract",
+     "contract with zero balance",
+     "address with code but no balance"
+    ],
+    "valid_perturbations": [
+     "query a contract address instead of an account"
+    ],
+    "boundary_perturbations": [
+     "zero address",
+     "address without code"
+    ],
+    "invalid_perturbations": [
+     "malformed non-address input"
+    ],
+    "affected_operation": "getBalance",
+    "affected_state": "read-only selection of balances[addr]",
+    "observable_outcomes": [
+     "returned uint balance"
+    ]
+   }
+  ]
+ }
+}

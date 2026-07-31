@@ -1,0 +1,73 @@
+{
+ "config_path": "configs/experiments/mytoken_canonical_mutants.yaml",
+ "corpus_id": "mytoken_canonical_controls_v2",
+ "eligibility_policy": [
+  "file_sha256_matches_frozen_value",
+  "manifest_generation_success",
+  "manifest_compile_success",
+  "canonical_compiler_success"
+ ],
+ "eligible_count": 3,
+ "frozen_at_commit": "348619d",
+ "hash_canonicalization": "lf",
+ "hash_mismatch_count": 0,
+ "ineligible_count": 0,
+ "mutant_count": 3,
+ "mutants": [
+  {
+   "actual_sha256": "c78742bf67fc22c51cbd5658a533b4545d03bdd439d9b7eedd681a3e44b22b37",
+   "compile_success": true,
+   "declared_sha256": "c78742bf67fc22c51cbd5658a533b4545d03bdd439d9b7eedd681a3e44b22b37",
+   "eligibility_status": "eligible",
+   "frozen_hash_matches": true,
+   "frozen_sha256": "c78742bf67fc22c51cbd5658a533b4545d03bdd439d9b7eedd681a3e44b22b37",
+   "generation_success": true,
+   "hash_matches": true,
+   "manifest": "data/generated/mutants/MyToken/MUT-01/manifest.json",
+   "mutant_id": "MUT-01",
+   "origin": "local_engineering_generator",
+   "path": "data/generated/mutants/MyToken/MUT-01/MyToken.sol",
+   "raw_sha256": "f5c3ddad6edd38bec77a679266783014fd388a2f3bae3d97df12ac3b74833afa"
+  },
+  {
+   "actual_sha256": "cedb17f8bde97753e032ad82bf31e1527d0730a8b007c25ad181f5aa730d98cb",
+   "compile_success": true,
+   "declared_sha256": "cedb17f8bde97753e032ad82bf31e1527d0730a8b007c25ad181f5aa730d98cb",
+   "eligibility_status": "eligible",
+   "frozen_hash_matches": true,
+   "frozen_sha256": "cedb17f8bde97753e032ad82bf31e1527d0730a8b007c25ad181f5aa730d98cb",
+   "generation_success": true,
+   "hash_matches": true,
+   "manifest": "data/generated/mutants/MyToken/MUT-07/manifest.json",
+   "mutant_id": "MUT-07",
+   "origin": "local_engineering_generator",
+   "path": "data/generated/mutants/MyToken/MUT-07/MyToken.sol",
+   "raw_sha256": "e3450a43970bd331f65969006fd313244638a8c0f6bd128012ecfe46d5272770"
+  },
+  {
+   "actual_sha256": "fff0c17691380c8b98c91adb997cf5bc379e91d4f3ca57da6688a6eff9bb3dcd",
+   "compile_success": true,
+   "declared_sha256": "fff0c17691380c8b98c91adb997cf5bc379e91d4f3ca57da6688a6eff9bb3dcd",
+   "eligibility_status": "eligible",
+   "frozen_hash_matches": true,
+   "frozen_sha256": "fff0c17691380c8b98c91adb997cf5bc379e91d4f3ca57da6688a6eff9bb3dcd",
+   "generation_success": true,
+   "hash_matches": true,
+   "manifest": "data/generated/mutants/MyToken/MUT-08/manifest.json",
+   "mutant_id": "MUT-08",
+   "origin": "local_engineering_generator",
+   "path": "data/generated/mutants/MyToken/MUT-08/MyToken.sol",
+   "raw_sha256": "5eb65b3b64b90e922fb3016a7ae6ff5f5ee7aef132977cef72131771193e2c47"
+  }
+ ],
+ "schema_version": 2,
+ "subject": {
+  "actual_sha256": "eebf20e26ca6391f12decda44c889deccfc667c9da0da24da47d4e56edfc89b4",
+  "frozen_hash_matches": true,
+  "frozen_sha256": "eebf20e26ca6391f12decda44c889deccfc667c9da0da24da47d4e56edfc89b4",
+  "id": "MyToken",
+  "path": "subjects/MyToken.sol",
+  "raw_sha256": "eebf20e26ca6391f12decda44c889deccfc667c9da0da24da47d4e56edfc89b4"
+ },
+ "valid": true
+}

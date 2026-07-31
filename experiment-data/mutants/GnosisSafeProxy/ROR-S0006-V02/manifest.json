@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ROR-S0006-V02",
+ "authoritative_record": "GnosisSafeProxy::ROR-S0006-V02",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+ "source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+ "mutant_file": "experiment-data/mutants/GnosisSafeProxy/ROR-S0006-V02/GnosisSafeProxy.sol",
+ "mutant_sha256": "9601161d2cb312cb13c8373582a47119e0ca724729b1eb7804e006c0803dafcb",
+ "operator": "ROR",
+ "line": 106,
+ "original_text": "if (initializer.length > 0)",
+ "mutated_text": "if (initializer.length < 0)",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

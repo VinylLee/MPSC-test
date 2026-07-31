@@ -1,0 +1,30 @@
+# Rubixi mutation config
+contract: experiment-data/subjects/Rubixi/Rubixi.sol
+compiler: "0.4.16"
+output_dir: experiment-data/runs/generated-mutants/Rubixi
+mrs_for_detection: auto
+
+mutants:
+ - id: ROR-S01-V01
+   operator: ROR
+   name: "Fee percentage check: > to >="
+   source_type: control
+   line: 100
+   original: "collectedFees == 0 || _pcent > 100"
+   mutated: "collectedFees == 0 || _pcent >= 100"
+
+ - id: SDL-S01-V01
+   operator: SDL
+   name: "Delete fee send"
+   source_type: control
+   line: 85
+   original: "creator.send(collectedFees);"
+   mutated: "// creator.send(collectedFees);"
+
+ - id: ROR-S02-V01
+   operator: ROR
+   name: "Multiplier bounds: > to >="
+   source_type: control
+   line: 113
+   original: "_mult > 300 || _mult < 120"
+   mutated: "_mult >= 300 || _mult < 120"

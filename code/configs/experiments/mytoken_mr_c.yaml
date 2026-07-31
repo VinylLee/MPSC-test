@@ -1,0 +1,54 @@
+# MR9.1: Swap parameter order (to, amount)
+# "Reversing the input order of to and amount results in a failure"
+# Oracle: μ_f ≠ μ_s, δ_f = δ_s
+#
+# sendCoin(address to, uint256 amount) - swapping means:
+# Source: sendCoin(B, 100) - valid call
+# Followup: sendCoin(100, B) - ABI type mismatch
+# The followup will fail at ABI encoding stage (address expects 20 bytes, gets uint)
+# This is an ABI_ENCODING_ERROR, not an EVM revert
+
+mr:
+ id: MR9.1
+ category: MR9
+ name: "Swap parameter order (to, amount)"
+
+contract:
+ name: MyToken
+ source: experiment-data/subjects/MyToken.sol
+ solc_version: "0.4.11"
+
+state_strategy: fresh_deployment_pair
+
+test:
+ accounts_to_track: [account_A, account_B]
+ setup_actions: []
+ source:
+  caller: account_A
+  function: sendCoin
+  arguments: [account_B, 100]
+ transformation:
+  type: swap_parameters
+  description: "Swap to and amount parameters"
+  parameter: "(to, amount)"
+  operation: "x_amount_f = x_to_s, x_to_f = x_amount_s"
+ followup:
+  caller: account_A
+  function: sendCoin
+  arguments: [100, account_B]
+
+oracle:
+ target_operation: sendCoin
+ check_type: parameter_swap_raw
+ fields: [execution_status, return_value]
+ expression: "μ_f ≠ μ_s, δ_f = δ_s"
+ preconditions: []
+ note: |
+  Oracle: "Reversing the input order of to and amount results in a failure"
+  Source: sendCoin(account_B, 100) - valid, returns true
+  Followup: sendCoin(100, account_B) - ABI encoding fails
+  The followup never reaches EVM (ABI error)
+  μ_f ≠ μ_s is satisfied (one succeeds, one fails)
+  δ_f = δ_s cannot be compared (followup has no gas)
+
+seed: null

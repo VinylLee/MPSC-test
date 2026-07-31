@@ -1,0 +1,7 @@
+contract,ground_truth_count,llm_identified_count,true_positive,precision_percent,recall_percent,f1_percent,source_path,source_locator
+MyToken,8,9,8,88.888889,100.0,94.117647,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 979
+Rubixi,13,12,11,91.666667,84.615385,88.0,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 980
+BecToken,21,22,20,90.909091,95.238095,93.023256,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 981
+GnosisSafeProxy,16,16,15,93.75,93.75,93.75,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 982
+PERSONAL_BANK,9,10,9,90.0,100.0,94.736842,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 983
+Average,,,,91.042929,94.720696,92.725549,derived from llm_identification.csv,all five rows

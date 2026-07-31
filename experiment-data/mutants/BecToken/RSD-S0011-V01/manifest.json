@@ -1,0 +1,16 @@
+{
+ "mutant_id": "RSD-S0011-V01",
+ "authoritative_record": "BecToken::RSD-S0011-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/RSD-S0011-V01/BecToken.sol",
+ "mutant_sha256": "30359f3ee0f5f8dbbd48385c8ba51c7427f9d62f7f7db43125a4ddec7ccc2853",
+ "operator": "RSD",
+ "line": 212,
+ "original_text": "require(!paused);",
+ "mutated_text": "// MPSC-COMPAT-RSD require(!paused);",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

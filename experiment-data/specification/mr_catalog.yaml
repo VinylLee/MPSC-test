@@ -1,0 +1,1488 @@
+
+categories:
+ - id: MR1
+   name: compiler_version
+   description: "Tests compatibility across different compiler versions"
+   mr_count: 6
+   target_operation: contractCompiler
+   mutable_parameter: compiler_version
+
+ - id: MR2
+   name: EOA
+   description: "Validates behavior under variations in external account addresses"
+   mr_count: 4
+   target_operation: contractDeploy
+   mutable_parameter: deployer_account
+
+ - id: MR3
+   name: deployment_environment
+   description: "Ensures consistent behavior across blockchain platforms"
+   mr_count: 2
+   target_operation: [contractDeploy, contractFunctionCall]
+   mutable_parameter: deployment_environment
+
+ - id: MR4
+   name: Gas_limit
+   description: "Tests robustness against different gas limits near operational thresholds"
+   mr_count: 6
+   target_operation: contractDeploy
+   mutable_parameter: gas_limit
+
+ - id: MR5
+   name: to
+   description: "Examines token receipt behavior under recipient address variations"
+   mr_count: 5
+   target_operation: sendCoin
+   mutable_parameter: to
+
+ - id: MR6
+   name: amount
+   description: "Evaluates correctness under varied transfer amount calculations"
+   mr_count: 7
+   target_operation: sendCoin
+   mutable_parameter: amount
+
+ - id: MR7
+   name: addr
+   description: "Verifies getBalance behavior under multiple address scenarios"
+   mr_count: 4
+   target_operation: getBalance
+   mutable_parameter: addr
+
+ - id: MR8
+   name: "(from, to)"
+   description: "Assesses interaction patterns between sender and recipient accounts"
+   mr_count: 3
+   target_operation: sendCoin
+   mutable_parameter: [from, to]
+
+ - id: MR9
+   name: "(to, amount)"
+   description: "Tests the impact of input parameter ordering in transfer operations"
+   mr_count: 1
+   target_operation: sendCoin
+   mutable_parameter: [to, amount]
+
+mrs:
+ # MR1: Compiler-Version-Based MRs
+ - id: MR1.1
+   category: MR1
+   name: "Compiler version increase (valid range)"
+   subject:
+    contract: MyToken
+    function: contractCompiler
+   mutable_parameters:
+    - name: compiler_version
+      location: deployment
+      type: version_identifier
+      constraints: ["x_s > 0.4.11"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_s > 0.4.11"]
+   transformation:
+    type: increase
+    description: "x_f = x_s + Δx"
+    operations: ["increase compiler version"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_f > 0.4.11"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR1.2
+   category: MR1
+   name: "Compiler version decrease (valid range)"
+   subject:
+    contract: MyToken
+    function: contractCompiler
+   mutable_parameters:
+    - name: compiler_version
+      location: deployment
+      type: version_identifier
+      constraints: ["x_s > 0.4.11", "x_f > 0.4.11"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_s > 0.4.11"]
+   transformation:
+    type: decrease
+    description: "x_f = x_s - Δx, x_f > 0.4.11"
+    operations: ["decrease compiler version within valid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_f > 0.4.11"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR1.3
+   category: MR1
+   name: "Compiler version decrease to invalid"
+   subject:
+    contract: MyToken
+    function: contractCompiler
+   mutable_parameters:
+    - name: compiler_version
+      location: deployment
+      type: version_identifier
+      constraints: ["x_s > 0.4.11", "x_f < 0.4.11"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_s > 0.4.11"]
+   transformation:
+    type: decrease_to_invalid
+    description: "x_f = x_s - Δx, x_f < 0.4.11"
+    operations: ["decrease compiler version below valid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_f < 0.4.11"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR1.4
+   category: MR1
+   name: "Compiler version increase (invalid range)"
+   subject:
+    contract: MyToken
+    function: contractCompiler
+   mutable_parameters:
+    - name: compiler_version
+      location: deployment
+      type: version_identifier
+      constraints: ["x_s < 0.4.11", "x_f < 0.4.11"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_s < 0.4.11"]
+   transformation:
+    type: increase_within_invalid
+    description: "x_f = x_s + Δx, x_f < 0.4.11"
+    operations: ["increase compiler version within invalid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_f < 0.4.11"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s [both error], ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR1.5
+   category: MR1
+   name: "Compiler version increase to valid"
+   subject:
+    contract: MyToken
+    function: contractCompiler
+   mutable_parameters:
+    - name: compiler_version
+      location: deployment
+      type: version_identifier
+      constraints: ["x_s < 0.4.11", "x_f > 0.4.11"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_s < 0.4.11"]
+   transformation:
+    type: increase_to_valid
+    description: "x_f = x_s + Δx, x_f > 0.4.11"
+    operations: ["increase compiler version into valid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_f > 0.4.11"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR1.6
+   category: MR1
+   name: "Compiler version decrease (invalid range)"
+   subject:
+    contract: MyToken
+    function: contractCompiler
+   mutable_parameters:
+    - name: compiler_version
+      location: deployment
+      type: version_identifier
+      constraints: ["x_s < 0.4.11", "x_f < 0.4.11"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_s < 0.4.11"]
+   transformation:
+    type: decrease_within_invalid
+    description: "x_f = x_s - Δx, x_f < 0.4.11"
+    operations: ["decrease compiler version within invalid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["x_f < 0.4.11"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s [both error], ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ # MR2: EOA-Based MRs
+ - id: MR2.1
+   category: MR2
+   name: "EOA address length increase"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: deployer_account
+      location: deployment
+      type: address
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   transformation:
+    type: address_length_increase
+    description: "x.length_f = x.length_s + Δx.length"
+    operations: ["extend EOA address length"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record", "requires malformed address injection"]
+
+ - id: MR2.2
+   category: MR2
+   name: "EOA address length decrease"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: deployer_account
+      location: deployment
+      type: address
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   transformation:
+    type: address_length_decrease
+    description: "x.length_f = x.length_s - Δx.length"
+    operations: ["shorten EOA address length"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record", "requires malformed address injection"]
+
+ - id: MR2.3
+   category: MR2
+   name: "EOA address character change"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: deployer_account
+      location: deployment
+      type: address
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   transformation:
+    type: address_character_change
+    description: "x_f ≠ x_s"
+    operations: ["alter single character in EOA address"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR2.4
+   category: MR2
+   name: "EOA address replacement (valid)"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: deployer_account
+      location: deployment
+      type: address
+      constraints: ["x_f ∈ V_range"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   transformation:
+    type: address_replace_valid
+    description: "x_f ≠ x_s, x_f ∈ V_range"
+    operations: ["replace EOA with different valid account"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ # MR3: Deployment-Environment-Based MRs
+ - id: MR3.1
+   category: MR3
+   name: "Blockchain platform replacement (deploy)"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: deployment_environment
+      location: deployment
+      type: blockchain_platform
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   transformation:
+    type: platform_replace
+    description: "x_f ≠ x_s"
+    operations: ["deploy on different blockchain platform"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: approximately_equal
+    expression: "(μ_f = μ_s, ε_f = ε_s, δ_f ≈ δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record", "requires multiple blockchain backends"]
+
+ - id: MR3.2
+   category: MR3
+   name: "Blockchain platform replacement (call)"
+   subject:
+    contract: MyToken
+    function: contractFunctionCall
+   mutable_parameters:
+    - name: deployment_environment
+      location: deployment
+      type: blockchain_platform
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   transformation:
+    type: platform_replace
+    description: "x_f ≠ x_s"
+    operations: ["call on different blockchain platform"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: approximately_equal
+    expression: "(μ_f = μ_s, ε_f = ε_s, δ_f ≈ δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record", "requires multiple blockchain backends"]
+
+ # MR4: Gas-Limit-Based MRs
+ - id: MR4.1
+   category: MR4
+   name: "Gas limit increase (valid range)"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: gas_limit
+      location: deployment
+      type: non_negative_integer
+      constraints: ["x_s > 269037", "x_f > 269037"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit >= 269037"]
+   transformation:
+    type: increase
+    description: "x_f = x_s + Δx, x_f > 269037"
+    operations: ["increase gas limit"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit > 269037"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR4.2
+   category: MR4
+   name: "Gas limit decrease (valid range)"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: gas_limit
+      location: deployment
+      type: non_negative_integer
+      constraints: ["x_s > 269037", "x_f > 269037"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit >= 269037"]
+   transformation:
+    type: decrease
+    description: "x_f = x_s - Δx, x_f > 269037"
+    operations: ["decrease gas limit within valid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit > 269037"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR4.3
+   category: MR4
+   name: "Gas limit decrease to invalid"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: gas_limit
+      location: deployment
+      type: non_negative_integer
+      constraints: ["x_s > 269037", "x_f < 269037"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit >= 269037"]
+   transformation:
+    type: decrease_to_invalid
+    description: "x_f = x_s - Δx, x_f < 269037"
+    operations: ["decrease gas limit below threshold"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit < 269037"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu_delta
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f ≠ δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR4.4
+   category: MR4
+   name: "Gas limit increase (invalid range)"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: gas_limit
+      location: deployment
+      type: non_negative_integer
+      constraints: ["x_s < 269037", "x_f < 269037"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit < 269037"]
+   transformation:
+    type: increase_within_invalid
+    description: "x_f = x_s + Δx, x_f < 269037"
+    operations: ["increase gas limit within invalid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit < 269037"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s [both fail], ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR4.5
+   category: MR4
+   name: "Gas limit increase to valid"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: gas_limit
+      location: deployment
+      type: non_negative_integer
+      constraints: ["x_s < 269037", "x_f > 269037"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit < 269037"]
+   transformation:
+    type: increase_to_valid
+    description: "x_f = x_s + Δx, x_f > 269037"
+    operations: ["increase gas limit into valid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit > 269037"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu_delta
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f ≠ δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR4.6
+   category: MR4
+   name: "Gas limit decrease (invalid range)"
+   subject:
+    contract: MyToken
+    function: contractDeploy
+   mutable_parameters:
+    - name: gas_limit
+      location: deployment
+      type: non_negative_integer
+      constraints: ["x_s < 269037", "x_f < 269037"]
+   source_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit < 269037"]
+   transformation:
+    type: decrease_within_invalid
+    description: "x_f = x_s - Δx, x_f < 269037"
+    operations: ["decrease gas limit within invalid range"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: []
+    preconditions: ["gas_limit < 269037"]
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: equal
+    expression: "(μ_f = μ_s [both fail], ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: false
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ # MR5: Token-Receiving-Account-Based MRs
+ - id: MR5.1
+   category: MR5
+   name: "Recipient address length increase"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: to
+      location: function_argument
+      type: address
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: [to, amount]
+    preconditions: []
+   transformation:
+    type: address_length_increase
+    description: "x.length_f = x.length_s + Δx.length"
+    operations: ["increase recipient address length"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: [to_modified, amount]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record", "requires malformed address injection"]
+
+ - id: MR5.2
+   category: MR5
+   name: "Recipient address length decrease"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: to
+      location: function_argument
+      type: address
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: [to, amount]
+    preconditions: []
+   transformation:
+    type: address_length_decrease
+    description: "x.length_f = x.length_s - Δx.length"
+    operations: ["shorten recipient address length"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: [to_modified, amount]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record", "requires malformed address injection"]
+
+ - id: MR5.3
+   category: MR5
+   name: "Recipient address character change (invalid)"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: to
+      location: function_argument
+      type: address
+      constraints: ["x_f ∈ NV_range"]
+   source_test:
+    caller: null
+    value: null
+    arguments: [to, amount]
+    preconditions: []
+   transformation:
+    type: address_to_invalid
+    description: "x_f ≠ x_s, x_f ∈ NV_range"
+    operations: ["change recipient to invalid address"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: [to_invalid, amount]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR5.4
+   category: MR5
+   name: "Swap sender and recipient"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: from
+      location: msg.sender
+      type: address
+      constraints: ["x_from ∈ V_range"]
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, amount]
+    preconditions: []
+   transformation:
+    type: swap_sender_recipient
+    description: "x_from_f ≠ x_from_s"
+    operations: ["swap sender and recipient"]
+   followup_test:
+    caller: account_B
+    value: null
+    arguments: [account_A, amount]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon_to, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_to_f = ε_to_s - amount, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR5.5
+   category: MR5
+   name: "Different recipient"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: to
+      location: function_argument
+      type: address
+      constraints: ["x_to ∈ V_range"]
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, amount]
+    preconditions: []
+   transformation:
+    type: address_replace_valid
+    description: "x_to_f ≠ x_to_s, x_to ∈ V_range"
+    operations: ["replace recipient with different valid account"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_C, amount]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon_from, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, ε_from_f = ε_from_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ # MR6: Transfer-Amount-Based MRs
+ - id: MR6.1
+   category: MR6
+   name: "Amount: 1000 - x"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: amount
+      location: function_argument
+      type: uint256
+      constraints: []
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s]
+    preconditions: []
+   transformation:
+    type: complementary
+    description: "x_f = 1000 - x_s"
+    operations: ["compute complement to 1000"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, 1000 - x_s]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon_from, epsilon_to, delta]
+    relation: balance_transform
+    expression: "(μ_f = μ_s, ε_from_f = 2*ε_from_s - 1000, ε_to_f = 2*ε_to_s + 1000, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR6.2
+   category: MR6
+   name: "Amount: x + 1000"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: amount
+      location: function_argument
+      type: uint256
+      constraints: []
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s]
+    preconditions: []
+   transformation:
+    type: add_constant
+    description: "x_f = x_s + 1000"
+    operations: ["add 1000 to amount"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s + 1000]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s [fail], ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR6.3
+   category: MR6
+   name: "Amount: x * 1000"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: amount
+      location: function_argument
+      type: uint256
+      constraints: []
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s]
+    preconditions: []
+   transformation:
+    type: multiply_constant
+    description: "x_f = x_s * 1000"
+    operations: ["multiply amount by 1000"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s * 1000]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s [fail], ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR6.4
+   category: MR6
+   name: "Amount: 2^8 - x"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: amount
+      location: function_argument
+      type: uint256
+      constraints: []
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s]
+    preconditions: []
+   transformation:
+    type: complementary_256
+    description: "x_f = 2^8 - x_s"
+    operations: ["compute complement to 256"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, 256 - x_s]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon_from, epsilon_to, delta]
+    relation: balance_transform
+    expression: "(μ_f = μ_s, ε_from_f = 2*ε_from_s - 256, ε_to_f = 2*ε_to_s + 256, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR6.5
+   category: MR6
+   name: "Amount: 2^(8n) - x"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: amount
+      location: function_argument
+      type: uint256
+      constraints: ["1 < n <= 32"]
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s]
+    preconditions: []
+   transformation:
+    type: complementary_256n
+    description: "x_f = 2^(8n) - x_s, 1 < n <= 32"
+    operations: ["compute complement to 2^(8n)"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, 2**(8*n) - x_s]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s [fail], ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR6.6
+   category: MR6
+   name: "Amount: 2^8 + x"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: amount
+      location: function_argument
+      type: uint256
+      constraints: []
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s]
+    preconditions: []
+   transformation:
+    type: add_256
+    description: "x_f = 2^8 + x_s"
+    operations: ["add 256 to amount"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, 256 + x_s]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon_from, epsilon_to, delta]
+    relation: balance_sum_equal
+    expression: "(μ_f = μ_s, ε_from_f + ε_to_f = ε_from_s + ε_to_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR6.7
+   category: MR6
+   name: "Amount: 2^(8n) + x"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: amount
+      location: function_argument
+      type: uint256
+      constraints: ["1 < n <= 32"]
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, x_s]
+    preconditions: []
+   transformation:
+    type: add_256n
+    description: "x_f = 2^(8n) + x_s, 1 < n <= 32"
+    operations: ["add 2^(8n) to amount"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, 2**(8*n) + x_s]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s [fail], ε_f = ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ # MR7: User-Address-Based MRs (getBalance)
+ - id: MR7.1
+   category: MR7
+   name: "Query address length increase"
+   subject:
+    contract: MyToken
+    function: getBalance
+   mutable_parameters:
+    - name: addr
+      location: function_argument
+      type: address
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: [addr]
+    preconditions: []
+   transformation:
+    type: address_length_increase
+    description: "x.length_f = x.length_s + Δx.length"
+    operations: ["increase query address length"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: [addr_modified]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: false
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record", "requires malformed address injection"]
+
+ - id: MR7.2
+   category: MR7
+   name: "Query address length decrease"
+   subject:
+    contract: MyToken
+    function: getBalance
+   mutable_parameters:
+    - name: addr
+      location: function_argument
+      type: address
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: [addr]
+    preconditions: []
+   transformation:
+    type: address_length_decrease
+    description: "x.length_f = x.length_s - Δx.length"
+    operations: ["shorten query address length"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: [addr_modified]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: false
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record", "requires malformed address injection"]
+
+ - id: MR7.3
+   category: MR7
+   name: "Query address character change (invalid)"
+   subject:
+    contract: MyToken
+    function: getBalance
+   mutable_parameters:
+    - name: addr
+      location: function_argument
+      type: address
+      constraints: ["x_f ∈ NV_range"]
+   source_test:
+    caller: null
+    value: null
+    arguments: [addr]
+    preconditions: []
+   transformation:
+    type: address_to_invalid
+    description: "x_f ≠ x_s, x_f ∈ NV_range"
+    operations: ["change query address to invalid"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: [addr_invalid]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: false
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR7.4
+   category: MR7
+   name: "Query different valid address"
+   subject:
+    contract: MyToken
+    function: getBalance
+   mutable_parameters:
+    - name: addr
+      location: function_argument
+      type: address
+      constraints: ["x_f ∈ NV_range"]
+   source_test:
+    caller: null
+    value: null
+    arguments: [addr_A]
+    preconditions: []
+   transformation:
+    type: address_replace
+    description: "x_f ≠ x_s"
+    operations: ["replace with different valid address"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: [addr_B]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon, delta]
+    relation: different_all
+    expression: "(μ_f ≠ μ_s, ε_f ≠ ε_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: false
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ # MR8: Address-Role-Based MRs
+ - id: MR8.1
+   category: MR8
+   name: "Replace sender, keep recipient"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: from
+      location: msg.sender
+      type: address
+      constraints: ["x_from_f ≠ x_from_s"]
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, amount]
+    preconditions: []
+   transformation:
+    type: replace_sender
+    description: "x_from_f ≠ x_from_s, x_to_f = x_to_s"
+    operations: ["replace sender with different account"]
+   followup_test:
+    caller: account_C
+    value: null
+    arguments: [account_B, amount]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon_from, epsilon_to, delta]
+    relation: specific
+    expression: "(μ_f = μ_s, ε_from_f = ε_from_s, ε_to_f = ε_to_s + amount, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR8.2
+   category: MR8
+   name: "Keep sender, replace recipient"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: to
+      location: function_argument
+      type: address
+      constraints: ["x_to_f ≠ x_to_s"]
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, amount]
+    preconditions: []
+   transformation:
+    type: replace_recipient
+    description: "x_from_f = x_from_s, x_to_f ≠ x_to_s"
+    operations: ["replace recipient with different account"]
+   followup_test:
+    caller: account_A
+    value: null
+    arguments: [account_C, amount]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon_from, epsilon_to, delta]
+    relation: specific
+    expression: "(μ_f = μ_s, ε_from_f = ε_from_s - amount, ε_to_f = ε_to_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ - id: MR8.3
+   category: MR8
+   name: "Swap from and to"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: from
+      location: msg.sender
+      type: address
+      constraints: []
+    - name: to
+      location: function_argument
+      type: address
+      constraints: []
+   source_test:
+    caller: account_A
+    value: null
+    arguments: [account_B, amount]
+    preconditions: []
+   transformation:
+    type: swap_roles
+    description: "x_from_f = x_to_s, x_to_f = x_from_s"
+    operations: ["swap sender and recipient"]
+   followup_test:
+    caller: account_B
+    value: null
+    arguments: [account_A, amount]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, epsilon_from, epsilon_to, delta]
+    relation: specific
+    expression: "(μ_f = μ_s, ε_from_f = ε_to_s, ε_to_f = ε_from_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]
+
+ # MR9: Function-Parameter-Based MRs
+ - id: MR9.1
+   category: MR9
+   name: "Swap parameter order (to, amount)"
+   subject:
+    contract: MyToken
+    function: sendCoin
+   mutable_parameters:
+    - name: to
+      location: function_argument
+      type: address
+      constraints: []
+    - name: amount
+      location: function_argument
+      type: uint256
+      constraints: []
+   source_test:
+    caller: null
+    value: null
+    arguments: [to, amount]
+    preconditions: []
+   transformation:
+    type: swap_parameters
+    description: "x_amount_f = x_to_s, x_to_f = x_amount_s"
+    operations: ["swap to and amount parameters"]
+   followup_test:
+    caller: null
+    value: null
+    arguments: [amount, to]
+    preconditions: []
+   oracle:
+    observation_fields: [mu, delta]
+    relation: different_mu
+    expression: "(μ_f ≠ μ_s, δ_f = δ_s)"
+   execution_semantics:
+    same_deployment: true
+    reset_state: true
+    ordered_execution: false
+   automation:
+    executable: false
+    missing_information: ["contract-level binding and Oracle record"]

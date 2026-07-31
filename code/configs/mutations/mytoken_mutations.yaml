@@ -1,0 +1,97 @@
+contract: experiment-data/subjects/MyToken.sol
+compiler: "0.4.11"
+output_dir: experiment-data/runs/generated-mutants/MyToken
+mrs_for_detection:
+ - MR6.1
+ - MR6.4
+ - MR6.6
+mutants:
+ - id: MUT-01
+   operator: ROR
+   name: "Boundary condition: < to <="
+   source_type: control
+   line: 22
+   original: "balances[msg.sender] < amount"
+   mutated: "balances[msg.sender] <= amount"
+   description: "Changes strict less-than to less-or-equal, allowing exact balance transfer"
+   expected_impact: "Transfer with exact balance now fails the check"
+
+ - id: MUT-02
+   operator: SDL
+   name: "Delete sender deduction"
+   source_type: control
+   line: 24
+   original: "balances[msg.sender] -= amount;"
+   mutated: "// balances[msg.sender] -= amount;"
+   description: "Comments out sender balance deduction"
+   expected_impact: "Sender balance unchanged after transfer, tokens created from nothing"
+
+ - id: MUT-03
+   operator: SDL
+   name: "Delete receiver credit"
+   source_type: control
+   line: 25
+   original: "balances[to] += amount;"
+   mutated: "// balances[to] += amount;"
+   description: "Comments out receiver balance addition"
+   expected_impact: "Receiver doesn't receive tokens, tokens destroyed"
+
+ - id: MUT-04
+   operator: RVR
+   name: "Invert success return"
+   source_type: control
+   line: 27
+   original: "return true;"
+   mutated: "return false;"
+   description: "Returns false on successful transfer"
+   expected_impact: "Function returns false even though transfer succeeds"
+
+ - id: MUT-05
+   operator: RVR
+   name: "Invert failure return"
+   source_type: control
+   line: 22
+   original: "return false;"
+   mutated: "return true;"
+   description: "Returns true when balance check fails"
+   expected_impact: "Function returns true even though transfer should fail"
+
+ - id: MUT-06
+   operator: ROR
+   name: "Reverse comparison operator"
+   source_type: control
+   line: 22
+   original: "balances[msg.sender] < amount"
+   mutated: "balances[msg.sender] > amount"
+   description: "Reverses comparison: rejects when balance is sufficient, accepts when insufficient"
+   expected_impact: "For MR6.1 (100 vs 900): source may fail while followup succeeds, killing the MR"
+
+ - id: MUT-07
+   operator: ROR
+   name: "Change amount threshold"
+   source_type: control
+   line: 22
+   original: "balances[msg.sender] < amount"
+   mutated: "balances[msg.sender] < 500"
+   description: "Hardcodes threshold to 500 instead of checking against amount"
+   expected_impact: "For MR6.1 (100 vs 900): source(100<500=true=fail) vs followup(900<500=false=succeed)"
+
+ - id: MUT-08
+   operator: LOR
+   name: "Reject small amounts"
+   source_type: control
+   line: 22
+   original: "if (balances[msg.sender] < amount) return false;"
+   mutated: "if (balances[msg.sender] < amount || amount < 200) return false;"
+   description: "Adds additional check: rejects transfers with amount < 200"
+   expected_impact: "MR6.1 source(100<200=true=fail) vs followup(900<200=false, 10000<900=false=succeed)"
+
+ - id: MUT-09
+   operator: ASR
+   name: "Wrong deduction amount"
+   source_type: control
+   line: 24
+   original: "balances[msg.sender] -= amount;"
+   mutated: "balances[msg.sender] -= amount * 2;"
+   description: "Deducts double the amount from sender"
+   expected_impact: "MR6.1: sender loses 200 for source, 1800 for followup. Delta differs from expected."

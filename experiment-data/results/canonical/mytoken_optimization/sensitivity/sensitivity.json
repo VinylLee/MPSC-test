@@ -1,0 +1,1098 @@
+{
+ "claim_scope": "control_only",
+ "config_source": "configs/experiments/mytoken_optimization_sensitivity.yaml",
+ "distinct_outcome_count": 3,
+ "distinct_outcomes": [
+  {
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "scenario_ids": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S15",
+    "S18",
+    "S21",
+    "S24",
+    "S27",
+    "S30"
+   ]
+  },
+  {
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "scenario_ids": [
+    "S13",
+    "S14",
+    "S16",
+    "S17",
+    "S19",
+    "S20",
+    "S23",
+    "S26",
+    "S29"
+   ]
+  },
+  {
+   "optimized_mrs": [
+    "MR6.6"
+   ],
+   "scenario_ids": [
+    "S22",
+    "S25",
+    "S28"
+   ]
+  }
+ ],
+ "experiment": "canonical_mytoken_parameter_sensitivity",
+ "fixed_parameters": {
+  "ds_weight": 0.5,
+  "ms_weight": 0.5,
+  "tau": 0.1
+ },
+ "grid": {
+  "min_set_size": [
+   1,
+   2,
+   3
+  ],
+  "tau_c": [
+   0.0,
+   0.25,
+   0.4,
+   0.4166666666666666,
+   0.4166666666666667,
+   0.45,
+   0.5,
+   0.5000000000000001,
+   0.75,
+   1.0
+  ]
+ },
+ "scan_id": "mytoken_unknown_optimizer_parameters_v1",
+ "scenario_count": 30,
+ "scenarios": [
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.0,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S01",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.0
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.0,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S02",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.0
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S03",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.0
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.25,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S04",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.25
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.25,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S05",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.25
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S06",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.25
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.4,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S07",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.4
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.4,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S08",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.4
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S09",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.4
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.4166666666666666,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S10",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.4166666666666666
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.4166666666666666,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S11",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.4166666666666666
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S12",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.4166666666666666
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.4166666666666667,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    },
+    {
+     "combined_scores": {
+      "MR6.4": 0.5,
+      "MR6.6": 0.6666666666666666
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.4": 1.0,
+      "MR6.6": 1.0
+     },
+     "iteration": 2,
+     "retained_before": [
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.4166666666666667,
+     "weakest_mr": "MR6.4",
+     "weakest_score": 0.5
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S13",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.4166666666666667
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.4166666666666667,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S14",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.4166666666666667
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S15",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.4166666666666667
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.45,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    },
+    {
+     "combined_scores": {
+      "MR6.4": 0.5,
+      "MR6.6": 0.6666666666666666
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.4": 1.0,
+      "MR6.6": 1.0
+     },
+     "iteration": 2,
+     "retained_before": [
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.45,
+     "weakest_mr": "MR6.4",
+     "weakest_score": 0.5
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S16",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.45
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.45,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S17",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.45
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S18",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.45
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.5,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    },
+    {
+     "combined_scores": {
+      "MR6.4": 0.5,
+      "MR6.6": 0.6666666666666666
+     },
+     "decision": "stop_threshold",
+     "difference_scores": {
+      "MR6.4": 1.0,
+      "MR6.6": 1.0
+     },
+     "iteration": 2,
+     "retained_before": [
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.5,
+     "weakest_mr": "MR6.4",
+     "weakest_score": 0.5
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S19",
+   "stop_reason": "combined_score_threshold",
+   "tau_c": 0.5
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.5,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S20",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.5
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S21",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.5
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.5000000000000001,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    },
+    {
+     "combined_scores": {
+      "MR6.4": 0.5,
+      "MR6.6": 0.6666666666666666
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.4": 1.0,
+      "MR6.6": 1.0
+     },
+     "iteration": 2,
+     "retained_before": [
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.5000000000000001,
+     "weakest_mr": "MR6.4",
+     "weakest_score": 0.5
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.6"
+   ],
+   "optimized_size": 1,
+   "removed_mrs": [
+    "MR6.1",
+    "MR6.4"
+   ],
+   "scenario_id": "S22",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.5000000000000001
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.5000000000000001,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S23",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.5000000000000001
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S24",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.5000000000000001
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.75,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    },
+    {
+     "combined_scores": {
+      "MR6.4": 0.5,
+      "MR6.6": 0.6666666666666666
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.4": 1.0,
+      "MR6.6": 1.0
+     },
+     "iteration": 2,
+     "retained_before": [
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.75,
+     "weakest_mr": "MR6.4",
+     "weakest_score": 0.5
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.6"
+   ],
+   "optimized_size": 1,
+   "removed_mrs": [
+    "MR6.1",
+    "MR6.4"
+   ],
+   "scenario_id": "S25",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.75
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 0.75,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S26",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.75
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S27",
+   "stop_reason": "min_set_size",
+   "tau_c": 0.75
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 1.0,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    },
+    {
+     "combined_scores": {
+      "MR6.4": 0.5,
+      "MR6.6": 0.6666666666666666
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.4": 1.0,
+      "MR6.6": 1.0
+     },
+     "iteration": 2,
+     "retained_before": [
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 1.0,
+     "weakest_mr": "MR6.4",
+     "weakest_score": 0.5
+    }
+   ],
+   "min_set_size": 1,
+   "optimized_mrs": [
+    "MR6.6"
+   ],
+   "optimized_size": 1,
+   "removed_mrs": [
+    "MR6.1",
+    "MR6.4"
+   ],
+   "scenario_id": "S28",
+   "stop_reason": "min_set_size",
+   "tau_c": 1.0
+  },
+  {
+   "iterations": [
+    {
+     "combined_scores": {
+      "MR6.1": 0.41666666666666663,
+      "MR6.4": 0.5,
+      "MR6.6": 0.41666666666666663
+     },
+     "decision": "remove",
+     "difference_scores": {
+      "MR6.1": 0.5,
+      "MR6.4": 1.0,
+      "MR6.6": 0.5
+     },
+     "iteration": 1,
+     "retained_before": [
+      "MR6.1",
+      "MR6.4",
+      "MR6.6"
+     ],
+     "threshold_tau_c": 1.0,
+     "weakest_mr": "MR6.1",
+     "weakest_score": 0.41666666666666663
+    }
+   ],
+   "min_set_size": 2,
+   "optimized_mrs": [
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 2,
+   "removed_mrs": [
+    "MR6.1"
+   ],
+   "scenario_id": "S29",
+   "stop_reason": "min_set_size",
+   "tau_c": 1.0
+  },
+  {
+   "iterations": [],
+   "min_set_size": 3,
+   "optimized_mrs": [
+    "MR6.1",
+    "MR6.4",
+    "MR6.6"
+   ],
+   "optimized_size": 3,
+   "removed_mrs": [],
+   "scenario_id": "S30",
+   "stop_reason": "min_set_size",
+   "tau_c": 1.0
+  }
+ ],
+ "schema_version": 1,
+ "scores_source": "outputs/canonical/mytoken_optimization/scores/kill_vectors.json"
+}

@@ -1,0 +1,17 @@
+contract,tc_per_mr,source_test_case_count,killed_mutants,valid_mutants,mutation_score_percent,source_path,source_locator
+MyToken,1,38,41,49,83.673469,实验数据/Mytoken变异体.docx,paragraph 43
+MyToken,5,190,44,49,89.795918,实验数据/Mytoken变异体.docx,paragraph 43
+MyToken,10,380,46,49,93.877551,实验数据/Mytoken变异体.docx,paragraph 43
+Rubixi,1,59,109,153,71.24183,实验数据/Rubixi变异体.docx,table 1 rows 10-11
+Rubixi,5,295,114,153,74.509804,实验数据/Rubixi变异体.docx,table 1 rows 10-11
+Rubixi,10,590,129,153,84.313725,实验数据/Rubixi变异体.docx,table 1 rows 10-11
+BecToken,1,102,109,142,76.760563,实验数据/BecToken变异体数量.docx,table 1 rows 17-18
+BecToken,5,510,123,142,86.619718,实验数据/BecToken变异体数量.docx,table 1 rows 17-18
+BecToken,10,1020,129,142,90.84507,实验数据/BecToken变异体数量.docx,table 1 rows 17-18
+GnosisSafeProxy,1,66,54,70,77.142857,实验数据/GnosisSafepRroxy变异体.docx,table 1 rows 19-20
+GnosisSafeProxy,5,330,62,70,88.571429,实验数据/GnosisSafepRroxy变异体.docx,table 1 rows 19-20
+GnosisSafeProxy,10,660,64,70,91.428571,实验数据/GnosisSafepRroxy变异体.docx,table 1 rows 19-20
+PERSONAL_BANK,1,37,60,81,74.074074,实验数据/PERSONAL_BANK变异体.docx,table 1 rows 20-21
+PERSONAL_BANK,5,185,67,81,82.716049,实验数据/PERSONAL_BANK变异体.docx,table 1 rows 20-21
+PERSONAL_BANK,10,370,72,81,88.888889,实验数据/PERSONAL_BANK变异体.docx,table 1 rows 20-21
+Overall,all budgets,4832,,,83.630634,derived from mutation_scores.csv,all 15 rows
