@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mpsc"
+version = "0.1.0"
+description = "MPSC: Metamorphic Testing Approach based on Mutable Parameters for Smart Contracts"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11,<3.14"
+authors = [
+    {name = "MPSC Team"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "py-solc-x>=2.0.0",
+    "web3>=6.0.0",
+    "eth-tester>=0.10.0",
+    "py-evm>=0.12.0b2,<0.13",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "click>=8.0.0",
+    "rich>=13.0.0",
+    "openpyxl>=3.1.0",
+    "xlrd>=2.0.0",
+    "python-docx>=1.1.0",
+    "matplotlib>=3.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-xdist>=3.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+mpsc = "mpsc.cli:main"
+
+[project.urls]
+Repository = "https://github.com/VinylLee/MPSC"
+
+[tool.setuptools.packages.find]
+where = ["code/src"]
+
+[tool.pytest.ini_options]
+testpaths = ["code/tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]

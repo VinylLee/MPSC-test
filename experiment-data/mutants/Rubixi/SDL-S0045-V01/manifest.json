@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0045-V01",
+ "authoritative_record": "Rubixi::SDL-S0045-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/SDL-S0045-V01/Rubixi.sol",
+ "mutant_sha256": "b728032294a5816741349c8b988198261ccb9f43cecd520a4797270ec506c14b",
+ "operator": "SDL",
+ "line": 127,
+ "original_text": "info = 'This multiplier applies to you as soon as transaction is received, may be lowered to hasten payouts or increased if payouts are fast enough. Due to no float or decimals, multiplier is x100 for a fractional multiplier e.g. 250 is actually a 2.5x multiplier. Capped at 3x max and 1.2x min.';",
+ "mutated_text": "// MPSC-COMPAT-SDL info = 'This multiplier applies to you as soon as transaction is received, may be lowered to hasten payouts or increased if payouts are fast enough. Due to no float or decimals, multiplier is x100 for a fractional multiplier e.g. 250 is actually a 2.5x multiplier. Capped at 3x max and 1.2x min.';",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

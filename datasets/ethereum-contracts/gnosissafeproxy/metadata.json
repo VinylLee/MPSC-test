@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "evidence_class": "control",
+  "subject_id": "gnosissafeproxy",
+  "contract_name": "GnosisSafeProxy",
+  "chain": {
+    "name": "Ethereum mainnet",
+    "chain_id": 1,
+    "address": "0x61cdc61b6ff5d009aff909b67fcfa84c040d5481",
+    "observation_block": 25658425,
+    "observation_block_tag": "0x1878439",
+    "observation_block_hash": "0xe5af52b0d40cbbe31af35c64cbf930e636c8982970a01280a148c8fdaca2e2a7",
+    "observation_block_timestamp": "2026-08-01T07:08:11Z"
+  },
+  "runtime": {
+    "bytecode_path": "datasets/ethereum-contracts/gnosissafeproxy/runtime-bytecode.hex",
+    "byte_length": 171,
+    "sha256_bytes": "5b8bff324e02136edb0775bd77aa0fe773c1e23092305fe63f50a9e92f5b8faf",
+    "acquisition_method": "Ethereum JSON-RPC eth_getCode",
+    "rpc_endpoint": "https://ethereum-rpc.publicnode.com",
+    "retrieved_at": "2026-08-01T07:22:53Z"
+  },
+  "canonical_subject": {
+    "source_path": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+    "source_sha256_lf_normalized": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+    "compiler": "0.7.6",
+    "profile_path": "code/configs/contracts/gnosissafeproxy.yaml",
+    "profile_sha256_lf_normalized": "45b3277699b1bce3312247b5eae65c3f4762477fbff9a2fe13ead26eb2ed74a0",
+    "source_license": "LGPL-3.0-only"
+  },
+  "related_repository_paths": [
+    "experiment-data/provenance/gnosis_safe_proxy.json",
+    "docs/gnosis_safe_proxy_provenance.md"
+  ],
+  "explorer_reference": {
+    "url": "https://etherscan.io/address/0x61cdc61b6ff5d009aff909b67fcfa84c040d5481#code",
+    "role": "external_locator_only",
+    "api_payload_included": false
+  },
+  "evidence_boundary": "Address and runtime-bytecode snapshot only; not MR binding, execution, verdict, mutation, initialization-state, or Oracle evidence."
+}

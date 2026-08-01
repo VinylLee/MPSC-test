@@ -1,0 +1,71 @@
+# MR8.1: Replace sender, keep recipient
+# Oracle: μ_f = μ_s, ε_from_f = ε_from_s, ε_to_f = ε_to_s + amount, δ_f = δ_s
+# Both senders have tokens; A has 9000, C has 1000 after setup
+
+mr:
+ id: MR8.1
+ category: MR8
+ name: "Replace sender, keep recipient"
+
+contract:
+ name: MyToken
+ source: experiment-data/subjects/MyToken.sol
+ solc_version: "0.4.11"
+
+state_strategy: fresh_deployment_pair
+
+test:
+ accounts_to_track: [account_A, account_B, account_C]
+ setup_actions:
+  - type: transfer
+    from_index: 0
+    to_index: 2
+    amount: 1000
+ source:
+  caller: account_A
+  function: sendCoin
+  arguments: [account_B, 100]
+ transformation:
+  type: replace_sender
+  description: "Replace sender with different account (account_C)"
+  parameter: from
+  operation: "x_from_f != x_from_s, x_to_f = x_to_s"
+ followup:
+  caller: account_C
+  function: sendCoin
+  arguments: [account_B, 100]
+
+oracle:
+ target_operation: sendCoin
+ check_type: state_change_balance
+ fields: [return_value, contract_state.token_balances, transaction.gas_used]
+ expression: "mu_f = mu_s, epsilon_from_f = epsilon_from_s, epsilon_to_f = epsilon_to_s + amount, delta_f = delta_s"
+ preconditions:
+  - id: source_followup_senders_equivalent
+    expression: "token_balance(source_sender) == token_balance(followup_sender)"
+    note: "A has 9000, C has 1000 - NOT equivalent. This MR tests different senders."
+  - id: both_senders_have_sufficient_tokens
+    expression: "token_balance(A) >= 100 AND token_balance(C) >= 100"
+    note: "Both satisfied: A=9000>=100, C=1000>=100"
+ expected:
+  source:
+   mu: true
+   A_after: 8900
+   B_after: 100
+   C_after: 1000
+   gas: ~51217
+  followup:
+   mu: true
+   A_after: 9000
+   B_after: 100
+   C_after: 900
+   gas: ~51217
+  analysis: |
+   Oracle expects mu_f = mu_s: both return true -> SATISFIED
+   Oracle expects epsilon_from_f = epsilon_from_s: but FROM is different account
+   - In source, FROM=A, epsilon_from_s = A_after = 8900
+   - In followup, FROM=C, epsilon_from_f = C_after = 900
+   - 900 != 8900 -> NOT SATISFIED (violation)
+   This is expected: different senders have different balances
+
+seed: null

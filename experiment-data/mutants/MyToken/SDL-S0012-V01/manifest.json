@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0012-V01",
+ "authoritative_record": "MyToken::SDL-S0012-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/SDL-S0012-V01/MyToken.sol",
+ "mutant_sha256": "c2aaf66875c424fbc56888d2efe51586e2cc8e8b5224eba177944827d5bea10e",
+ "operator": "SDL",
+ "line": 1,
+ "original_text": "pragma solidity ^0.4.11;",
+ "mutated_text": "// Mutant SDL-S0012-V01",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

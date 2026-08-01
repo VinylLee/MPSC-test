@@ -1,0 +1,7 @@
+contract,generated_mutants,equivalent_mutants,valid_mutants,count_invariant,source_path,source_locator
+MyToken,53,4,49,True,实验数据/Mytoken变异体.docx,paragraphs 21-43
+Rubixi,172,19,153,True,实验数据/Rubixi变异体.docx,table 1 rows 2-9
+BecToken,151,9,142,True,实验数据/BecToken变异体数量.docx,table 1 rows 2-16
+GnosisSafeProxy,76,6,70,True,实验数据/GnosisSafepRroxy变异体.docx,table 1 rows 2-18
+PERSONAL_BANK,83,2,81,True,实验数据/PERSONAL_BANK变异体.docx,table 1 rows 2-19
+Overall,535,40,495,True,derived from mutant_counts.csv,all rows

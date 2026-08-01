@@ -1,0 +1,90 @@
+schema_version: 1
+contract_id: personal_bank
+source: experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol
+compiler: "0.4.19"
+contract_name: PERSONAL_BANK
+profile_status: abi_verified
+deployment:
+ constructor_args: []
+ deployer_role: owner
+roles:
+ owner: account_0
+ user_a: account_1
+ user_b: account_2
+auxiliary_contracts:
+ log_file:
+  contract_name: LogFile
+  source: experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol
+  compiler: "0.4.19"
+  constructor_args: []
+  deployer_role: owner
+initialization:
+ - function: set_minimum
+   caller_role: owner
+   arguments: [1]
+ - function: set_log_file
+   caller_role: owner
+   arguments:
+    - {contract: log_file}
+ - function: finalize_initialization
+   caller_role: owner
+   arguments: []
+role_model:
+ owner: deterministic_setup_actor_not_enforced_by_contract
+ users: depositors_with_independent_balances
+mr_binding_status: verified_without_instance_records
+functions:
+ set_minimum:
+  abi_type: function
+  solidity_name: SetMinSum
+  mutability: nonpayable
+  parameters:
+   - {name: _val, type: uint256}
+ set_log_file:
+  abi_type: function
+  solidity_name: SetLogFile
+  mutability: nonpayable
+  parameters:
+   - {name: _log, type: address}
+ finalize_initialization:
+  abi_type: function
+  solidity_name: Initialized
+  mutability: nonpayable
+  parameters: []
+ deposit:
+  abi_type: function
+  solidity_name: Deposit
+  mutability: payable
+  parameters: []
+ collect:
+  abi_type: function
+  solidity_name: Collect
+  mutability: payable
+  parameters:
+   - {name: _am, type: uint256}
+ balance:
+  abi_type: function
+  solidity_name: balances
+  mutability: view
+  parameters:
+   - {name: "", type: address}
+ minimum:
+  abi_type: function
+  solidity_name: MinSum
+  mutability: view
+  parameters: []
+ fallback:
+  abi_type: fallback
+  solidity_name: null
+  mutability: payable
+  parameters: []
+state_observers:
+ - id: bank_balance
+   kind: function
+   function: balance
+   arguments: [role_address]
+ - id: minimum_deposit
+   kind: function
+   function: minimum
+   arguments: []
+mutable_parameters: [caller, value, amount, minimum, log_address, gas_limit]

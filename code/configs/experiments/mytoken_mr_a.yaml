@@ -1,0 +1,55 @@
+# MR7.4: Query different valid address
+# "A different addr account is substituted, and the query is successful"
+# Oracle: μ_f ≠ μ_s, ε_f ≠ ε_s, δ_f = δ_s
+# For view call: only μ is relevant (no gas, no state change)
+
+mr:
+ id: MR7.4
+ category: MR7
+ name: "Query different valid address"
+
+contract:
+ name: MyToken
+ source: experiment-data/subjects/MyToken.sol
+ solc_version: "0.4.11"
+
+state_strategy: fresh_deployment_pair
+
+test:
+ accounts_to_track: [account_A, account_B]
+ setup_actions:
+  - type: transfer
+    from_index: 0
+    to_index: 1
+    amount: 500
+ source:
+  caller: account_A
+  function: getBalance
+  arguments: [account_A]
+ transformation:
+  type: address_replace
+  description: "Replace query address with different valid address"
+  parameter: addr
+  operation: "x_f = account_B (different from account_A)"
+ followup:
+  caller: account_A
+  function: getBalance
+  arguments: [account_B]
+
+oracle:
+ target_operation: getBalance
+ check_type: view_different_return
+ fields: [return_value]
+ expression: "μ_f ≠ μ_s"
+ preconditions:
+  - id: valid_addresses
+    expression: "Both addresses are valid 20-byte addresses"
+ note: |
+  Oracle: "μ_f ≠ μ_s, ε_f ≠ ε_s, δ_f = δ_s"
+  For view call: μ = return value (queried balance)
+  ε and δ are N/A for view calls
+  Source queries balance of account_A (deployer, has 10000-500=9500 after setup)
+  Followup queries balance of account_B (received 500 from setup)
+  Expected: 9500 ≠ 500
+
+seed: null

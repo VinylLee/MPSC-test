@@ -1,0 +1,16 @@
+{
+ "mutant_id": "FVC-S0002-V01",
+ "authoritative_record": "BecToken::FVC-S0002-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/FVC-S0002-V01/BecToken.sol",
+ "mutant_sha256": "7d85efbf53a5cb4ae461d728a6d3e34508756fd7ba0eba62f0e4a2c234d9bee9",
+ "operator": "FVC",
+ "line": 20,
+ "original_text": "function div(uint256 a, uint256 b) internal constant returns (uint256) {",
+ "mutated_text": "function div(uint256 a, uint256 b) public constant returns (uint256) {",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

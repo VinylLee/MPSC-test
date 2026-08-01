@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0024-V01",
+ "authoritative_record": "Rubixi::SDL-S0024-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/SDL-S0024-V01/Rubixi.sol",
+ "mutant_sha256": "7c507dfadfff2858ef517cfb7598a9dcce3f99fa848f11a31d92b663ff31a75d",
+ "operator": "SDL",
+ "line": 74,
+ "original_text": "participants[payoutOrder].etherAddress.send(payoutToSend);",
+ "mutated_text": "// MPSC-COMPAT-SDL participants[payoutOrder].etherAddress.send(payoutToSend);",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

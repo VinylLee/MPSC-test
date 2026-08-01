@@ -1,0 +1,16 @@
+{
+ "mutant_id": "AVR-S0003-V01",
+ "authoritative_record": "Rubixi::AVR-S0003-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/AVR-S0003-V01/Rubixi.sol",
+ "mutant_sha256": "1fd49f44d6c29cc6fcc327de3b4f25b1369238dbf41fd07dfcd4089e5dd8e63e",
+ "operator": "AVR",
+ "line": 61,
+ "original_text": "participants.push(Participant(msg.sender, (msg.value * pyramidMultiplier) / 100));",
+ "mutated_text": "participants.push(Participant(tx.origin, (msg.value * pyramidMultiplier) / 100));",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,16 @@
+{
+ "mutant_id": "PKD-S0001-V01",
+ "authoritative_record": "GnosisSafeProxy::PKD-S0001-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+ "source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+ "mutant_file": "experiment-data/mutants/GnosisSafeProxy/PKD-S0001-V01/GnosisSafeProxy.sol",
+ "mutant_sha256": "82aeba444c29d1766e622311fa2f29e752321fa79a21a7d12c47eb1eadc6477f",
+ "operator": "PKD",
+ "line": 26,
+ "original_text": "fallback() external payable {",
+ "mutated_text": "fallback() external  {",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

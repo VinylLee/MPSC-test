@@ -1,0 +1,150 @@
+{
+ "cells": [
+  {
+   "TCE": 10,
+   "TCK": 0,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.1__MUT-01",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.1",
+   "mutant_id": "MUT-01",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 10,
+    "violation": 0
+   }
+  },
+  {
+   "TCE": 10,
+   "TCK": 0,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.1__MUT-07",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.1",
+   "mutant_id": "MUT-07",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 10,
+    "violation": 0
+   }
+  },
+  {
+   "TCE": 10,
+   "TCK": 10,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.1__MUT-08",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.1",
+   "mutant_id": "MUT-08",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 0,
+    "violation": 10
+   }
+  },
+  {
+   "TCE": 10,
+   "TCK": 0,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.4__MUT-01",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.4",
+   "mutant_id": "MUT-01",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 10,
+    "violation": 0
+   }
+  },
+  {
+   "TCE": 10,
+   "TCK": 0,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.4__MUT-07",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.4",
+   "mutant_id": "MUT-07",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 10,
+    "violation": 0
+   }
+  },
+  {
+   "TCE": 10,
+   "TCK": 0,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.4__MUT-08",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.4",
+   "mutant_id": "MUT-08",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 10,
+    "violation": 0
+   }
+  },
+  {
+   "TCE": 10,
+   "TCK": 0,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.6__MUT-01",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.6",
+   "mutant_id": "MUT-01",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 10,
+    "violation": 0
+   }
+  },
+  {
+   "TCE": 10,
+   "TCK": 0,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.6__MUT-07",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.6",
+   "mutant_id": "MUT-07",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 10,
+    "violation": 0
+   }
+  },
+  {
+   "TCE": 10,
+   "TCK": 10,
+   "baseline_pass_count": 10,
+   "cell_id": "MR6.6__MUT-08",
+   "error_count": 0,
+   "errors": [],
+   "mr_id": "MR6.6",
+   "mutant_id": "MUT-08",
+   "planned_executions": 10,
+   "stable": true,
+   "verdict_counts": {
+    "pass": 0,
+    "violation": 10
+   }
+  }
+ ],
+ "repetitions_per_cell": 10,
+ "schema_version": 1
+}

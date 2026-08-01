@@ -1,0 +1,123 @@
+{
+ "schema_version": 1,
+ "evidence_class": "control",
+ "pass": true,
+ "primary_environment": {
+  "os": "Windows Server 2022",
+  "architecture": "x86_64",
+  "shell": "PowerShell 7",
+  "python": "CPython 3.11",
+  "uv": "0.11.29",
+  "solidity_compilers": [
+   "0.4.11",
+   "0.4.16",
+   "0.4.19",
+   "0.7.6"
+  ]
+ },
+ "auxiliary_environment": {
+  "os": "Windows 10",
+  "shell": "PowerShell 7",
+  "status": "locally_tested",
+  "validation_date": "2026-07-30",
+  "validation_python": "CPython 3.11.15",
+  "validation_uv": "0.11.29",
+  "measured_cached_read_only_bootstrap_seconds": 7.7,
+  "measured_smoke_seconds": 3.0,
+  "measured_available_seconds": 3.0,
+  "full_suite_result": "307 passed",
+  "cold_export_validation": {
+   "source_commit": "cb8f6791378ac674777a53967dab06b2fed27d45",
+   "full_suite_result_at_source_commit": "325 passed",
+   "archive_has_git_metadata": false,
+   "reused_environment_or_cache": false,
+   "bootstrap_install_solc_seconds": 37.248,
+   "smoke_seconds": 45.026,
+   "smoke_stage_result": "8/8 pass",
+   "available_seconds": 114.648,
+   "available_stage_result": "14/14 pass",
+   "provider_calls": 0,
+   "published_evidence_modified": false,
+   "peak_memory": "not measured",
+   "peak_disk": "not sampled"
+  }
+ },
+ "lock_contract": {
+  "python_version_file": ".python-version",
+  "project_file": "pyproject.toml",
+  "universal_lock": "uv.lock",
+  "pip_hash_lock": "requirements-lock.txt",
+  "requirements_export_command": "uv export --locked --all-extras --no-emit-project --format requirements-txt --output-file requirements-lock.txt"
+ },
+ "entry_points": [
+  {
+   "id": "bootstrap-native",
+   "windows": "./scripts/bootstrap.ps1 -InstallSolc",
+   "cwd": "any directory",
+   "network": "required for the first dependency and Solidity compiler download; optional when both caches are complete",
+   "inputs": [
+    ".python-version",
+    "pyproject.toml",
+    "uv.lock"
+   ],
+   "outputs": [
+    ".venv/",
+    "the py-solc-x compiler cache outside the repository"
+   ],
+   "success": "exit code 0 and the final doctor JSON has status=pass",
+   "time_estimate": "conservative 2-15 minutes depending on download caches",
+   "common_failures": [
+    "uv is absent or is not version 0.11.29",
+    "CPython 3.11 cannot be installed or selected",
+    "network/proxy access blocks Python or Solidity downloads"
+   ]
+  },
+  {
+   "id": "smoke-native",
+   "windows": "./scripts/run_smoke.ps1",
+   "cwd": "any directory",
+   "network": "none after bootstrap",
+   "inputs": [
+    "locked environment",
+    "ARTIFACT_MANIFEST.json",
+    "public mutant and result evidence",
+    "four installed Solidity compilers"
+   ],
+   "outputs": [
+    "experiment-data/runs/smoke-<UTC>/run_summary.json",
+    "experiment-data/runs/smoke-<UTC>/commands.jsonl",
+    "experiment-data/runs/smoke-<UTC>/logs/"
+   ],
+   "success": "exit code 0 and run_summary.json status=pass",
+   "time_estimate": "measured 3.0 seconds on the cached Windows validation host; conservative 1-10 minutes on a supported host",
+   "common_failures": [
+    "bootstrap was not completed",
+    "a locked or manifested file was changed",
+    "one of the four Solidity compilers is absent"
+   ]
+  },
+  {
+   "id": "available-native",
+   "windows": "./scripts/run_available.ps1",
+   "cwd": "any directory",
+   "network": "none after bootstrap; no LLM provider call is made",
+   "inputs": [
+    "locked environment",
+    "core compiler and Oracle unit tests",
+    "selected MyToken control inputs"
+   ],
+   "outputs": [
+    "experiment-data/runs/available-<UTC>/run_summary.json",
+    "experiment-data/runs/available-<UTC>/commands.jsonl",
+    "experiment-data/runs/available-<UTC>/logs/"
+   ],
+   "success": "exit code 0 and run_summary.json status=pass",
+   "time_estimate": "measured 3.0 seconds on the cached Windows validation host; conservative 1-10 minutes on a supported host",
+   "common_failures": [
+    "the runtime doctor fails",
+    "a core unit test fails"
+    ]
+   }
+  ]
+
+}

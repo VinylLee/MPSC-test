@@ -1,0 +1,238 @@
+{
+ "evidence_class": "control",
+ "hash_policy": "SHA-256 after CRLF/CR-to-LF normalization for source and profile text",
+ "manifest_id": "mpsc-five-subject-qualification-v1",
+ "schema_version": 1,
+ "subjects": [
+  {
+   "compiler": "0.4.11",
+   "constructor_args": [],
+   "contract_name": "MyToken",
+   "evidence_class": "control",
+   "mr_binding_status": "verified",
+   "name": "MyToken",
+   "profile_path": "code/configs/contracts/mytoken.yaml",
+   "profile_sha256": "79134e5c9be515507997e84248b3b607ffdc28cf2859067ecc201e66240aa87c",
+   "qualification": {
+    "steps": [
+     {
+      "action": "observe",
+      "arguments": [
+       {
+        "role": "owner"
+       }
+      ],
+      "expect": {
+       "equals": 10000
+      },
+      "id": "initial-owner-balance",
+      "observer": "token_balance"
+     },
+     {
+      "action": "transact",
+      "arguments": [
+       {
+        "role": "user_a"
+       },
+       125
+      ],
+      "caller_role": "owner",
+      "expect_success": true,
+      "function": "transfer",
+      "id": "transfer-to-user-a"
+     },
+     {
+      "action": "observe",
+      "arguments": [
+       {
+        "role": "user_a"
+       }
+      ],
+      "expect": {
+       "equals": 125
+      },
+      "id": "post-transfer-user-a-balance",
+      "observer": "token_balance"
+     }
+    ],
+    "write_qualification_status": "executed"
+   },
+   "source_path": "experiment-data/subjects/MyToken.sol",
+   "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+   "subject_id": "mytoken"
+  },
+  {
+   "compiler": "0.4.16",
+   "constructor_args": [],
+   "contract_name": "Rubixi",
+   "evidence_class": "control",
+   "mr_binding_status": "verified",
+   "name": "Rubixi",
+   "profile_path": "code/configs/contracts/rubixi.yaml",
+   "profile_sha256": "78262d08d26097ed9e54fe4b87597828703f4d722ca834aee137eaa7d5907499",
+   "qualification": {
+    "steps": [
+     {
+      "action": "transact",
+      "arguments": [
+       7
+      ],
+      "caller_role": "owner",
+      "expect_success": true,
+      "function": "change_fee_percentage",
+      "id": "set-fee-percentage"
+     },
+     {
+      "action": "observe",
+      "arguments": [],
+      "expect": {
+       "sequence_first_equals": 7
+      },
+      "id": "read-fee-percentage",
+      "observer": "fee_percentage"
+     }
+    ],
+    "write_qualification_status": "executed"
+   },
+   "source_path": "experiment-data/subjects/Rubixi/Rubixi.sol",
+   "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+   "subject_id": "rubixi"
+  },
+  {
+   "compiler": "0.4.16",
+   "constructor_args": [],
+   "contract_name": "BecToken",
+   "evidence_class": "control",
+   "mr_binding_status": "verified",
+   "name": "BecToken",
+   "profile_path": "code/configs/contracts/bectoken.yaml",
+   "profile_sha256": "378853db965e726c252cbdf2fab188d4706547c03891ab209cb7f5f2a1aa0c17",
+   "qualification": {
+    "steps": [
+     {
+      "action": "observe",
+      "arguments": [],
+      "expect": {
+       "greater_than": 0
+      },
+      "id": "read-total-supply",
+      "observer": "total_supply"
+     },
+     {
+      "action": "transact",
+      "arguments": [
+       {
+        "role": "user_a"
+       },
+       25
+      ],
+      "caller_role": "owner",
+      "expect_success": true,
+      "function": "transfer",
+      "id": "transfer-to-user-a"
+     },
+     {
+      "action": "observe",
+      "arguments": [
+       {
+        "role": "user_a"
+       }
+      ],
+      "expect": {
+       "equals": 25
+      },
+      "id": "post-transfer-user-a-balance",
+      "observer": "token_balance"
+     }
+    ],
+    "write_qualification_status": "executed"
+   },
+   "source_path": "experiment-data/subjects/BecToken/BecToken.sol",
+   "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+   "subject_id": "bectoken"
+  },
+  {
+   "compiler": "0.7.6",
+   "constructor_args": [
+    {
+     "name": "_singleton",
+     "role": "singleton",
+     "type": "address",
+     "value_from": "role_address"
+    }
+   ],
+   "contract_name": "GnosisSafeProxy",
+   "evidence_class": "control",
+   "mr_binding_status": "verified",
+   "name": "GnosisSafeProxy",
+   "profile_path": "code/configs/contracts/gnosissafeproxy.yaml",
+   "profile_sha256": "45b3277699b1bce3312247b5eae65c3f4762477fbff9a2fe13ead26eb2ed74a0",
+   "qualification": {
+    "steps": [
+     {
+      "action": "observe",
+      "arguments": [],
+      "expect": {
+       "equals_role": "singleton"
+      },
+      "id": "read-master-copy",
+      "observer": "singleton"
+     }
+    ],
+    "write_qualification_status": "not_applicable_without_singleton_implementation"
+   },
+   "source_path": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+   "source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+   "subject_id": "gnosissafeproxy"
+  },
+  {
+   "compiler": "0.4.19",
+   "constructor_args": [],
+   "contract_name": "PERSONAL_BANK",
+   "evidence_class": "control",
+   "mr_binding_status": "verified",
+   "name": "PERSONAL_BANK",
+   "profile_path": "code/configs/contracts/personal_bank.yaml",
+   "profile_sha256": "bd36d15a88f8d12f4f20ce6feae10321203a6c12e775ed04478004c4d0e53ac5",
+   "qualification": {
+    "steps": [
+     {
+      "action": "observe",
+      "arguments": [],
+      "expect": {
+       "equals": 1
+      },
+      "id": "read-minimum-deposit",
+      "observer": "minimum_deposit"
+     },
+     {
+      "action": "transact",
+      "arguments": [],
+      "caller_role": "user_a",
+      "expect_success": true,
+      "function": "deposit",
+      "id": "deposit-user-a",
+      "value": 100
+     },
+     {
+      "action": "observe",
+      "arguments": [
+       {
+        "role": "user_a"
+       }
+      ],
+      "expect": {
+       "equals": 100
+      },
+      "id": "read-user-a-bank-balance",
+      "observer": "bank_balance"
+     }
+    ],
+    "write_qualification_status": "executed"
+   },
+   "source_path": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+   "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+   "subject_id": "personal_bank"
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ASR-S0003-V01",
+ "authoritative_record": "Rubixi::ASR-S0003-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/ASR-S0003-V01/Rubixi.sol",
+ "mutant_sha256": "4a15c86bc0998562d10419b3cc048049d2f2a4eb94ec8603cf4313d9c0ef7101",
+ "operator": "ASR",
+ "line": 68,
+ "original_text": "balance += (msg.value * (100 - _fee)) / 100;",
+ "mutated_text": "balance -= (msg.value * (100 - _fee)) / 100;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "equivalent"
+}

@@ -1,0 +1,127 @@
+# Disabled legacy candidate specification. It is not the public corpus manifest.
+contract: experiment-data/subjects/MyToken.sol
+compiler: "0.4.11"
+output_dir: experiment-data/runs/generated-mutants/MyToken-v2
+mrs_for_detection: auto # Use all eligible pass MRs
+
+mutants:
+ # ROR mutations
+ - id: ROR-S01-V01
+   legacy_id: MUT-01
+   operator: ROR
+   name: "Boundary: < to <="
+   source_type: control
+   line: 22
+   original: "balances[msg.sender] < amount"
+   mutated: "balances[msg.sender] <= amount"
+
+ - id: ROR-S01-V02
+   legacy_id: MUT-06
+   operator: ROR
+   name: "Reverse comparison"
+   source_type: control
+   line: 22
+   original: "balances[msg.sender] < amount"
+   mutated: "balances[msg.sender] > amount"
+
+ - id: ROR-S01-V03
+   legacy_id: MUT-07
+   operator: ROR
+   name: "Hardcode threshold"
+   source_type: control
+   line: 22
+   original: "balances[msg.sender] < amount"
+   mutated: "balances[msg.sender] < 500"
+
+ # SDL mutations
+ - id: SDL-S01-V01
+   legacy_id: MUT-02
+   operator: SDL
+   name: "Delete sender deduction"
+   source_type: control
+   line: 24
+   original: "balances[msg.sender] -= amount;"
+   mutated: "// balances[msg.sender] -= amount;"
+
+ - id: SDL-S02-V01
+   legacy_id: MUT-03
+   operator: SDL
+   name: "Delete receiver credit"
+   source_type: control
+   line: 25
+   original: "balances[to] += amount;"
+   mutated: "// balances[to] += amount;"
+
+ # RVR mutations
+ - id: RVR-S01-V01
+   legacy_id: MUT-04
+   operator: RVR
+   name: "Invert success return"
+   source_type: control
+   line: 27
+   original: "return true;"
+   mutated: "return false;"
+
+ - id: RVR-S02-V01
+   legacy_id: MUT-05
+   operator: RVR
+   name: "Invert failure return"
+   source_type: control
+   line: 22
+   original: "return false;"
+   mutated: "return true;"
+
+ # LOR mutations
+ - id: LOR-S01-V01
+   legacy_id: MUT-08
+   operator: LOR
+   name: "Reject small amounts"
+   source_type: control
+   line: 22
+   original: "if (balances[msg.sender] < amount) return false;"
+   mutated: "if (balances[msg.sender] < amount || amount < 200) return false;"
+
+ # ASR mutations
+ - id: ASR-S01-V01
+   legacy_id: MUT-09
+   operator: ASR
+   name: "Wrong deduction amount"
+   source_type: control
+   line: 24
+   original: "balances[msg.sender] -= amount;"
+   mutated: "balances[msg.sender] -= amount * 2;"
+
+ # FVC mutations
+ - id: FVC-S01-V01
+   operator: FVC
+   name: "Add explicit public to sendCoin"
+   source_type: control
+   line: 19
+   original: "function sendCoin(address to, uint256 amount)"
+   mutated: "function sendCoin(address to, uint256 amount) public"
+
+ - id: FVC-S02-V01
+   operator: FVC
+   name: "Change getBalance visibility"
+   source_type: control
+   line: 30
+   original: "function getBalance(address addr) constant returns (uint)"
+   mutated: "function getBalance(address addr) public constant returns (uint)"
+
+ # AVR mutations
+ - id: AVR-S01-V01
+   operator: AVR
+   name: "Replace tx.origin with msg.sender in constructor"
+   source_type: control
+   line: 16
+   original: "balances[tx.origin] = 10000;"
+   mutated: "balances[msg.sender] = 10000;"
+
+ # FSC mutations
+ - id: FSC-S01-V01
+   operator: FSC
+   name: "Change constant to pure"
+   source_type: control
+   line: 30
+   original: "function getBalance(address addr) constant returns (uint)"
+   mutated: "function getBalance(address addr) pure returns (uint)"

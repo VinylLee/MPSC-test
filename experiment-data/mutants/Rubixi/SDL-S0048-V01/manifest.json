@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0048-V01",
+ "authoritative_record": "Rubixi::SDL-S0048-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/SDL-S0048-V01/Rubixi.sol",
+ "mutant_sha256": "b9f382943c2b5534666969aa091fe3118ccff306a17bf75123e7edcca885c7fc",
+ "operator": "SDL",
+ "line": 136,
+ "original_text": "pyramidBalance = balance / 1 ether;",
+ "mutated_text": "// MPSC-COMPAT-SDL pyramidBalance = balance / 1 ether;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

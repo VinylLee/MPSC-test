@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "evidence_class": "control",
+  "subject_id": "personal_bank",
+  "contract_name": "PERSONAL_BANK",
+  "chain": {
+    "name": "Ethereum mainnet",
+    "chain_id": 1,
+    "address": "0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f",
+    "observation_block": 25658425,
+    "observation_block_tag": "0x1878439",
+    "observation_block_hash": "0xe5af52b0d40cbbe31af35c64cbf930e636c8982970a01280a148c8fdaca2e2a7",
+    "observation_block_timestamp": "2026-08-01T07:08:11Z"
+  },
+  "runtime": {
+    "bytecode_path": "datasets/ethereum-contracts/personal_bank/runtime-bytecode.hex",
+    "byte_length": 1003,
+    "sha256_bytes": "2c7c20fc96278500acafe8310b8e284176fe21b28f268d696ac3153da6b539f4",
+    "acquisition_method": "Ethereum JSON-RPC eth_getCode",
+    "rpc_endpoint": "https://ethereum-rpc.publicnode.com",
+    "retrieved_at": "2026-08-01T07:22:53Z"
+  },
+  "canonical_subject": {
+    "source_path": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+    "source_sha256_lf_normalized": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+    "compiler": "0.4.19",
+    "profile_path": "code/configs/contracts/personal_bank.yaml",
+    "profile_sha256_lf_normalized": "bd36d15a88f8d12f4f20ce6feae10321203a6c12e775ed04478004c4d0e53ac5",
+    "source_license": "not_recorded_in_repository"
+  },
+  "related_repository_paths": [
+    "datasets/smartbugs-curated/reentrancy/PERSONAL_BANK0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol"
+  ],
+  "explorer_reference": {
+    "url": "https://etherscan.io/address/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f#code",
+    "role": "external_locator_only",
+    "api_payload_included": false
+  },
+  "evidence_boundary": "Address and runtime-bytecode snapshot only; not MR binding, execution, verdict, mutation, initialization-state, or Oracle evidence."
+}

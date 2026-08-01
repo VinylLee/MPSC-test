@@ -1,0 +1,6 @@
+﻿contract,ground_truth_count,llm_identified_count,true_positive,precision_percent,recall_percent,f1_percent,source_role,source_path,source_locator,source_sha256
+MyToken,8,9,8,88.9,100.0,94.1,supplied,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 979,4f7cddddfd67da2d560be2aca51fafb06a582918cd8c0a7f74a41b9214939b2f
+Rubixi,13,12,11,91.7,84.6,88.0,supplied,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 980,4f7cddddfd67da2d560be2aca51fafb06a582918cd8c0a7f74a41b9214939b2f
+BecToken,21,22,20,90.9,95.2,93.0,supplied,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 981,4f7cddddfd67da2d560be2aca51fafb06a582918cd8c0a7f74a41b9214939b2f
+GnosisSafeProxy,16,16,15,93.8,93.8,93.8,supplied,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 982,4f7cddddfd67da2d560be2aca51fafb06a582918cd8c0a7f74a41b9214939b2f
+PERSONAL_BANK,9,10,9,90.0,100.0,94.7,supplied,.research/-v1.3/MPSC.tex,tab:rq1.4_results line 983,4f7cddddfd67da2d560be2aca51fafb06a582918cd8c0a7f74a41b9214939b2f

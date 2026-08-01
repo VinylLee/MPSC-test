@@ -1,0 +1,247 @@
+
+operators:
+ - id: ROR
+   name: "Relational Operator Replacement"
+   description: "Replace relational operators (>, >=, <, <=, ==, !=)"
+   applicable_elements: [condition]
+   examples:
+    original: "a > b"
+    mutated: "a >= b"
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 22
+       expression: "balances[msg.sender] < amount"
+    generated_mutants: 2
+   implementation:
+    supported: true
+    module: code/src/mpsc/mutation/operators.py
+
+ - id: LOR
+   name: "Logical Operator Replacement"
+   description: "Replace logical operators"
+   applicable_elements: [condition]
+   examples:
+    original: "a && b"
+    mutated: "a || b"
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 22
+       expression: "if (balances[msg.sender] < amount)"
+    generated_mutants: 1
+   implementation:
+    supported: true
+    module: code/src/mpsc/mutation/operators.py
+
+ - id: COR
+   name: "Conditional Operator Replacement"
+   description: "Replace conditional operators (&& <-> ||)"
+   applicable_elements: [condition]
+   examples:
+    original: "&&"
+    mutated: "||"
+   mytoken:
+    applicable: false
+    candidate_sites: []
+    generated_mutants: 0
+   implementation:
+    supported: true
+    module: code/src/mpsc/mutation/operators.py
+
+ - id: ASR
+   name: "Assignment Short-cut Operator Replacement"
+   description: "Replace assignment operators (+=, -=, *=, /=)"
+   applicable_elements: [assignment]
+   examples:
+    original: "a -= b"
+    mutated: "a += b"
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 24
+       expression: "balances[msg.sender] -= amount"
+     - line: 25
+       expression: "balances[to] += amount"
+    generated_mutants: 1
+   implementation:
+    supported: true
+    module: code/src/mpsc/mutation/operators.py
+
+ - id: SDL
+   name: "Statement Deletion"
+   description: "Delete or comment out statements"
+   applicable_elements: [other]
+   examples:
+    original: "statement;"
+    mutated: "// statement;"
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 24
+       expression: "balances[msg.sender] -= amount"
+     - line: 25
+       expression: "balances[to] += amount"
+    generated_mutants: 2
+   implementation:
+    supported: true
+    module: code/src/mpsc/mutation/operators.py
+
+ - id: RSD
+   name: "Require Statement Deletion"
+   description: "Delete require statements"
+   applicable_elements: [other]
+   examples:
+    original: "require(condition);"
+    mutated: "// require(condition);"
+   mytoken:
+    applicable: false
+    candidate_sites: []
+    generated_mutants: 0
+   implementation:
+    supported: true
+    module: code/src/mpsc/mutation/operators.py
+
+ - id: RVR
+   name: "Return Value Replacement"
+   description: "Replace return values"
+   applicable_elements: [return]
+   examples:
+    original: "return true;"
+    mutated: "return false;"
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 27
+       expression: "return true;"
+     - line: 22
+       expression: "return false;"
+    generated_mutants: 2
+   implementation:
+    supported: true
+    module: code/src/mpsc/mutation/operators.py
+
+ - id: VTR
+   name: "Variable Type Keyword Replacement"
+   description: "Replace variable type keywords (e.g., uint256 -> uint8)"
+   applicable_elements: [other]
+   examples:
+    original: "uint256"
+    mutated: "uint8"
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 19
+       expression: "uint256 amount"
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null
+
+ - id: DLR
+   name: "Data Location Keyword Replacement"
+   description: "Replace data location keywords (memory/storage/calldata)"
+   applicable_elements: [other]
+   mytoken:
+    applicable: false
+    candidate_sites: []
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null
+
+ - id: EUR
+   name: "Ether Unit Replacement"
+   description: "Replace ether units (wei/finney/szabo/ether)"
+   applicable_elements: [other]
+   mytoken:
+    applicable: false
+    candidate_sites: []
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null
+
+ - id: FVC
+   name: "Function Visibility Keyword Change"
+   description: "Change function visibility (public/private/internal/external)"
+   applicable_elements: [other]
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 19
+       expression: "function sendCoin"
+     - line: 30
+       expression: "function getBalance"
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null
+
+ - id: AVR
+   name: "Address Variable Replacement"
+   description: "Replace address variables (msg.sender, tx.origin, block.coinbase)"
+   applicable_elements: [address]
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 16
+       expression: "tx.origin"
+     - line: 22
+       expression: "msg.sender"
+     - line: 24
+       expression: "msg.sender"
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null
+
+ - id: GVC
+   name: "Global Variable Change"
+   description: "Replace global variables (block.timestamp, block.number, msg.value)"
+   applicable_elements: [other]
+   mytoken:
+    applicable: false
+    candidate_sites: []
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null
+
+ - id: FSC
+   name: "Function State Keyword Change"
+   description: "Change function state keyword (view -> pure)"
+   applicable_elements: [other]
+   mytoken:
+    applicable: true
+    candidate_sites:
+     - line: 30
+       expression: "function getBalance(address addr) constant returns (uint)"
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null
+
+ - id: MFR
+   name: "Mathematical Functions Replacement"
+   description: "Replace mathematical functions (addmod <-> mulmod)"
+   applicable_elements: [other]
+   mytoken:
+    applicable: false
+    candidate_sites: []
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null
+
+ - id: PKD
+   name: "Payable Keyword Deletion"
+   description: "Delete payable keyword"
+   applicable_elements: [other]
+   mytoken:
+    applicable: false
+    candidate_sites: []
+    generated_mutants: 0
+   implementation:
+    supported: false
+    module: null

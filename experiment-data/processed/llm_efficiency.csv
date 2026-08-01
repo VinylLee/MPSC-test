@@ -1,0 +1,4 @@
+﻿metric,value,unit,source_role,source_path,source_locator,source_sha256
+manual_identification,26.4,minutes,supplied,.research/-v1.3/MPSC.tex,tab:rq4_efficiency line 1001,4f7cddddfd67da2d560be2aca51fafb06a582918cd8c0a7f74a41b9214939b2f
+llm_assisted_identification,15.5,minutes,supplied,.research/-v1.3/MPSC.tex,tab:rq4_efficiency line 1002,4f7cddddfd67da2d560be2aca51fafb06a582918cd8c0a7f74a41b9214939b2f
+efficiency_gain,41.5,percent,supplied,.research/-v1.3/MPSC.tex,tab:rq4_efficiency line 1003,4f7cddddfd67da2d560be2aca51fafb06a582918cd8c0a7f74a41b9214939b2f

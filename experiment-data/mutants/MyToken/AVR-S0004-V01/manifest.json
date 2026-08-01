@@ -1,0 +1,16 @@
+{
+ "mutant_id": "AVR-S0004-V01",
+ "authoritative_record": "MyToken::AVR-S0004-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/AVR-S0004-V01/MyToken.sol",
+ "mutant_sha256": "d39745aee6631bfe54d2bbe3deddba03d724545300a1adf4c2afcf35f77432b7",
+ "operator": "AVR",
+ "line": 23,
+ "original_text": "Transfer(msg.sender, to, amount);",
+ "mutated_text": "Transfer(tx.origin, to, amount);",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,38 @@
+schema_version: 1
+contract_id: mytoken
+source: experiment-data/subjects/MyToken.sol
+compiler: "0.4.11"
+contract_name: MyToken
+profile_status: abi_verified
+deployment:
+ constructor_args: []
+ deployer_role: owner
+roles:
+ owner: account_0
+ user_a: account_1
+ user_b: account_2
+initialization: []
+role_model:
+ owner: constructor_token_holder
+ users: unrestricted_callers
+mr_binding_status: verified_without_instance_records
+functions:
+ transfer:
+  abi_type: function
+  solidity_name: sendCoin
+  mutability: nonpayable
+  parameters:
+   - {name: to, type: address}
+   - {name: amount, type: uint256}
+ query:
+  abi_type: function
+  solidity_name: getBalance
+  mutability: view
+  parameters:
+   - {name: addr, type: address}
+state_observers:
+ - id: token_balance
+   kind: function
+   function: query
+   arguments: [role_address]
+mutable_parameters: [caller, receiver, amount, gas_limit]

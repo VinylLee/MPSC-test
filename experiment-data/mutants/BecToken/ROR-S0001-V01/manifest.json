@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ROR-S0001-V01",
+ "authoritative_record": "BecToken::ROR-S0001-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/ROR-S0001-V01/BecToken.sol",
+ "mutant_sha256": "52978a9183c752aaa301f1716fbed3897bff6224e0c43ec7e9590899b69c0c3a",
+ "operator": "ROR",
+ "line": 16,
+ "original_text": "require(a == 0 || c / a == b);",
+ "mutated_text": "require(a != 0 || c / a == b);",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "title": "MPSC dataset artifact manifest",
+  "integrity_verification_command": "python code/scripts/verify_artifact_manifest.py",
+  "integrity_refresh_command": "python code/scripts/verify_artifact_manifest.py --write",
+  "integrity_policy": {
+    "text_strategy": "sha256_lf_normalized_text",
+    "text_normalization": "replace CRLF with LF, then replace remaining CR with LF",
+    "text_extensions": [
+      ".cff",
+      ".cfg",
+      ".csv",
+      ".ini",
+      ".json",
+      ".md",
+      ".ps1",
+      ".py",
+      ".rst",
+      ".sh",
+      ".sol",
+      ".toml",
+      ".txt",
+      ".yaml",
+      ".yml"
+    ],
+    "text_basenames": [],
+    "binary_strategy": "sha256_bytes",
+    "tree_strategy": "recursive_mixed_content_sha256",
+    "tree_record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path"
+  },
+  "path_policy": {
+    "immutable_roots": [
+      "experiment-data/results/canonical/"
+    ],
+    "rule": "Paths embedded in preserved run records describe the layout at execution time."
+  },
+  "artifact_groups": [
+    {
+      "id": "mpsc_reference_implementation",
+      "path": "code/src/mpsc",
+      "type": "directory",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/unit code/tests/integration -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 65,
+        "lf_normalized_text_file_count": 65,
+        "binary_file_count": 0,
+        "sha256_tree": "6bb186c98de853f89d964bea0b41c790482060126f60785bde71e2d05eff924d",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "execution_scripts",
+      "path": "code/scripts",
+      "type": "directory",
+      "commands": {
+        "generate": null,
+        "verify": "python code/scripts/verify_artifact_manifest.py"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 8,
+        "lf_normalized_text_file_count": 8,
+        "binary_file_count": 0,
+        "sha256_tree": "17d7f09cadeb2e668fd0a1d6074ee1c3d95a33cfd4d644014c8bac96d16c4415",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "execution_configuration",
+      "path": "code/configs",
+      "type": "directory",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/release code/tests/unit/test_mutant_corpus.py -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 25,
+        "lf_normalized_text_file_count": 25,
+        "binary_file_count": 0,
+        "sha256_tree": "8bb195339d0b3158eaa09f7215f9d950238bed122cd88e3e675d32ea33d85fed",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "rubixi",
+      "path": "experiment-data/subjects/Rubixi/Rubixi.sol",
+      "type": "file",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/integration/test_contract_profiles.py -q"
+      },
+      "integrity": {
+        "strategy": "sha256_lf_normalized_text",
+        "sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08"
+      }
+    },
+    {
+      "id": "bectoken",
+      "path": "experiment-data/subjects/BecToken/BecToken.sol",
+      "type": "file",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/integration/test_contract_profiles.py -q"
+      },
+      "integrity": {
+        "strategy": "sha256_lf_normalized_text",
+        "sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec"
+      }
+    },
+    {
+      "id": "personal_bank",
+      "path": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+      "type": "file",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/integration/test_contract_profiles.py -q"
+      },
+      "integrity": {
+        "strategy": "sha256_lf_normalized_text",
+        "sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25"
+      }
+    },
+    {
+      "id": "engineering_mutant_files",
+      "path": "experiment-data/mutants",
+      "type": "directory",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked mpsc verify-mutant-corpus"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 1071,
+        "lf_normalized_text_file_count": 1071,
+        "binary_file_count": 0,
+        "sha256_tree": "6a193d4ea98a2124f753121cc0f5efc1bbcb4219317607b56db6ab5aa78ba0c8",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "mytoken_raw_control_results",
+      "path": "experiment-data/results/canonical/mytoken_mr6_small",
+      "type": "directory",
+      "commands": {
+        "generate": "uv run --locked mpsc run-mytoken --output experiment-data/runs/mytoken-mr6",
+        "verify": "uv run --locked pytest code/tests/integration/test_canonical_matrix.py code/tests/integration/test_canonical_mytoken.py -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 15,
+        "lf_normalized_text_file_count": 15,
+        "binary_file_count": 0,
+        "sha256_tree": "5240f0ae73d77113712513fa9e4114479921022af2ef5649ab693428de78ce34",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "mytoken_optimization_raw_results",
+      "path": "experiment-data/results/canonical/mytoken_optimization",
+      "type": "directory",
+      "commands": {
+        "generate": "uv run --locked mpsc run-mytoken-repetitions --output experiment-data/runs/mytoken-optimization/repetitions",
+        "verify": "uv run --locked pytest code/tests/integration/test_canonical_optimization.py code/tests/integration/test_canonical_repetitions.py code/tests/integration/test_canonical_scores.py -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 129,
+        "lf_normalized_text_file_count": 129,
+        "binary_file_count": 0,
+        "sha256_tree": "6cb6b0a02392b7ad76225ffd0136e7c6e424f5d5f66dce64e7e026bef791a48e",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "processed_results",
+      "path": "experiment-data/processed",
+      "type": "directory",
+      "commands": {
+        "generate": "uv run --locked mpsc render-tables --output experiment-data/runs/tables",
+        "verify": "uv run --locked pytest code/tests/evidence -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 20,
+        "lf_normalized_text_file_count": 20,
+        "binary_file_count": 0,
+        "sha256_tree": "4122fabdd728f3256bee4d6e4e80c73c046442abbcc6b56720a594549c211577",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "computed_figures",
+      "path": "experiment-data/results/reports/figures",
+      "type": "directory",
+      "commands": {
+        "generate": "uv run --locked mpsc render-figures --output experiment-data/runs/figures",
+        "verify": "uv run --locked pytest code/tests/evidence/test_figures.py -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 8,
+        "lf_normalized_text_file_count": 1,
+        "binary_file_count": 7,
+        "sha256_tree": "54a12f5ef7c8997aec03bdc24c6596af10046b4de6ed25b4f6951ed3c37abd79",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "five_subject_qualification_manifest",
+      "path": "experiment-data/subjects/subject_manifest.json",
+      "type": "file",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked mpsc verify-results-evidence --qualify-subjects"
+      },
+      "integrity": {
+        "strategy": "sha256_lf_normalized_text",
+        "sha256": "d9a07c25b56668ee4e659bac142b869180f8c288c6b8d16904d5d5bde23acea0"
+      }
+    },
+    {
+      "id": "results_evidence_index",
+      "path": "experiment-data/results/results_evidence_index.json",
+      "type": "file",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked mpsc verify-results-evidence"
+      },
+      "integrity": {
+        "strategy": "sha256_lf_normalized_text",
+        "sha256": "29ad3cf07fd8d57f456f524d262e014adee8d8f3f2af3196bb879c17a304db2c"
+      }
+    },
+    {
+      "id": "implementation_boundary_release_gate",
+      "path": "code/tests/release/test_mpsc_support_boundary.py",
+      "type": "file",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/release/test_mpsc_support_boundary.py -q"
+      },
+      "integrity": {
+        "strategy": "sha256_lf_normalized_text",
+        "sha256": "987e7690fa01643a3e7bae005a16b40b7c860885d21f6a4984e4fd372a83fb46"
+      }
+    },
+    {
+      "id": "root_run_entrypoints",
+      "path": "scripts",
+      "type": "directory",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/release/test_build_automation.py -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 10,
+        "lf_normalized_text_file_count": 10,
+        "binary_file_count": 0,
+        "sha256_tree": "d94855c4994b1db8e2d8c865310cbcdcad40ee8523e703ba80728477479c28f7",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "build_automation_contract",
+      "path": "BUILD_MATRIX.json",
+      "type": "file",
+      "commands": {
+        "generate": null,
+        "verify": "python code/scripts/verify_build_contract.py --check-export"
+      },
+      "integrity": {
+        "strategy": "sha256_lf_normalized_text",
+        "sha256": "3b0c4fc8ef462d8a454a3ef1fe8850b864dc2fe93f8dd4d5d5dd99a76a9229f9"
+      }
+    },
+    {
+      "id": "continuous_integration_workflow",
+      "path": ".github/workflows/ci.yml",
+      "type": "file",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/release/test_build_automation.py -q"
+      },
+      "integrity": {
+        "strategy": "sha256_lf_normalized_text",
+        "sha256": "efa1c02abbed983c6f1380b9c8d519d5f5afc45020907c107c966c04f5e538ca"
+      }
+    }
+  ]
+}

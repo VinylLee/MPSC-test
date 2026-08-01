@@ -1,0 +1,16 @@
+{
+ "mutant_id": "AVR-S0006-V01",
+ "authoritative_record": "PERSONAL_BANK::AVR-S0006-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/AVR-S0006-V01/PERSONAL_BANK.sol",
+ "mutant_sha256": "0213ded102fd5e55e1b457cd58c27ee4c074df3c407e0b181da40073ba97f546",
+ "operator": "AVR",
+ "line": 56,
+ "original_text": "balances[msg.sender]-=_am;",
+ "mutated_text": "balances[tx.origin]-=_am;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "evidence_class": "control",
+  "subject_id": "rubixi",
+  "contract_name": "Rubixi",
+  "chain": {
+    "name": "Ethereum mainnet",
+    "chain_id": 1,
+    "address": "0xe82719202e5965Cf5D9B6673B7503a3b92DE20be",
+    "observation_block": 25658425,
+    "observation_block_tag": "0x1878439",
+    "observation_block_hash": "0xe5af52b0d40cbbe31af35c64cbf930e636c8982970a01280a148c8fdaca2e2a7",
+    "observation_block_timestamp": "2026-08-01T07:08:11Z"
+  },
+  "runtime": {
+    "bytecode_path": "datasets/ethereum-contracts/rubixi/runtime-bytecode.hex",
+    "byte_length": 2523,
+    "sha256_bytes": "40a9459cc8456a5ab9ebfa1a9b40689a7f70dbaa83ddf7dd2e1c7a8d87693aa8",
+    "acquisition_method": "Ethereum JSON-RPC eth_getCode",
+    "rpc_endpoint": "https://ethereum-rpc.publicnode.com",
+    "retrieved_at": "2026-08-01T07:22:53Z"
+  },
+  "canonical_subject": {
+    "source_path": "experiment-data/subjects/Rubixi/Rubixi.sol",
+    "source_sha256_lf_normalized": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+    "compiler": "0.4.16",
+    "profile_path": "code/configs/contracts/rubixi.yaml",
+    "profile_sha256_lf_normalized": "78262d08d26097ed9e54fe4b87597828703f4d722ca834aee137eaa7d5907499",
+    "source_license": "not_recorded_in_repository"
+  },
+  "related_repository_paths": [
+    "datasets/smartbugs-curated/access_control/rubixi.sol"
+  ],
+  "explorer_reference": {
+    "url": "https://etherscan.io/address/0xe82719202e5965Cf5D9B6673B7503a3b92DE20be#code",
+    "role": "external_locator_only",
+    "api_payload_included": false
+  },
+  "evidence_boundary": "Address and runtime-bytecode snapshot only; not MR binding, execution, verdict, mutation, initialization-state, or Oracle evidence."
+}

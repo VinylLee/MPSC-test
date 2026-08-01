@@ -1,0 +1,230 @@
+{
+ "claim_status": "computed",
+ "generated_files": [
+  {
+   "columns": [
+    "contract",
+    "mutable_parameter_count",
+    "mr_count",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/subject_mr_counts.csv",
+   "row_count": 5,
+   "sha256": "7e2a8fbcfa0dc73c7ce2edbcc6043899fbae3152a93fef0b9ca53c2a6a2c6dc4"
+  },
+  {
+   "columns": [
+    "contract",
+    "method",
+    "source_method_label",
+    "mr_count",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/mr_method_comparison.csv",
+   "row_count": 20,
+   "sha256": "fc4e50e1350d435cc08753d8c90c150bc5b991f158f517c2174271d57d0dd9ae"
+  },
+  {
+   "columns": [
+    "contract",
+    "generated_mutants",
+    "equivalent_mutants",
+    "valid_mutants",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/mutant_counts.csv",
+   "row_count": 5,
+   "sha256": "7175d5ad7269d5aea004d084fc011f1f06e04d3b762b07603beb67b556d03f9d"
+  },
+  {
+   "columns": [
+    "contract",
+    "tc_per_mr",
+    "source_test_case_count",
+    "killed_mutants",
+    "valid_mutants",
+    "mutation_score_percent",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/mutation_scores.csv",
+   "row_count": 15,
+   "sha256": "a4966c5aa07f6d572f1208a023a98c0cd9c86fbcc60a43335ec2a5e733ad5207"
+  },
+  {
+   "columns": [
+    "contract",
+    "ground_truth_count",
+    "llm_identified_count",
+    "true_positive",
+    "precision_percent",
+    "recall_percent",
+    "f1_percent",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/llm_identification.csv",
+   "row_count": 5,
+   "sha256": "fcc042eb4583ea0e6df99c0ad13a09f0316ec36de4137173577a661381968964"
+  },
+  {
+   "columns": [
+    "metric",
+    "value",
+    "unit",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/llm_efficiency.csv",
+   "row_count": 3,
+   "sha256": "9c3083a152708da4bd28915424ced2038726fef3fc3eaae3f4d43279e52d9330"
+  },
+  {
+   "columns": [
+    "vulnerability_type",
+    "source_vulnerability_label",
+    "contract",
+    "method",
+    "source_method_label",
+    "confirmed_count",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/vulnerability_findings.csv",
+   "row_count": 100,
+   "sha256": "cc43caf696181d41b183cf5949c356e565331d9063234ca2c3489f704cdd71fa"
+  },
+  {
+   "columns": [
+    "contract",
+    "mr_before",
+    "mr_after",
+    "office_vulnerabilities_before",
+    "office_vulnerabilities_after",
+    "mrd_before",
+    "mrd_after",
+    "mutation_score_before",
+    "mutation_score_after",
+    "time_before_seconds",
+    "time_after_seconds",
+    "time_delta_percent_computed",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/optimization_metrics.csv",
+   "row_count": 5,
+   "sha256": "a67b53349265ce217bbc6c68ed406d268e4acd3976ef897f7e3d63d9952e029b"
+  },
+  {
+   "columns": [
+    "method",
+    "source_method_label",
+    "total_time_seconds",
+    "confirmed_vulnerabilities",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/method_time_comparison.csv",
+   "row_count": 4,
+   "sha256": "d382417f579b16cba6d94e8d46f1008874625dfe7df908c22da8a4d6a1bc9768"
+  },
+  {
+   "columns": [
+    "mutant_index",
+    "mr_id",
+    "detected_executions",
+    "total_executions",
+    "detection_rate",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/mytoken_mr_sensitivity.csv",
+   "row_count": 196,
+   "sha256": "dc22550a5b093406b7473773e19248da2f7e90727311a2b3e9af260d50917728"
+  },
+  {
+   "columns": [
+    "left_mr",
+    "right_mr",
+    "mrd",
+    "source_role",
+    "source_path",
+    "source_locator",
+    "source_sha256"
+   ],
+   "path": "experiment-data/processed/mytoken_mrd_pairs.csv",
+   "row_count": 6,
+   "sha256": "bc1f247522144900e2738a3dd2216b89b7c842ee384665e1ce57d4c51cbaea51"
+  }
+ ],
+ "schema_version": 1,
+ "source_files": [
+  {
+   "path": "实验数据/BecToken变异体数量.docx",
+   "sha256": "a0ce7943f345f1a67b8bc574197438e7a7332694c9a6044d27a09043ac7e7aa3"
+  },
+  {
+   "path": "实验数据/GnosisSafepRroxy变异体.docx",
+   "sha256": "b31eeb2b3f4169b3ac370dd4918565e22d34ca6ad76c28894f07e91185b06cd0"
+  },
+  {
+   "path": "实验数据/Mytoken变异体.docx",
+   "sha256": "c179d8422df8b51730d0720258c96b78abef9edd320a492fb81cf10287e366d1"
+  },
+  {
+   "path": "实验数据/PERSONAL_BANK变异体.docx",
+   "sha256": "8cf9bc9fbc3099a401693d47a65a19dbfab8744f99b467f3349a5ae4a58187de"
+  },
+  {
+   "path": "实验数据/Rubixi变异体.docx",
+   "sha256": "99fddce7d54d39aecef3152f558e5644eed376edcfd1f7641f216f702be8a663"
+  },
+  {
+   "path": "实验数据origin/mYTOKEN_results.xlsx",
+   "sha256": "83b81242a968593081c0ed949dd97b732181f2e15505af0c36bd5eb082b94a3f"
+  },
+  {
+   "path": "实验数据origin/优化后的蜕变关系集.xlsx",
+   "sha256": "0f8514f5f0d8e83bdca9ed8bab5373992fc6c000343df9f1b18402f76b35e38e"
+  },
+  {
+   "path": "实验数据origin/安全缺陷检测数据.xlsx",
+   "sha256": "20ebef1a0c5b2efaf0a195055aa103de3d1240548055710412d1611e4bfc3b7a"
+  },
+  {
+   "path": "实验数据origin/对比方法构造的蜕变关系.xls",
+   "sha256": "ac7f4494771c987dbcc4b1905c448633f764c9e47044d1025c9936293710f327"
+  },
+  {
+   "path": "实验数据origin/时间.xlsx",
+   "sha256": "644754af2cda70d414b3fb206f4092a4fe97b7885b97c7531e1d8a5ed427569d"
+  },
+  {
+   "path": "实验数据origin/构造的蜕变关系数量.xls",
+   "sha256": "5cb55c21802771f553545d5f024f52881a2fe137e98968ea3717313da91c4dee"
+  }
+ ]
+}

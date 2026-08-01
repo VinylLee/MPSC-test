@@ -1,0 +1,56 @@
+schema_version: 1
+template_id: mpsc-mutable-parameter-v1
+limitations:
+  - Prompt examples are illustrative, not the exact request transcript.
+
+system_message: >-
+  You assist a human analyst in identifying candidate mutable parameters for
+  metamorphic testing. Treat state variables as dependency information, not as
+  independently controllable parameters unless an external factor controls them.
+  Return candidates for human review; do not treat your output as ground truth.
+stages:
+  - id: execution_factor_extraction
+    instruction: >-
+      Analyze the following Solidity smart contract code and identify:
+      All state variables.
+      Function parameter lists.
+      External inputs affecting contract behavior.
+  - id: deployment_environment_analysis
+    instruction: >-
+      Based on the following Solidity smart contract code, determine which parameters can vary during deployment. Consider:
+      Parameters that must be provided at deployment.
+      Network-specific constraints (e.g., gas limits, transaction fees).
+      External factors affecting the deployment process.
+  - id: smart_contract_function_calling_analysis
+    instruction: >-
+      Given the following Solidity smart contract, analyze the function interfaces and identify:
+      Function names and their respective input parameters.
+      External inputs that can change per transaction.
+      Account-specific variables affecting execution.
+source_delimiter: "----- SOLIDITY SOURCE -----"
+candidate_required_fields:
+  - candidate_id
+  - name
+  - source
+  - parameter_type
+  - feasible_values
+  - valid_perturbations
+  - boundary_perturbations
+  - invalid_perturbations
+  - affected_operation
+  - affected_state
+  - observable_outcomes
+candidate_field_contract:
+  nonempty_string:
+    - candidate_id
+    - name
+    - source
+    - parameter_type
+    - affected_operation
+    - affected_state
+  nonempty_list_or_object:
+    - feasible_values
+    - valid_perturbations
+    - boundary_perturbations
+    - invalid_perturbations
+    - observable_outcomes

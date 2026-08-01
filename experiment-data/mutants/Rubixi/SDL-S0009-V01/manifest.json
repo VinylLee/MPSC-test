@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0009-V01",
+ "authoritative_record": "Rubixi::SDL-S0009-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/SDL-S0009-V01/Rubixi.sol",
+ "mutant_sha256": "432e1f5b9ba0fa5f77fffccbe9d85cfec4d5e8519f2c1ffc87e3f368e1feb129",
+ "operator": "SDL",
+ "line": 32,
+ "original_text": "address etherAddress;",
+ "mutated_text": "// MPSC-COMPAT-SDL address etherAddress;",
+ "generation_success": true,
+ "compile_success": false,
+ "equivalence_status": "non_equivalent"
+}

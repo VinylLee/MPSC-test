@@ -1,0 +1,7 @@
+contract,mr_before,mr_after,vulnerabilities_before,vulnerabilities_after,time_before_seconds,time_after_seconds,time_delta_percent,mrd_before,mrd_after,mutation_score_before,mutation_score_after,source_path,source_locator
+MyToken,38,24,2,2,152.94,79.72,-47.874984,0.31,0.42,0.78,0.77,实验数据origin/优化后的蜕变关系集.xlsx,Sheet1!A2:G2
+Rubixi,59,33,2,2,274.86,201.3,-26.762716,0.29,0.39,0.72,0.71,实验数据origin/优化后的蜕变关系集.xlsx,Sheet1!A3:G3
+BecToken,102,59,2,2,469.82,383.68,-18.334681,0.28,0.37,0.75,0.75,实验数据origin/优化后的蜕变关系集.xlsx,Sheet1!A4:G4
+GnosisSafeProxy,66,37,2,2,350.76,252.34,-28.059072,0.3,0.4,0.69,0.68,实验数据origin/优化后的蜕变关系集.xlsx,Sheet1!A5:G5
+PERSONAL_BANK,37,20,1,1,179.88,92.54,-48.554592,0.27,0.36,0.71,0.7,实验数据origin/优化后的蜕变关系集.xlsx,Sheet1!A6:G6
+Overall,302,173,9,9,285.652,201.916,-33.917209,,,,,derived from optimization_metrics.csv,all five rows

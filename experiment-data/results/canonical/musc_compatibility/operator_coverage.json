@@ -1,0 +1,63 @@
+{
+ "contracts": {
+  "bectoken": {
+   "ASR": 0,
+   "AVR": 17,
+   "COR": 5,
+   "FSC": 8,
+   "FVC": 29,
+   "GVC": 0,
+   "LOR": 1,
+   "MFR": 0,
+   "ROR": 18,
+   "RSD": 14,
+   "RVR": 4,
+   "SDL": 71,
+   "VTR": 43
+  },
+  "gnosissafeproxy": {
+   "ASR": 0,
+   "AVR": 0,
+   "DLR": 9,
+   "FSC": 3,
+   "FVC": 11,
+   "PKD": 1,
+   "ROR": 7,
+   "RSD": 2,
+   "RVR": 0,
+   "SDL": 19
+  },
+  "mytoken": {
+   "ASR": 2,
+   "AVR": 4,
+   "GVC": 0,
+   "ROR": 1,
+   "SDL": 9,
+   "VTR": 4
+  },
+  "personal_bank": {
+   "ASR": 2,
+   "AVR": 7,
+   "COR": 1,
+   "EUR": 1,
+   "FSC": 0,
+   "FVC": 10,
+   "GVC": 3,
+   "LOR": 0,
+   "PKD": 3,
+   "ROR": 2,
+   "SDL": 25
+  },
+  "rubixi": {
+   "ASR": 9,
+   "AVR": 3,
+   "FVC": 9,
+   "GVC": 6,
+   "LOR": 0,
+   "ROR": 15,
+   "SDL": 55
+  }
+ },
+ "interpretation": "Counts are deterministic candidates found by the local compatibility layer in the frozen repository sources.",
+ "schema_version": 1
+}

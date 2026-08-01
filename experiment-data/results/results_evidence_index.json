@@ -1,0 +1,240 @@
+{
+ "artifacts": [
+  {
+   "artifact_id": "five_subject_qualification",
+   "evidence_class": "control",
+   "kind": "file",
+   "path": "experiment-data/subjects/subject_manifest.json",
+   "sha256": "d9a07c25b56668ee4e659bac142b869180f8c288c6b8d16904d5d5bde23acea0",
+   "upstream": [],
+   "verification_command": "uv run mpsc verify-results-evidence --qualify-subjects"
+  },
+  {
+   "artifact_id": "mytoken_canonical_matrix",
+   "evidence_class": "control",
+   "file_count": 15,
+   "generation_command": "uv run mpsc run-mytoken --output experiment-data/runs/mytoken-mr6",
+   "kind": "directory",
+   "matrix_shape": {
+    "baseline_count": 1,
+    "cell_count": 12,
+    "mr_count": 3,
+    "mutant_count": 3
+   },
+   "path": "experiment-data/results/canonical/mytoken_mr6_small",
+   "run_id": "canonical_mytoken_mr6_small",
+   "sha256_tree": "5240f0ae73d77113712513fa9e4114479921022af2ef5649ab693428de78ce34",
+   "upstream": [
+    "five_subject_qualification"
+   ],
+   "verification_command": "uv run mpsc verify-results-evidence"
+  },
+  {
+   "artifact_id": "mytoken_repetitions",
+   "evidence_class": "control",
+   "file_count": 122,
+   "generation_command": "uv run mpsc run-mytoken-repetitions --output experiment-data/runs/mytoken-optimization/repetitions",
+   "kind": "directory",
+   "path": "experiment-data/results/canonical/mytoken_optimization/repetitions",
+   "run_id": "canonical_mytoken_optimization_repetitions",
+   "sha256_tree": "dd65fd588faf72dfb779ecd9b668d654cf9607214a30ca8431959511393aff9b",
+   "upstream": [
+    "mytoken_canonical_matrix"
+   ],
+   "verification_command": "uv run mpsc verify-results-evidence"
+  },
+  {
+   "artifact_id": "mytoken_scores",
+   "evidence_class": "control",
+   "file_count": 2,
+   "generation_command": "uv run mpsc derive-mytoken-scores --repetitions experiment-data/results/canonical/mytoken_optimization/repetitions --output experiment-data/runs/mytoken-optimization/scores",
+   "kind": "directory",
+   "path": "experiment-data/results/canonical/mytoken_optimization/scores",
+   "run_id": "canonical_mytoken_eq2_eq3",
+   "sha256_tree": "c7b267e8a4859f796fd3607ed11aa266e7c3611bdc449293e8390678163986e1",
+   "upstream": [
+    "mytoken_repetitions"
+   ],
+   "verification_command": "uv run mpsc verify-results-evidence"
+  },
+  {
+   "artifact_id": "mytoken_optimizer",
+   "evidence_class": "control",
+   "file_count": 2,
+   "generation_command": "uv run mpsc optimize-mytoken --scores experiment-data/results/canonical/mytoken_optimization/scores/kill_vectors.json --output experiment-data/runs/mytoken-optimization/algorithm1",
+   "kind": "directory",
+   "path": "experiment-data/results/canonical/mytoken_optimization/algorithm1",
+   "run_id": "canonical_mytoken_algorithm_1",
+   "sha256_tree": "f07a4e698219d7fe05021dda2236be591e8e08fbeea3b80545ca57a99b5dfb9f",
+   "upstream": [
+    "mytoken_scores"
+   ],
+   "verification_command": "uv run mpsc verify-results-evidence"
+  },
+  {
+   "artifact_id": "aggregate_results",
+   "evidence_class": "computed",
+   "file_count": 20,
+   "kind": "directory",
+   "path": "experiment-data/processed",
+   "sha256_tree": "4122fabdd728f3256bee4d6e4e80c73c046442abbcc6b56720a594549c211577",
+   "upstream": [],
+   "verification_command": "uv run pytest code/tests/evidence -q"
+  },
+  {
+   "artifact_id": "computed_tables",
+   "evidence_class": "computed",
+   "file_count": 7,
+   "generation_command": "uv run mpsc render-tables --output experiment-data/runs/tables",
+   "kind": "directory",
+   "path": "experiment-data/processed/computed",
+   "sha256_tree": "e88c921eb021801ebd15f2ec519622ec5dcb96fc271f058fe79f8b87acdf574f",
+   "upstream": [
+    "aggregate_results"
+   ],
+   "verification_command": "uv run pytest code/tests/evidence -q"
+  },
+  {
+   "artifact_id": "computed_figures",
+   "evidence_class": "computed",
+   "file_count": 8,
+   "generation_command": "uv run mpsc render-figures --output experiment-data/runs/figures",
+   "kind": "directory",
+   "path": "experiment-data/results/reports/figures",
+   "sha256_tree": "54a12f5ef7c8997aec03bdc24c6596af10046b4de6ed25b4f6951ed3c37abd79",
+   "upstream": [
+    "aggregate_results",
+    "computed_tables"
+   ],
+   "verification_command": "uv run pytest code/tests/evidence/test_figures.py -q"
+  },
+  {
+   "artifact_id": "comparison_aggregates",
+   "evidence_class": "computed",
+   "kind": "file",
+   "path": "experiment-data/processed/vulnerability_findings.csv",
+   "sha256": "af3f55f6c68bea5208b85e08ce0f520c5c538b782800179b1258bc5eda586dd6",
+   "upstream": [
+    "aggregate_results"
+   ],
+   "verification_command": "uv run pytest code/tests/evidence/test_comparison_tool_boundary.py -q"
+  },
+  {
+   "artifact_id": "timing_aggregates",
+   "evidence_class": "computed",
+   "kind": "file",
+   "path": "experiment-data/processed/method_time_comparison.csv",
+   "sha256": "05fca5d4dc72081dd5c25546764b6f8de3c54c0c6449d635106e9c0d7bf1f947",
+   "upstream": [
+    "aggregate_results"
+   ],
+   "verification_command": "uv run pytest code/tests/evidence/test_five_contract_experiment_boundary.py -q"
+  }
+ ],
+ "hash_policy": "LF-normalized SHA-256 for controlled text, byte SHA-256 for binary, deterministic recursive mixed-content tree hashes",
+ "index_id": "mpsc-results-evidence-chain-v1",
+ "processed_output_mappings": [
+  {
+   "boundary": "Aggregate mutant counts only.",
+   "command": "uv run mpsc render-tables --output experiment-data/runs/tables",
+   "input": "experiment-data/processed/mutant_counts.csv",
+   "mapping_id": "table-3",
+   "output": "experiment-data/processed/computed/mutants.csv"
+  },
+  {
+   "boundary": "Killed/valid arithmetic only; no detection matrix.",
+   "command": "uv run mpsc render-tables --output experiment-data/runs/tables",
+   "input": "experiment-data/processed/mutation_scores.csv",
+   "mapping_id": "table-4",
+   "output": "experiment-data/processed/computed/mutation_scores.csv"
+  },
+  {
+   "boundary": "Aggregate LLM metrics only; no candidate records.",
+   "command": "uv run mpsc render-tables --output experiment-data/runs/tables",
+   "input": "experiment-data/processed/llm_identification.csv",
+   "mapping_id": "table-5",
+   "output": "experiment-data/processed/computed/llm_effectiveness.csv"
+  },
+  {
+   "boundary": "Aggregate timings only; no raw interaction log.",
+   "command": "uv run mpsc render-tables --output experiment-data/runs/tables",
+   "input": "experiment-data/processed/llm_efficiency.csv",
+   "mapping_id": "table-6",
+   "output": "experiment-data/processed/computed/llm_efficiency.csv"
+  },
+  {
+   "boundary": "Aggregate confirmed counts only.",
+   "command": "uv run mpsc render-tables --output experiment-data/runs/tables",
+   "input": "experiment-data/processed/vulnerability_findings.csv",
+   "mapping_id": "table-7",
+   "output": "experiment-data/processed/computed/target_vulnerabilities.csv"
+  },
+  {
+   "boundary": "Aggregate totals only.",
+   "command": "uv run mpsc render-tables --output experiment-data/runs/tables",
+   "input": "experiment-data/processed/vulnerability_findings.csv",
+   "mapping_id": "table-8",
+   "output": "experiment-data/processed/computed/vulnerability_totals.csv"
+  },
+  {
+   "boundary": "Supplied before/after aggregates; MRD and score raw inputs remain missing.",
+   "command": "uv run mpsc render-tables --output experiment-data/runs/tables",
+   "input": "experiment-data/processed/optimization_metrics.csv",
+   "mapping_id": "table-9",
+   "output": "experiment-data/processed/computed/optimization.csv"
+  },
+  {
+   "boundary": "Rendered from CSV.",
+   "command": "uv run mpsc render-figures --output experiment-data/runs/figures",
+   "input": "experiment-data/processed/subject_mr_counts.csv",
+   "mapping_id": "figure-7",
+   "output": "experiment-data/results/reports/figures/mr_counts.png"
+  },
+  {
+   "boundary": "Rendered from CSV.",
+   "command": "uv run mpsc render-figures --output experiment-data/runs/figures",
+   "input": "experiment-data/processed/mr_method_comparison.csv",
+   "mapping_id": "figure-8",
+   "output": "experiment-data/results/reports/figures/method_comparison.png"
+  },
+  {
+   "boundary": "Rendered from computed table.",
+   "command": "uv run mpsc render-figures --output experiment-data/runs/figures",
+   "input": "experiment-data/processed/computed/vulnerability_totals.csv",
+   "mapping_id": "figure-9",
+   "output": "experiment-data/results/reports/figures/vulnerability_comparison.png"
+  },
+  {
+   "boundary": "Rendered from computed table.",
+   "command": "uv run mpsc render-figures --output experiment-data/runs/figures",
+   "input": "experiment-data/processed/computed/optimization.csv",
+   "mapping_id": "figure-10",
+   "output": "experiment-data/results/reports/figures/optimization.png"
+  },
+  {
+   "boundary": "Rendered from four timing totals; not a rerun benchmark.",
+   "command": "uv run mpsc render-figures --output experiment-data/runs/figures",
+   "input": "experiment-data/processed/method_time_comparison.csv",
+   "mapping_id": "figure-11",
+   "output": "experiment-data/results/reports/figures/method_time.png"
+  },
+  {
+   "boundary": "Rendered from supplied CSV.",
+   "command": "uv run mpsc render-figures --output experiment-data/runs/figures",
+   "input": "experiment-data/processed/mytoken_mr_sensitivity.csv",
+   "mapping_id": "appendix-mr-sensitivity",
+   "output": "experiment-data/results/reports/figures/appendix_mr_sensitivity.png"
+  },
+  {
+   "boundary": "Rendered from supplied CSV.",
+   "command": "uv run mpsc render-figures --output experiment-data/runs/figures",
+   "input": "experiment-data/processed/mytoken_mrd_pairs.csv",
+   "mapping_id": "appendix-mrd",
+   "output": "experiment-data/results/reports/figures/appendix_mrd_distribution.png"
+  }
+ ],
+ "resource_budget": {
+  "reference_control": "Observed on under Windows, CPython 3.11, a warm uv environment, and four preinstalled solc binaries: verify-results-evidence --qualify-subjects completed in under 10 seconds. Use a conservative few-minute allowance on a clean machine after compiler installation."
+ },
+ "schema_version": 1
+}

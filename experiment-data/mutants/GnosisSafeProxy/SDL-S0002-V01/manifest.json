@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0002-V01",
+ "authoritative_record": "GnosisSafeProxy::SDL-S0002-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+ "source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+ "mutant_file": "experiment-data/mutants/GnosisSafeProxy/SDL-S0002-V01/GnosisSafeProxy.sol",
+ "mutant_sha256": "81858c940b664cb73a2b2178480bfd533bd6589d1000f9a0e3ef244599919120",
+ "operator": "SDL",
+ "line": 16,
+ "original_text": "address internal singleton;",
+ "mutated_text": "// MPSC-COMPAT-SDL address internal singleton;",
+ "generation_success": true,
+ "compile_success": false,
+ "equivalence_status": "non_equivalent"
+}

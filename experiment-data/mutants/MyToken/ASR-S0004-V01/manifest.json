@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ASR-S0004-V01",
+ "authoritative_record": "MyToken::ASR-S0004-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/ASR-S0004-V01/MyToken.sol",
+ "mutant_sha256": "711b602ec35641417bb1dc5a3508e87931d334b8462d97fa2c3800919d161e42",
+ "operator": "ASR",
+ "line": 1,
+ "original_text": "pragma solidity ^0.4.11;",
+ "mutated_text": "// Mutant ASR-S0004-V01",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

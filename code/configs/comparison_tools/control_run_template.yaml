@@ -1,0 +1,54 @@
+schema_version: 1
+claim_class: control
+subjects:
+  - id: mytoken
+    profile: code/configs/contracts/mytoken.yaml
+  - id: rubixi
+    profile: code/configs/contracts/rubixi.yaml
+  - id: bectoken
+    profile: code/configs/contracts/bectoken.yaml
+  - id: gnosissafeproxy
+    profile: code/configs/contracts/gnosissafeproxy.yaml
+  - id: personal_bank
+    profile: code/configs/contracts/personal_bank.yaml
+tools:
+  solhint:
+    enabled: false
+    package: solhint
+    exact_version:
+    artifact_sha256:
+    config_path:
+    config_sha256:
+    enabled_rules: []
+    command:
+  slither:
+    enabled: false
+    package: slither-analyzer
+    exact_version:
+    artifact_sha256:
+    compiler_selection:
+    enabled_detectors: []
+    command:
+  vdmbscmt:
+    enabled: false
+    implementation_source:
+    version:
+    artifact_sha256:
+    config_path:
+    command:
+timing_protocol:
+  hardware_manifest:
+  operating_system:
+  warmup_runs:
+  measured_repetitions:
+  timeout_seconds:
+  clock:
+output_requirements:
+  - environment.json
+  - inputs_manifest.json
+  - commands.json
+  - raw_findings/
+  - raw_timing.csv
+  - taxonomy_mapping.csv
+  - manual_confirmation.jsonl
+  - summary.json

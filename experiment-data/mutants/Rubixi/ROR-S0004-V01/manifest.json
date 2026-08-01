@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ROR-S0004-V01",
+ "authoritative_record": "Rubixi::ROR-S0004-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/ROR-S0004-V01/Rubixi.sol",
+ "mutant_sha256": "3be8a7a69e5828fd6afc82240dbbe91edac206ace59c7f83f7c406853e020329",
+ "operator": "ROR",
+ "line": 64,
+ "original_text": "if (participants.length == 10) pyramidMultiplier = 200;",
+ "mutated_text": "if (participants.length != 10) pyramidMultiplier = 200;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

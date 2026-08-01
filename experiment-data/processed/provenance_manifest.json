@@ -1,0 +1,1513 @@
+{
+ "claim_status": "computed",
+ "error_count": 0,
+ "file_count": 32,
+ "files": [
+  {
+   "extension": ".docx",
+   "paragraph_count": 2,
+   "paragraph_preview": [
+    "BecToken变异体数量",
+    "可用142"
+   ],
+   "parser": "python-docx",
+   "path": "实验数据/BecToken变异体数量.docx",
+   "sha256": "a0ce7943f345f1a67b8bc574197438e7a7332694c9a6044d27a09043ac7e7aa3",
+   "size_bytes": 4194,
+   "status": "readable",
+   "table_count": 1,
+   "tables": [
+    {
+     "columns": 7,
+     "index": 1,
+     "preview": [
+      "变异算子",
+      "生成的变异体",
+      "等价变异体",
+      "ROR",
+      "55",
+      "6",
+      "40",
+      "COR",
+      "3",
+      "2"
+     ],
+     "rows": 18
+    }
+   ]
+  },
+  {
+   "extension": ".docx",
+   "paragraph_count": 2,
+   "paragraph_preview": [
+    "GnosisSafepRroxy变异体",
+    "总数："
+   ],
+   "parser": "python-docx",
+   "path": "实验数据/GnosisSafepRroxy变异体.docx",
+   "sha256": "b31eeb2b3f4169b3ac370dd4918565e22d34ca6ad76c28894f07e91185b06cd0",
+   "size_bytes": 4151,
+   "status": "readable",
+   "table_count": 1,
+   "tables": [
+    {
+     "columns": 6,
+     "index": 1,
+     "preview": [
+      "变异算子",
+      "生成的变异体",
+      "等价变异体",
+      "ROR",
+      "3",
+      "3",
+      "COR"
+     ],
+     "rows": 20
+    }
+   ]
+  },
+  {
+   "extension": ".docx",
+   "paragraph_count": 43,
+   "paragraph_preview": [
+    "Mytoken变异体",
+    "pragma solidity ^0.4.11;",
+    "contract MyToken {",
+    "mapping (address => uint) balances;",
+    "event Transfer(address indexed _from, address indexed _to, uint256 _value);",
+    "function MyToken() {",
+    "balances[tx.origin] = 10000;",
+    "}",
+    "function sendCoin(address to, uint16 amount) returns(bool sufficient) {",
+    "if (balances[msg.sender] < amount) return false;",
+    "balances[msg.sender] -= amount;",
+    "balances[to] += amount;"
+   ],
+   "parser": "python-docx",
+   "path": "实验数据/Mytoken变异体.docx",
+   "sha256": "c179d8422df8b51730d0720258c96b78abef9edd320a492fb81cf10287e366d1",
+   "size_bytes": 5233,
+   "status": "readable",
+   "table_count": 0,
+   "tables": []
+  },
+  {
+   "extension": ".docx",
+   "paragraph_count": 2,
+   "paragraph_preview": [
+    "PERSONAL_BANK变异体",
+    "总数："
+   ],
+   "parser": "python-docx",
+   "path": "实验数据/PERSONAL_BANK变异体.docx",
+   "sha256": "8cf9bc9fbc3099a401693d47a65a19dbfab8744f99b467f3349a5ae4a58187de",
+   "size_bytes": 4185,
+   "status": "readable",
+   "table_count": 1,
+   "tables": [
+    {
+     "columns": 6,
+     "index": 1,
+     "preview": [
+      "变异算子",
+      "生成的变异体",
+      "等价变异体",
+      "ROR",
+      "30",
+      "2",
+      "22",
+      "COR",
+      "6",
+      "4"
+     ],
+     "rows": 21
+    }
+   ]
+  },
+  {
+   "extension": ".docx",
+   "paragraph_count": 2,
+   "paragraph_preview": [
+    "Rubixi变异体",
+    "总数：172，等价变异体：19 可用153"
+   ],
+   "parser": "python-docx",
+   "path": "实验数据/Rubixi变异体.docx",
+   "sha256": "99fddce7d54d39aecef3152f558e5644eed376edcfd1f7641f216f702be8a663",
+   "size_bytes": 4049,
+   "status": "readable",
+   "table_count": 1,
+   "tables": [
+    {
+     "columns": 7,
+     "index": 1,
+     "preview": [
+      "变异算子",
+      "生成的变异体",
+      "等价变异体",
+      "1 tc per MR",
+      "ROR",
+      "60",
+      "40",
+      "LOR",
+      "2",
+      "2"
+     ],
+     "rows": 13
+    }
+   ]
+  },
+  {
+   "extension": ".docx",
+   "paragraph_count": 23,
+   "paragraph_preview": [
+    "变异算子",
+    "ROR 关系运算符替换：替换关系运算符，例如将“==”替换为“！=”。",
+    "COR 条件运算符替换：替换条件运算符，例如将“&&”替换为“||”。",
+    "LOR 逻辑运算符替换：替换逻辑运算符，例如将“&&”替换为“||”。",
+    "ASR 赋值运算符替换：替换赋值运算符，例如将“=”替换为“+=”。",
+    "SDL 语句删除：删除语句，例如删除一个if语句。",
+    "RVR 返回值替换：替换返回值，例如将函数的返回值替换为另一个值。",
+    "CSC 条件语句改变：改变条件语句，例如改变if语句的条件。",
+    "FSC 函数状态关键字变更：改变函数状态关键字，例如从“view”改为“pure”。",
+    "FVC 函数可见性关键字变更：改变函数可见性关键字，例如从“public”改为“private”。",
+    "DLR 数据位置关键字替换：替换数据位置关键字，例如将“memory”替换为“storage”。",
+    "VTR 变量类型关键字替换：替换变量类型关键字，例如将“uint”替换为“int”。"
+   ],
+   "parser": "python-docx",
+   "path": "实验数据/变异算子.docx",
+   "sha256": "3e3423f23544c68f5dd2359ffd5f28afaceeb204bb10486302bbf18957d623c3",
+   "size_bytes": 4927,
+   "status": "readable",
+   "table_count": 0,
+   "tables": []
+  },
+  {
+   "extension": ".pptx",
+   "parser": "ooxml",
+   "path": "实验数据/安全缺陷检测对比实验数据.pptx.pptx",
+   "sha256": "427ce52877bb1d41c0fcea2df8b989890430247738f76158cdd991823a9b1a64",
+   "size_bytes": 878255,
+   "slide_count": 9,
+   "slides": [
+    {
+     "slide_number": 1,
+     "text_preview": [
+      "solhint"
+     ],
+     "text_run_count": 1
+    },
+    {
+     "slide_number": 2,
+     "text_preview": [
+      "slither"
+     ],
+     "text_run_count": 1
+    },
+    {
+     "slide_number": 3,
+     "text_preview": [
+      "slither"
+     ],
+     "text_run_count": 1
+    },
+    {
+     "slide_number": 4,
+     "text_preview": [
+      "slither"
+     ],
+     "text_run_count": 1
+    },
+    {
+     "slide_number": 5,
+     "text_preview": [
+      "slither"
+     ],
+     "text_run_count": 1
+    },
+    {
+     "slide_number": 6,
+     "text_preview": [],
+     "text_run_count": 0
+    },
+    {
+     "slide_number": 7,
+     "text_preview": [
+      "METBSF",
+      "面向漏洞",
+      "slither",
+      "solhint",
+      "MyToken",
+      "2",
+      "0",
+      "1",
+      "1",
+      "Rubixi",
+      "2",
+      "1"
+     ],
+     "text_run_count": 29
+    },
+    {
+     "slide_number": 8,
+     "text_preview": [],
+     "text_run_count": 0
+    },
+    {
+     "slide_number": 9,
+     "text_preview": [
+      "MyToken",
+      "short_address",
+      "Rubixi",
+      "acess control:23,24",
+      "BecToken",
+      "arithmetic:264",
+      "GnosisSafeProxy",
+      "无",
+      "PERSONAL_BANK",
+      "reentrancy:54"
+     ],
+     "text_run_count": 10
+    }
+   ],
+   "status": "readable",
+   "visual_validation": "not_verified: bundled artifact-tool runtime path was not resolved by the presentation inspector"
+  },
+  {
+   "extension": ".xlsx",
+   "parser": "openpyxl",
+   "path": "实验数据/构造蜕变关系对比实验.xlsx",
+   "sha256": "c6c1a885eafa4babff9faa3407b94fd71a0b67e628bc52846e67fb94a8c68247",
+   "sheets": [
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "BecTOKEN",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "智能合约"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "Ruxibi",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "函数"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "PERSONAL_BANK",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "函数"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "GnosisSafeProxy",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "函数"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "BecTOKEN人工构造",
+     "nonempty_cells": 0,
+     "preview": []
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "GnosisSafeProxy人工构造",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "Fallback函数用于转发所有交易并返回所有接收到的返回数据。"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "PERSONAL_BANK人工构造",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": ". SetMinSum(uint val): 公共函数，用于设置最小存款金额（MinSum）。只能在合约未初始化（intitalized为false）时调用，否则会回退交易。"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "Rubixi人工构造",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "5. 回退函数：当向合约发送以太币但没有调用任何函数时，会触发init函数。"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "面向漏洞",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "MyToken"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "BecToken面向对象程序",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "- 蜕变关系1：在transfer和transferFrom函数执行后，检查balances[msg.sender]和balances[_to]的值是否正确更新。例如，balances[msg.sender]应该减少_value，而balances[_to]应该增加_value。"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "Rubixi面向对象",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "- 蜕变关系构造示例：对于addPayout函数，它修改了balance和collectedFees状态变量。一个可能的蜕变关系是，在相同的输入下，执行两次addPayout函数后，balance和collectedFees的增加量应该是单次执行的两倍。"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "Gnosis面向对象",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "- 蜕变关系MR1: 如果我们在GnosisSafeProxy构造函数中提供一个有效的_singleton地址，那么singleton状态变量应该被正确设置。我们可以通过比较两个相同的合约实例（一个使用正确的地址初始化，另一个使用不同的有效地址初始化）来检测错误，singleton变量的值应该分别与各自的初始化地址相匹配。"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "PERSONAL面向对象",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "- MinSum变量：可以通过修改SetMinSum函数中的_val参数值，来检查MinSum是否正确更新。"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 1,
+     "max_row": 1,
+     "name": "MyToken面向对象",
+     "nonempty_cells": 1,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "- 原始关系：在sendCoin函数中，当转账成功时，发送者的余额减少，接收者的余额增加。"
+      }
+     ]
+    }
+   ],
+   "size_bytes": 38304,
+   "status": "readable"
+  },
+  {
+   "extension": ".docx",
+   "paragraph_count": 97,
+   "paragraph_preview": [
+    "案例分析实验",
+    "Mytoken智能合约",
+    "共有7个可变参数",
+    "蜕变关系：",
+    "1.根据编译器版本来构建：",
+    "（1）更换更高版本的编译器，是否编译正常",
+    "（2）更换低版本的编译器，是否编译正常",
+    "2.更换部署的账户是否消耗的ether一样",
+    "3.更换部署环境，",
+    "（1）部署智能合约时是消耗ether否一样",
+    "(2)调用不同函数时消耗的余额是否一样",
+    "4.改变发送amount的数量"
+   ],
+   "parser": "python-docx",
+   "path": "实验数据/案例分析实验.docx",
+   "sha256": "f3bbd2cecc584a84580ed2c3ac2d3ca44e6399a206d3c1b93b87fcf3527f8aca",
+   "size_bytes": 11222,
+   "status": "readable",
+   "table_count": 8,
+   "tables": [
+    {
+     "columns": 5,
+     "index": 1,
+     "preview": [
+      "可变参数",
+      "所属函数",
+      "可",
+      "数据类型",
+      "pragma solidity ^0.4.11",
+      "——",
+      "编译器版本",
+      "ACCOUNT",
+      "——",
+      "部署账户"
+     ],
+     "rows": 9
+    },
+    {
+     "columns": 4,
+     "index": 2,
+     "preview": [
+      "高版本编译器",
+      "是否正常",
+      "编译结果（warning数量）",
+      "原始测试用例",
+      "0.4.11",
+      "正常",
+      "无",
+      "1",
+      "0.4.12",
+      "正常"
+     ],
+     "rows": 24
+    },
+    {
+     "columns": 4,
+     "index": 3,
+     "preview": [
+      "低版本编译器",
+      "是否正常",
+      "编译结果（warning数量）",
+      "原始测试用例",
+      "0.4.11",
+      "正常",
+      "无",
+      "1",
+      "0.4.10",
+      "正常"
+     ],
+     "rows": 14
+    },
+    {
+     "columns": 4,
+     "index": 4,
+     "preview": [
+      "账户余额",
+      "原始测试用例",
+      "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
+      "99.999999999999766003",
+      "0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db",
+      "99.999999999999766003"
+     ],
+     "rows": 18
+    },
+    {
+     "columns": 4,
+     "index": 5,
+     "preview": [
+      "测试环境",
+      "测试账户",
+      "余额",
+      "原始测试用例",
+      "Remix VM\n(SHANGHAI)",
+      "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4",
+      "99.999999999999766003",
+      "后续",
+      "Remix VM\n(Merge)",
+      "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4",
+      "99.999999999999766055"
+     ],
+     "rows": 10
+    },
+    {
+     "columns": 9,
+     "index": 6,
+     "preview": [
+      "测试环境",
+      "部署账户",
+      "调用函数",
+      "Remix VM\n(Merge)",
+      "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4",
+      "sendCoin",
+      "Remix VM\n(London)"
+     ],
+     "rows": 6
+    },
+    {
+     "columns": 12,
+     "index": 7,
+     "preview": [
+      "原始测试用例",
+      "后续测试用例",
+      "结果",
+      "原始测试用例",
+      "189",
+      "811",
+      "通过",
+      "309",
+      "828",
+      "172",
+      "通过",
+      "721"
+     ],
+     "rows": 13
+    },
+    {
+     "columns": 3,
+     "index": 8,
+     "preview": [
+      "原始测试用例（十六进制）",
+      "后续测试用例",
+      "结果",
+      "d11e7a7cf1382bdd6ce99573632ffc380ab7cf43180a2ee629e0882ff51532cc",
+      "2ee185830ec7d42293166a8c9cd003c7f54830bce7f5d119d61f77d00aeacd34",
+      "都不通过"
+     ],
+     "rows": 3
+    }
+   ]
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/2-区块链系统蜕变关系集被优化前后的情况.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "a4229e3c0e1bdf3a6f77b84b446e7d89c2d27b7a6a47919511ff0f0e8d78208e",
+   "size_bytes": 246656,
+   "status": "source_only"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/b91317bdbabf1a8ededa09561d42551.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "eb64b0effa346faf8197c2cb376cc2e36eaf7984154699c9fda28f618c57f6a1",
+   "size_bytes": 14326,
+   "status": "source_only"
+  },
+  {
+   "extension": ".xlsx",
+   "parser": "openpyxl",
+   "path": "实验数据origin/mYTOKEN_results.xlsx",
+   "sha256": "83b81242a968593081c0ed949dd97b732181f2e15505af0c36bd5eb082b94a3f",
+   "sheets": [
+    {
+     "formula_cells": 0,
+     "max_column": 50,
+     "max_row": 39,
+     "name": "Sheet1",
+     "nonempty_cells": 1949,
+     "preview": [
+      {
+       "cell": "B1",
+       "value": "0"
+      },
+      {
+       "cell": "C1",
+       "value": "1"
+      },
+      {
+       "cell": "D1",
+       "value": "2"
+      },
+      {
+       "cell": "E1",
+       "value": "3"
+      },
+      {
+       "cell": "F1",
+       "value": "4"
+      },
+      {
+       "cell": "G1",
+       "value": "5"
+      },
+      {
+       "cell": "H1",
+       "value": "6"
+      },
+      {
+       "cell": "I1",
+       "value": "7"
+      },
+      {
+       "cell": "J1",
+       "value": "8"
+      },
+      {
+       "cell": "K1",
+       "value": "9"
+      },
+      {
+       "cell": "L1",
+       "value": "10"
+      },
+      {
+       "cell": "M1",
+       "value": "11"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 39,
+     "max_row": 50,
+     "name": "Sheet2",
+     "nonempty_cells": 1949,
+     "preview": [
+      {
+       "cell": "B1",
+       "value": "MR1.1"
+      },
+      {
+       "cell": "C1",
+       "value": "MR1.2"
+      },
+      {
+       "cell": "D1",
+       "value": "MR1.3"
+      },
+      {
+       "cell": "E1",
+       "value": "MR1.4"
+      },
+      {
+       "cell": "F1",
+       "value": "MR1.5"
+      },
+      {
+       "cell": "G1",
+       "value": "MR1.6"
+      },
+      {
+       "cell": "H1",
+       "value": "MR2.1"
+      },
+      {
+       "cell": "I1",
+       "value": "MR2.2"
+      },
+      {
+       "cell": "J1",
+       "value": "MR2.3"
+      },
+      {
+       "cell": "K1",
+       "value": "MR2.4"
+      },
+      {
+       "cell": "L1",
+       "value": "MR3.1"
+      },
+      {
+       "cell": "M1",
+       "value": "MR3.2"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 38,
+     "max_row": 49,
+     "name": "Sheet3",
+     "nonempty_cells": 1862,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "0"
+      },
+      {
+       "cell": "B1",
+       "value": "0"
+      },
+      {
+       "cell": "C1",
+       "value": "0"
+      },
+      {
+       "cell": "D1",
+       "value": "0"
+      },
+      {
+       "cell": "E1",
+       "value": "0"
+      },
+      {
+       "cell": "F1",
+       "value": "0"
+      },
+      {
+       "cell": "G1",
+       "value": "0"
+      },
+      {
+       "cell": "H1",
+       "value": "0"
+      },
+      {
+       "cell": "I1",
+       "value": "0"
+      },
+      {
+       "cell": "J1",
+       "value": "0"
+      },
+      {
+       "cell": "K1",
+       "value": "0"
+      },
+      {
+       "cell": "L1",
+       "value": "0"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 8,
+     "max_row": 100,
+     "name": "Sheet4",
+     "nonempty_cells": 2,
+     "preview": [
+      {
+       "cell": "F56",
+       "value": "10"
+      },
+      {
+       "cell": "H100",
+       "value": "10"
+      }
+     ]
+    },
+    {
+     "formula_cells": 643,
+     "max_column": 39,
+     "max_row": 103,
+     "name": "Sheet2 (2)",
+     "nonempty_cells": 2598,
+     "preview": [
+      {
+       "cell": "B1",
+       "value": "MR1.1"
+      },
+      {
+       "cell": "C1",
+       "value": "MR1.2"
+      },
+      {
+       "cell": "D1",
+       "value": "MR1.3"
+      },
+      {
+       "cell": "E1",
+       "value": "MR1.4"
+      },
+      {
+       "cell": "F1",
+       "value": "MR1.5"
+      },
+      {
+       "cell": "G1",
+       "value": "MR1.6"
+      },
+      {
+       "cell": "H1",
+       "value": "MR2.1"
+      },
+      {
+       "cell": "I1",
+       "value": "MR2.2"
+      },
+      {
+       "cell": "J1",
+       "value": "MR2.3"
+      },
+      {
+       "cell": "K1",
+       "value": "MR2.4"
+      },
+      {
+       "cell": "L1",
+       "value": "MR3.1"
+      },
+      {
+       "cell": "M1",
+       "value": "MR3.2"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 5,
+     "max_row": 5,
+     "name": "Sheet5",
+     "nonempty_cells": 24,
+     "preview": [
+      {
+       "cell": "B1",
+       "value": "MR4.1"
+      },
+      {
+       "cell": "C1",
+       "value": "MR4.2"
+      },
+      {
+       "cell": "D1",
+       "value": "MR6.1"
+      },
+      {
+       "cell": "E1",
+       "value": "MR6.5"
+      },
+      {
+       "cell": "A2",
+       "value": "MR4.1"
+      },
+      {
+       "cell": "B2",
+       "value": "0"
+      },
+      {
+       "cell": "C2",
+       "value": "0.275533"
+      },
+      {
+       "cell": "D2",
+       "value": "0.559336"
+      },
+      {
+       "cell": "E2",
+       "value": "0.5851914042361155"
+      },
+      {
+       "cell": "A3",
+       "value": "MR4.2"
+      },
+      {
+       "cell": "B3",
+       "value": "0.275533"
+      },
+      {
+       "cell": "C3",
+       "value": "0"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 6,
+     "max_row": 1,
+     "name": "Sheet6",
+     "nonempty_cells": 6,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "BSMR4.1和BSMR4.2"
+      },
+      {
+       "cell": "B1",
+       "value": "BSMR4.1和BSMR6.1"
+      },
+      {
+       "cell": "C1",
+       "value": "BSMR4.1和BSMR6.5"
+      },
+      {
+       "cell": "D1",
+       "value": "BSMR4.2和BSMR6.1"
+      },
+      {
+       "cell": "E1",
+       "value": "BSMR4.2和BSMR6.5"
+      },
+      {
+       "cell": "F1",
+       "value": "BSMR6.1和BSMR6.5"
+      }
+     ]
+    }
+   ],
+   "size_bytes": 47957,
+   "status": "readable"
+  },
+  {
+   "extension": ".opju",
+   "parser": "none",
+   "path": "实验数据origin/SBSMR比较.opju",
+   "reason": "Origin project retained as provenance; use paired Excel/PNG for automated recomputation",
+   "sha256": "7b5d9de9491a1cf93d9ef86aad4920fdeb5fdfe7c18fd80eb2299b834b84c016",
+   "size_bytes": 108290,
+   "status": "source_only"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/SBSMR比较.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "eccd59352fd587d7464869301b4ee50ff1c12cd5e7e1708a4715386dcb5c748f",
+   "size_bytes": 50101,
+   "status": "source_only"
+  },
+  {
+   "extension": ".xlsx",
+   "parser": "openpyxl",
+   "path": "实验数据origin/优化后的蜕变关系集.xlsx",
+   "sha256": "0f8514f5f0d8e83bdca9ed8bab5373992fc6c000343df9f1b18402f76b35e38e",
+   "sheets": [
+    {
+     "formula_cells": 5,
+     "max_column": 7,
+     "max_row": 9,
+     "name": "Sheet1",
+     "nonempty_cells": 42,
+     "preview": [
+      {
+       "cell": "B1",
+       "value": "BSMRS"
+      },
+      {
+       "cell": "C1",
+       "value": "BSMRS*"
+      },
+      {
+       "cell": "D1",
+       "value": "BSMRS检测的缺陷数量"
+      },
+      {
+       "cell": "E1",
+       "value": "BSMRS*检测的缺陷数量"
+      },
+      {
+       "cell": "F1",
+       "value": "BSMR时间"
+      },
+      {
+       "cell": "G1",
+       "value": "BSMR*时间"
+      },
+      {
+       "cell": "A2",
+       "value": "Mytoken"
+      },
+      {
+       "cell": "B2",
+       "value": "38"
+      },
+      {
+       "cell": "C2",
+       "value": "24"
+      },
+      {
+       "cell": "D2",
+       "value": "2"
+      },
+      {
+       "cell": "E2",
+       "value": "2"
+      },
+      {
+       "cell": "F2",
+       "value": "=76.47*2"
+      }
+     ]
+    },
+    {
+     "formula_cells": 0,
+     "max_column": 3,
+     "max_row": 201,
+     "name": "Mytoken检测时间",
+     "nonempty_cells": 603,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "0"
+      },
+      {
+       "cell": "B1",
+       "value": "0"
+      },
+      {
+       "cell": "C1",
+       "value": "0"
+      },
+      {
+       "cell": "A2",
+       "value": "1"
+      },
+      {
+       "cell": "B2",
+       "value": "0"
+      },
+      {
+       "cell": "C2",
+       "value": "0"
+      },
+      {
+       "cell": "A3",
+       "value": "2"
+      },
+      {
+       "cell": "B3",
+       "value": "0"
+      },
+      {
+       "cell": "C3",
+       "value": "0"
+      },
+      {
+       "cell": "A4",
+       "value": "3"
+      },
+      {
+       "cell": "B4",
+       "value": "0"
+      },
+      {
+       "cell": "C4",
+       "value": "0"
+      }
+     ]
+    }
+   ],
+   "size_bytes": 13213,
+   "status": "readable"
+  },
+  {
+   "extension": ".opju",
+   "parser": "none",
+   "path": "实验数据origin/区块链系统蜕变关系集被优化前后的情况.opju",
+   "reason": "Origin project retained as provenance; use paired Excel/PNG for automated recomputation",
+   "sha256": "f1682dfb72f49fb84c86214c2d0603eba09bb26b1393b3e8ca24e8c178ac9038",
+   "size_bytes": 253537,
+   "status": "source_only"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/区块链系统蜕变关系集被优化前后的情况.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "e51d6fc8600bdb3a2b31a7c386ddde1ff639ac79b4dc01e833de9e7959052c03",
+   "size_bytes": 217985,
+   "status": "source_only"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/可变参数数量与蜕变关系数量对应图.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "6a8f0a1e3bcc6968fd6fae678e46c0aaf21b0ef2dafdbf1e6c00dc361fb530cd",
+   "size_bytes": 370064,
+   "status": "source_only"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/四种方法安全缺陷检测情况对比.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "91c823070b1a335354b4acbcf2fb401263139933ae312751e6f58fefe295b646",
+   "size_bytes": 70607,
+   "status": "source_only"
+  },
+  {
+   "extension": ".opju",
+   "parser": "none",
+   "path": "实验数据origin/安全缺陷检测情况图.opju",
+   "reason": "Origin project retained as provenance; use paired Excel/PNG for automated recomputation",
+   "sha256": "bc58a98d790a2eb7841792944a60fdf79c8fd893b9ecc0fb80bd5cc9980242f7",
+   "size_bytes": 59307,
+   "status": "source_only"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/安全缺陷检测情况图.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "74fa4ee1839c143bdb09125d795fa15cf1a35f8b7b54ab00ada9d8d2f645312c",
+   "size_bytes": 707895,
+   "status": "source_only"
+  },
+  {
+   "extension": ".xlsx",
+   "parser": "openpyxl",
+   "path": "实验数据origin/安全缺陷检测数据.xlsx",
+   "sha256": "20ebef1a0c5b2efaf0a195055aa103de3d1240548055710412d1611e4bfc3b7a",
+   "sheets": [
+    {
+     "formula_cells": 34,
+     "max_column": 9,
+     "max_row": 45,
+     "name": "Sheet1",
+     "nonempty_cells": 182,
+     "preview": [
+      {
+       "cell": "A1",
+       "value": "安全缺陷类型"
+      },
+      {
+       "cell": "B1",
+       "value": "实验对象"
+      },
+      {
+       "cell": "C1",
+       "value": "METBSF"
+      },
+      {
+       "cell": "D1",
+       "value": "VDMBSCMT"
+      },
+      {
+       "cell": "E1",
+       "value": "Solhint"
+      },
+      {
+       "cell": "F1",
+       "value": "Slither"
+      },
+      {
+       "cell": "A2",
+       "value": "不正确的编译器版本"
+      },
+      {
+       "cell": "B2",
+       "value": "MyToken"
+      },
+      {
+       "cell": "C2",
+       "value": "1"
+      },
+      {
+       "cell": "D2",
+       "value": "0"
+      },
+      {
+       "cell": "E2",
+       "value": "1"
+      },
+      {
+       "cell": "F2",
+       "value": "1"
+      }
+     ]
+    }
+   ],
+   "size_bytes": 10909,
+   "status": "readable"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/对比方法构造的对比关系.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "6cc60b933296781a3473f2fd0098b8703ca12a97a739a654b3ead68d80d388d5",
+   "size_bytes": 74851,
+   "status": "source_only"
+  },
+  {
+   "extension": ".xls",
+   "parser": "xlrd",
+   "path": "实验数据origin/对比方法构造的蜕变关系.xls",
+   "sha256": "ac7f4494771c987dbcc4b1905c448633f764c9e47044d1025c9936293710f327",
+   "sheets": [
+    {
+     "max_column": 5,
+     "max_row": 6,
+     "name": "Sheet1",
+     "nonempty_cells": 30,
+     "preview": [
+      {
+       "cell": "R1C1",
+       "value": "实验对象"
+      },
+      {
+       "cell": "R1C2",
+       "value": "人工构造"
+      },
+      {
+       "cell": "R1C3",
+       "value": "面向漏洞"
+      },
+      {
+       "cell": "R1C4",
+       "value": "面向对象程序"
+      },
+      {
+       "cell": "R1C5",
+       "value": "BSVPMR"
+      },
+      {
+       "cell": "R2C1",
+       "value": "MyToken"
+      },
+      {
+       "cell": "R2C2",
+       "value": "7.0"
+      },
+      {
+       "cell": "R2C3",
+       "value": "5.0"
+      },
+      {
+       "cell": "R2C4",
+       "value": "9.0"
+      },
+      {
+       "cell": "R2C5",
+       "value": "38.0"
+      },
+      {
+       "cell": "R3C1",
+       "value": "Rubixi"
+      },
+      {
+       "cell": "R3C2",
+       "value": "9.0"
+      }
+     ]
+    }
+   ],
+   "size_bytes": 6656,
+   "status": "readable"
+  },
+  {
+   "extension": ".opju",
+   "parser": "none",
+   "path": "实验数据origin/对比方法构造的蜕变关系数量.opju",
+   "reason": "Origin project retained as provenance; use paired Excel/PNG for automated recomputation",
+   "sha256": "db8c15bbc2f4fead50d221df4c1e4ebe89d6781c86a476dbf3130a7c007f5eaf",
+   "size_bytes": 51281,
+   "status": "source_only"
+  },
+  {
+   "extension": ".opju",
+   "parser": "none",
+   "path": "实验数据origin/差异性分布.opju",
+   "reason": "Origin project retained as provenance; use paired Excel/PNG for automated recomputation",
+   "sha256": "d9c40586e2bfb6a661ea407571c3ae616da2a51ce3a9215d3c527233e2f4352e",
+   "size_bytes": 63346,
+   "status": "source_only"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/差异性分布.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "4fab60783279a280082a03c1f98415e1b02b128bd4ff88312528728d42055337",
+   "size_bytes": 1179853,
+   "status": "source_only"
+  },
+  {
+   "extension": ".xlsx",
+   "parser": "openpyxl",
+   "path": "实验数据origin/时间.xlsx",
+   "sha256": "644754af2cda70d414b3fb206f4092a4fe97b7885b97c7531e1d8a5ed427569d",
+   "sheets": [
+    {
+     "formula_cells": 16,
+     "max_column": 12,
+     "max_row": 15,
+     "name": "Sheet1",
+     "nonempty_cells": 54,
+     "preview": [
+      {
+       "cell": "B1",
+       "value": "BecToken"
+      },
+      {
+       "cell": "C1",
+       "value": "MyToken"
+      },
+      {
+       "cell": "D1",
+       "value": "SafeProxy"
+      },
+      {
+       "cell": "G1",
+       "value": "zong"
+      },
+      {
+       "cell": "H1",
+       "value": "单位"
+      },
+      {
+       "cell": "A2",
+       "value": "slither"
+      },
+      {
+       "cell": "B2",
+       "value": "00:00:14.893000"
+      },
+      {
+       "cell": "C2",
+       "value": "00:00:22.799000"
+      },
+      {
+       "cell": "G2",
+       "value": "5.32"
+      },
+      {
+       "cell": "H2",
+       "value": "s"
+      },
+      {
+       "cell": "I2",
+       "value": "5"
+      },
+      {
+       "cell": "A3",
+       "value": "solhint"
+      }
+     ]
+    }
+   ],
+   "size_bytes": 10842,
+   "status": "readable"
+  },
+  {
+   "extension": ".opju",
+   "parser": "none",
+   "path": "实验数据origin/时间对比图.opju",
+   "reason": "Origin project retained as provenance; use paired Excel/PNG for automated recomputation",
+   "sha256": "998807aa42f8eecd6bc276f2bb771076a7934456300613c16dcc743579135b40",
+   "size_bytes": 114806,
+   "status": "source_only"
+  },
+  {
+   "extension": ".png",
+   "parser": "none",
+   "path": "实验数据origin/时间开销对比图.png",
+   "reason": "Reference rendering retained; numeric extraction uses Office data",
+   "sha256": "7bff742cb6ca2a2fe7ca136b023c8dbec83212acda3d70967e8a5a64f33dba52",
+   "size_bytes": 1192532,
+   "status": "source_only"
+  },
+  {
+   "extension": ".opju",
+   "parser": "none",
+   "path": "实验数据origin/构造的蜕变关系数量.opju",
+   "reason": "Origin project retained as provenance; use paired Excel/PNG for automated recomputation",
+   "sha256": "518c1d7c658761173d7102c5ba5c91d22f94edf9332cdb02873ef66731f9dcc7",
+   "size_bytes": 59203,
+   "status": "source_only"
+  },
+  {
+   "extension": ".xls",
+   "parser": "xlrd",
+   "path": "实验数据origin/构造的蜕变关系数量.xls",
+   "sha256": "5cb55c21802771f553545d5f024f52881a2fe137e98968ea3717313da91c4dee",
+   "sheets": [
+    {
+     "max_column": 3,
+     "max_row": 6,
+     "name": "Sheet1",
+     "nonempty_cells": 18,
+     "preview": [
+      {
+       "cell": "R1C1",
+       "value": "实验对象"
+      },
+      {
+       "cell": "R1C2",
+       "value": "可变参数数量"
+      },
+      {
+       "cell": "R1C3",
+       "value": "蜕变关系数量"
+      },
+      {
+       "cell": "R2C1",
+       "value": "MyToken"
+      },
+      {
+       "cell": "R2C2",
+       "value": "8.0"
+      },
+      {
+       "cell": "R2C3",
+       "value": "38.0"
+      },
+      {
+       "cell": "R3C1",
+       "value": "Rubixi"
+      },
+      {
+       "cell": "R3C2",
+       "value": "13.0"
+      },
+      {
+       "cell": "R3C3",
+       "value": "59.0"
+      },
+      {
+       "cell": "R4C1",
+       "value": "BecToken"
+      },
+      {
+       "cell": "R4C2",
+       "value": "21.0"
+      },
+      {
+       "cell": "R4C3",
+       "value": "102.0"
+      }
+     ]
+    }
+   ],
+   "size_bytes": 6656,
+   "status": "readable"
+  }
+ ],
+ "readable_count": 15,
+ "schema_version": 1,
+ "source_only_count": 17,
+ "source_roots": [
+  "实验数据",
+  "实验数据origin"
+ ]
+}

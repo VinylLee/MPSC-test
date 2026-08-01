@@ -1,0 +1,30 @@
+# PERSONAL_BANK mutation config
+contract: experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol
+compiler: "0.4.19"
+output_dir: experiment-data/runs/generated-mutants/PERSONAL_BANK
+mrs_for_detection: auto
+
+mutants:
+ - id: SDL-S01-V01
+   operator: SDL
+   name: "Delete balance deduction in Collect"
+   source_type: control
+   line: 56
+   original: "balances[msg.sender]-=_am;"
+   mutated: "// balances[msg.sender]-=_am;"
+
+ - id: SDL-S02-V01
+   operator: SDL
+   name: "Delete balance credit in Deposit"
+   source_type: control
+   line: 43
+   original: "balances[msg.sender]+= msg.value;"
+   mutated: "// balances[msg.sender]+= msg.value;"
+
+ - id: ROR-S01-V01
+   operator: ROR
+   name: "MinSum check: >= to >"
+   source_type: control
+   line: 51
+   original: "balances[msg.sender]>=MinSum"
+   mutated: "balances[msg.sender]>MinSum"

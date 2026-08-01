@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PYTHONUNBUFFERED: "1"
+  PYTHON_VERSION: "3.11"
+  UV_VERSION: "0.11.29"
+
+jobs:
+  lint:
+    name: Static checks
+    runs-on: windows-2022
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install Ruff
+        run: python -m pip install "ruff==0.16.0"
+      - name: Check every Python file
+        run: |
+          python -m compileall -q .
+          ruff check .
+
+  readme-entrypoints:
+    name: Full repository checks
+    runs-on: windows-2022
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install locked uv version
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Show tool versions
+        run: |
+          $PSVersionTable.PSVersion
+          python --version
+          uv --version
+      - name: Bootstrap environment and compilers
+        run: .\scripts\bootstrap.ps1 -InstallSolc
+      - name: Run smoke checks
+        run: .\scripts\run_smoke.ps1
+      - name: Run all available checks
+        run: .\scripts\run_available.ps1

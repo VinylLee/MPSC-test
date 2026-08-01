@@ -1,0 +1,17 @@
+contract,target_vulnerability,method,confirmed_count,source_path,source_locator
+MyToken,short_address_attack,MPSC,1,data\processed\vulnerability_findings.csv,contract=MyToken; vulnerability=short_address_attack; method=MPSC
+MyToken,short_address_attack,VDMBSCMT,0,data\processed\vulnerability_findings.csv,contract=MyToken; vulnerability=short_address_attack; method=VDMBSCMT
+MyToken,short_address_attack,Solhint,0,data\processed\vulnerability_findings.csv,contract=MyToken; vulnerability=short_address_attack; method=Solhint
+MyToken,short_address_attack,Slither,0,data\processed\vulnerability_findings.csv,contract=MyToken; vulnerability=short_address_attack; method=Slither
+Rubixi,access_control,MPSC,1,data\processed\vulnerability_findings.csv,contract=Rubixi; vulnerability=access_control; method=MPSC
+Rubixi,access_control,VDMBSCMT,0,data\processed\vulnerability_findings.csv,contract=Rubixi; vulnerability=access_control; method=VDMBSCMT
+Rubixi,access_control,Solhint,0,data\processed\vulnerability_findings.csv,contract=Rubixi; vulnerability=access_control; method=Solhint
+Rubixi,access_control,Slither,0,data\processed\vulnerability_findings.csv,contract=Rubixi; vulnerability=access_control; method=Slither
+BecToken,integer_overflow,MPSC,1,data\processed\vulnerability_findings.csv,contract=BecToken; vulnerability=integer_overflow; method=MPSC
+BecToken,integer_overflow,VDMBSCMT,1,data\processed\vulnerability_findings.csv,contract=BecToken; vulnerability=integer_overflow; method=VDMBSCMT
+BecToken,integer_overflow,Solhint,0,data\processed\vulnerability_findings.csv,contract=BecToken; vulnerability=integer_overflow; method=Solhint
+BecToken,integer_overflow,Slither,0,data\processed\vulnerability_findings.csv,contract=BecToken; vulnerability=integer_overflow; method=Slither
+PERSONAL_BANK,reentrancy,MPSC,0,data\processed\vulnerability_findings.csv,contract=PERSONAL_BANK; vulnerability=reentrancy; method=MPSC
+PERSONAL_BANK,reentrancy,VDMBSCMT,1,data\processed\vulnerability_findings.csv,contract=PERSONAL_BANK; vulnerability=reentrancy; method=VDMBSCMT
+PERSONAL_BANK,reentrancy,Solhint,0,data\processed\vulnerability_findings.csv,contract=PERSONAL_BANK; vulnerability=reentrancy; method=Solhint
+PERSONAL_BANK,reentrancy,Slither,1,data\processed\vulnerability_findings.csv,contract=PERSONAL_BANK; vulnerability=reentrancy; method=Slither

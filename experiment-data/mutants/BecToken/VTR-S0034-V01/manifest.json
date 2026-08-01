@@ -1,0 +1,16 @@
+{
+ "mutant_id": "VTR-S0034-V01",
+ "authoritative_record": "BecToken::VTR-S0034-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/VTR-S0034-V01/BecToken.sol",
+ "mutant_sha256": "12e8bb1797b3e7001a5e0b1cc9e8d954945a8aa9b968e70b1917df890be533f0",
+ "operator": "VTR",
+ "line": 150,
+ "original_text": "function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {",
+ "mutated_text": "function allowance(address _owner, address _spender) public constant returns (uint8 remaining) {",
+ "generation_success": true,
+ "compile_success": false,
+ "equivalence_status": "non_equivalent"
+}

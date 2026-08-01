@@ -1,0 +1,16 @@
+{
+ "mutant_id": "ASR-S0001-V01",
+ "authoritative_record": "MyToken::ASR-S0001-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/MyToken.sol",
+ "source_sha256": "c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91",
+ "mutant_file": "experiment-data/mutants/MyToken/ASR-S0001-V01/MyToken.sol",
+ "mutant_sha256": "33a49f53f30202b4730e13d094fd8500e51e94471965a007c1cf5417fdfe1b6a",
+ "operator": "ASR",
+ "line": 21,
+ "original_text": "balances[msg.sender] -= amount;",
+ "mutated_text": "balances[msg.sender] += amount;",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

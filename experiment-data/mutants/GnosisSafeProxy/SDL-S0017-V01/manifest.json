@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0017-V01",
+ "authoritative_record": "GnosisSafeProxy::SDL-S0017-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+ "source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+ "mutant_file": "experiment-data/mutants/GnosisSafeProxy/SDL-S0017-V01/GnosisSafeProxy.sol",
+ "mutant_sha256": "ffb50a9194138f4311a783bf6f4ace604abbd23259ff299d713a070e32495a5d",
+ "operator": "SDL",
+ "line": 143,
+ "original_text": "proxy = deployProxyWithNonce(_singleton, initializer, saltNonce);",
+ "mutated_text": "// MPSC-COMPAT-SDL proxy = deployProxyWithNonce(_singleton, initializer, saltNonce);",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

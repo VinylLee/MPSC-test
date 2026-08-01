@@ -1,0 +1,90 @@
+name: mpsc-mytoken-mvp
+description: Minimal executable run of the MPSC metamorphic testing workflow
+
+contract:
+ path: experiment-data/subjects/MyToken.sol
+ name: MyToken
+ compiler: "0.4.11"
+ sha256: eebf20e26ca6391f12decda44c889deccfc667c9da0da24da47d4e56edfc89b4
+
+backend:
+ type: eth_tester
+ state_strategy: fresh_deployment_pair
+
+mrs:
+ - id: MR6.4
+   category: MR6
+   name: "Amount: 2^8 - x"
+   check_type: mr6_amount
+   source:
+    function: sendCoin
+    caller_index: 0
+    arguments: [1, 100]
+   followup:
+    function: sendCoin
+    caller_index: 0
+    arguments: [1, 156]
+   accounts: [deployer, receiver]
+   setup_actions: []
+   preconditions:
+    - id: sender_balance_sufficient
+   predicates:
+    mu: "mu_f == mu_s"
+    epsilon_sender: "epsilon_from_f = 2*epsilon_from_s - 256"
+    epsilon_receiver: "epsilon_to_f = 2*epsilon_to_s + 256"
+    delta: "delta_f == delta_s"
+
+ - id: MR9.1
+   category: MR9
+   name: "Swap parameter order (to, amount)"
+   check_type: parameter_swap_raw
+   source:
+    function: sendCoin
+    caller_index: 0
+    arguments: [1, 100]
+   followup:
+    function: sendCoin_raw_swapped
+    caller_index: 0
+    arguments: [1, 100]
+   accounts: [deployer, receiver]
+   setup_actions: []
+   preconditions:
+    - id: calldata_length_correct
+    - id: selector_unchanged
+    - id: slots_swapped
+   predicates:
+    mu: "mu_f != mu_s"
+    delta: "delta_f = delta_s"
+
+ - id: MR7.4
+   category: MR7
+   name: "Query different valid address"
+   check_type: view_different_return
+   source:
+    function: getBalance
+    caller_index: 0
+    arguments: [0]
+   followup:
+    function: getBalance
+    caller_index: 0
+    arguments: [1]
+   accounts: [deployer, other_account]
+   setup_actions:
+    - type: transfer
+      from_index: 0
+      to_index: 1
+      amount: 500
+   preconditions:
+    - id: valid_addresses
+   predicates:
+    mu: "mu_f != mu_s"
+    epsilon: "epsilon_f != epsilon_s"
+    delta: "delta_f = delta_s (unavailable for view)"
+   mvp_enabled: true
+   expected_verdict: indeterminate
+   verdict_reason: "Required gas predicate unavailable for view function"
+
+output:
+ root: experiment-data/runs/mvp
+ save_observations: true
+ generate_markdown: true

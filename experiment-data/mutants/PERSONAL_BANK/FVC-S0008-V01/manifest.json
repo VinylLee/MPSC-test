@@ -1,0 +1,16 @@
+{
+ "mutant_id": "FVC-S0008-V01",
+ "authoritative_record": "PERSONAL_BANK::FVC-S0008-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol",
+ "source_sha256": "c3fb9f82690d6672094d4c591af77609d7e789ec0001d915984b23403e25eb25",
+ "mutant_file": "experiment-data/mutants/PERSONAL_BANK/FVC-S0008-V01/PERSONAL_BANK.sol",
+ "mutant_sha256": "b840a048cc56a85f52672dcb6ee812a921b589ba745d56183d4ccfbf4ad428fc",
+ "operator": "FVC",
+ "line": 63,
+ "original_text": "public",
+ "mutated_text": "private",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

@@ -1,0 +1,16 @@
+{
+ "mutant_id": "SDL-S0047-V01",
+ "authoritative_record": "Rubixi::SDL-S0047-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/Rubixi/Rubixi.sol",
+ "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08",
+ "mutant_file": "experiment-data/mutants/Rubixi/SDL-S0047-V01/Rubixi.sol",
+ "mutant_sha256": "9efaad769734a4e258c4c83d50c235d62d35fffe86a7e47096a0ebf52852267a",
+ "operator": "SDL",
+ "line": 132,
+ "original_text": "info = 'Shown in % form. Fee is halved(50%) for amounts equal or greater than 50 ethers. (Fee may change, but is capped to a maximum of 10%)';",
+ "mutated_text": "// MPSC-COMPAT-SDL info = 'Shown in % form. Fee is halved(50%) for amounts equal or greater than 50 ethers. (Fee may change, but is capped to a maximum of 10%)';",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

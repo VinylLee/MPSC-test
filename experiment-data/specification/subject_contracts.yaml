@@ -1,0 +1,78 @@
+# Subject Contracts
+#
+# This file records the audited availability of each subject contract.
+# Evidence status uses the release vocabulary in ARTIFACT_MANIFEST.json.
+# L0-L6 maturity labels and implementation counts were removed
+# because they mixed smoke-runner breadth with semantically validated
+# results.
+
+contracts:
+ - contract_id: mytoken
+   source_status: reconstructed_from_tex
+   repository_path: experiment-data/subjects/MyToken.sol
+   pragma: "^0.4.11"
+   compiler: "0.4.11"
+   vulnerability: "Short address attack"
+   validation_status: control
+   source_available: true
+   compile_verified: true
+   deploy_verified: true
+   mr_binding_status: runtime_profile_validated_bindings_verified
+   canonical_detection_matrix: null
+
+ - contract_id: rubixi
+   source_status: repository_original
+   repository_path: experiment-data/subjects/Rubixi/Rubixi.sol
+   external_address: "0xe82719202e5965Cf5D9B6673B7503a3b92DE20be"
+   pragma: "^0.4.15"
+   compiler: "0.4.16" # 0.4.15 nightly fails, use 0.4.16
+   vulnerability: "Access control"
+   validation_status: control
+   source_available: true
+   compile_verified: true
+   deploy_verified: true
+   mr_binding_status: runtime_profile_validated_bindings_verified
+   canonical_detection_matrix: null
+
+ - contract_id: bectoken
+   source_status: repository_original
+   repository_path: experiment-data/subjects/BecToken/BecToken.sol
+   external_address: "0xC5d105E63711398aF9bbff092d4B6769C82F793D"
+   pragma: "^0.4.16"
+   compiler: "0.4.16"
+   vulnerability: "Integer overflow"
+   validation_status: control
+   source_available: true
+   compile_verified: true
+   deploy_verified: true
+   mr_binding_status: runtime_profile_validated_bindings_verified
+   canonical_detection_matrix: null
+
+ - contract_id: gnosissafeproxy
+   source_status: verified_etherscan_snapshot
+   repository_path: experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol
+   external_address: "0x61cdc61b6ff5d009aff909b67fcfa84c040d5481"
+   pragma: ">=0.7.0 <0.9.0"
+   compiler: "0.7.6"
+   license: "LGPL-3.0-only"
+   vulnerability: null
+   validation_status: control
+   source_available: true
+   compile_verified: true
+   deploy_verified: true
+   mr_binding_status: runtime_profile_validated_bindings_verified
+   canonical_detection_matrix: null
+
+ - contract_id: personal_bank
+   source_status: repository_original
+   repository_path: experiment-data/subjects/PERSONAL_BANK/PERSONAL_BANK.sol
+   external_address: "0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f"
+   pragma: "^0.4.19"
+   compiler: "0.4.19"
+   vulnerability: "Reentrancy"
+   validation_status: control
+   source_available: true
+   compile_verified: true
+   deploy_verified: true
+   mr_binding_status: runtime_profile_validated_bindings_verified
+   canonical_detection_matrix: null

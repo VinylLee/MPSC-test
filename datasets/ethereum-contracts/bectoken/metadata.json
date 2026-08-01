@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "evidence_class": "control",
+  "subject_id": "bectoken",
+  "contract_name": "BecToken",
+  "chain": {
+    "name": "Ethereum mainnet",
+    "chain_id": 1,
+    "address": "0xC5d105E63711398aF9bbff092d4B6769C82F793D",
+    "observation_block": 25658425,
+    "observation_block_tag": "0x1878439",
+    "observation_block_hash": "0xe5af52b0d40cbbe31af35c64cbf930e636c8982970a01280a148c8fdaca2e2a7",
+    "observation_block_timestamp": "2026-08-01T07:08:11Z"
+  },
+  "runtime": {
+    "bytecode_path": "datasets/ethereum-contracts/bectoken/runtime-bytecode.hex",
+    "byte_length": 5777,
+    "sha256_bytes": "95601071ab54b446c4455a4bf9b648f16b8aa398b3883854cf530c74a7592282",
+    "acquisition_method": "Ethereum JSON-RPC eth_getCode",
+    "rpc_endpoint": "https://ethereum-rpc.publicnode.com",
+    "retrieved_at": "2026-08-01T07:22:53Z"
+  },
+  "canonical_subject": {
+    "source_path": "experiment-data/subjects/BecToken/BecToken.sol",
+    "source_sha256_lf_normalized": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+    "compiler": "0.4.16",
+    "profile_path": "code/configs/contracts/bectoken.yaml",
+    "profile_sha256_lf_normalized": "378853db965e726c252cbdf2fab188d4706547c03891ab209cb7f5f2a1aa0c17",
+    "source_license": "not_recorded_in_repository"
+  },
+  "related_repository_paths": [
+    "datasets/smartbugs-curated/arithmetic/BECToken.sol"
+  ],
+  "explorer_reference": {
+    "url": "https://etherscan.io/address/0xC5d105E63711398aF9bbff092d4B6769C82F793D#code",
+    "role": "external_locator_only",
+    "api_payload_included": false
+  },
+  "evidence_boundary": "Address and runtime-bytecode snapshot only; not MR binding, execution, verdict, mutation, initialization-state, or Oracle evidence."
+}

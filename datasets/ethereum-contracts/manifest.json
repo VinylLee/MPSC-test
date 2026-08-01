@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "dataset_id": "mpsc-ethereum-contracts-v1",
+  "evidence_class": "control",
+  "description": "Frozen Ethereum mainnet identity and runtime-bytecode snapshots for four MPSC subjects.",
+  "chain": {
+    "name": "Ethereum mainnet",
+    "chain_id": 1,
+    "observation_block": 25658425,
+    "observation_block_tag": "0x1878439",
+    "observation_block_hash": "0xe5af52b0d40cbbe31af35c64cbf930e636c8982970a01280a148c8fdaca2e2a7",
+    "observation_block_timestamp": "2026-08-01T07:08:11Z"
+  },
+  "acquisition": {
+    "method": "Ethereum JSON-RPC eth_getCode",
+    "rpc_endpoint": "https://ethereum-rpc.publicnode.com",
+    "retrieved_at": "2026-08-01T07:22:53Z",
+    "etherscan_api_payloads_included": false
+  },
+  "evidence_boundary": "These records establish address and runtime-bytecode snapshots only; they are not contract-level MR bindings, executions, verdicts, or Oracle evidence.",
+  "contracts": [
+    {
+      "subject_id": "rubixi",
+      "contract_name": "Rubixi",
+      "chain_id": 1,
+      "address": "0xe82719202e5965Cf5D9B6673B7503a3b92DE20be",
+      "metadata_path": "datasets/ethereum-contracts/rubixi/metadata.json",
+      "metadata_sha256_lf_normalized": "c88ab415ee99ff57f276b5f9bba71fbca1cbbd4bda39ce88015f38680b604a18",
+      "runtime_bytecode_path": "datasets/ethereum-contracts/rubixi/runtime-bytecode.hex",
+      "runtime_byte_length": 2523,
+      "runtime_sha256": "40a9459cc8456a5ab9ebfa1a9b40689a7f70dbaa83ddf7dd2e1c7a8d87693aa8"
+    },
+    {
+      "subject_id": "bectoken",
+      "contract_name": "BecToken",
+      "chain_id": 1,
+      "address": "0xC5d105E63711398aF9bbff092d4B6769C82F793D",
+      "metadata_path": "datasets/ethereum-contracts/bectoken/metadata.json",
+      "metadata_sha256_lf_normalized": "58c38de0b802a3dd3268c5224e6ab485a7ba134c65ef3808978c763c8043afad",
+      "runtime_bytecode_path": "datasets/ethereum-contracts/bectoken/runtime-bytecode.hex",
+      "runtime_byte_length": 5777,
+      "runtime_sha256": "95601071ab54b446c4455a4bf9b648f16b8aa398b3883854cf530c74a7592282"
+    },
+    {
+      "subject_id": "gnosissafeproxy",
+      "contract_name": "GnosisSafeProxy",
+      "chain_id": 1,
+      "address": "0x61cdc61b6ff5d009aff909b67fcfa84c040d5481",
+      "metadata_path": "datasets/ethereum-contracts/gnosissafeproxy/metadata.json",
+      "metadata_sha256_lf_normalized": "a60ed76073d0ff501d49674989711267e5fe728bb4b352bf7353c8f94f20d9da",
+      "runtime_bytecode_path": "datasets/ethereum-contracts/gnosissafeproxy/runtime-bytecode.hex",
+      "runtime_byte_length": 171,
+      "runtime_sha256": "5b8bff324e02136edb0775bd77aa0fe773c1e23092305fe63f50a9e92f5b8faf"
+    },
+    {
+      "subject_id": "personal_bank",
+      "contract_name": "PERSONAL_BANK",
+      "chain_id": 1,
+      "address": "0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f",
+      "metadata_path": "datasets/ethereum-contracts/personal_bank/metadata.json",
+      "metadata_sha256_lf_normalized": "be17fa14a9959423bf09cd61c7db5aa343d6bd1a5e3e9e84a5504c209adf2520",
+      "runtime_bytecode_path": "datasets/ethereum-contracts/personal_bank/runtime-bytecode.hex",
+      "runtime_byte_length": 1003,
+      "runtime_sha256": "2c7c20fc96278500acafe8310b8e284176fe21b28f268d696ac3153da6b539f4"
+    }
+  ]
+}

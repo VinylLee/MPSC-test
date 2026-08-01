@@ -1,0 +1,173 @@
+{
+ "schema_version": 1,
+ "run_id": "gpt5",
+ "subject_id": "rubixi",
+ "generated_at": "T18:30:38+08:00",
+ "request": {
+  "prompt_template": "code/configs/llm/mutable_parameter_prompt.yaml",
+  "source_path": "experiment-data/subjects/Rubixi/Rubixi.sol",
+  "source_sha256": "9323ad3e6325cab18102a078084370c7249b3c92a82364a85e77377ff5a60d08"
+ },
+ "response": {
+  "raw_output_format": "application/json",
+  "analysis_summary": "The main controllable factors are caller identity, fallback payment value and the 50-ether fee rebate branch, owner-set fee and multiplier parameters, owner replacement, withdrawal parameters including ether-unit scaling, payout recipient behavior, payout release boundaries, participant query indices, and transaction sequence. Internal balance, participant count, and payout order are dependent state.",
+  "candidates": [
+   {
+    "candidate_id": "RUB-C001",
+    "name": "fallback payment value",
+    "source": "fallback -> init uses msg.value thresholds at 1 ether and 50 ether",
+    "parameter_type": "payable transaction value",
+    "feasible_values": ["below 1 ether", "1 ether", "between 1 and 50 ether", "50 ether", "above 50 ether"],
+    "valid_perturbations": ["vary payment while preserving a funded caller"],
+    "boundary_perturbations": ["1 ether - 1 wei", "1 ether", "50 ether - 1 wei", "50 ether"],
+    "invalid_perturbations": ["negative value", "value greater than caller funds"],
+    "affected_operation": "fallback participation and fee calculation",
+    "affected_state": "participants, balance, collectedFees, payoutOrder",
+    "observable_outcomes": ["participant count", "fee balance", "pyramid balance", "payout transfers"]
+   },
+   {
+    "candidate_id": "RUB-C002",
+    "name": "creator-setting caller",
+    "source": "DynamicPyramid() assigns creator = msg.sender",
+    "parameter_type": "caller identity",
+    "feasible_values": ["original deployer", "unrelated account", "current creator"],
+    "valid_perturbations": ["call DynamicPyramid from a different account before owner-only actions"],
+    "boundary_perturbations": ["repeat the call from the current creator", "call immediately before a fee withdrawal"],
+    "invalid_perturbations": ["caller unable to pay gas"],
+    "affected_operation": "owner identity assignment and onlyowner authorization",
+    "affected_state": "creator",
+    "observable_outcomes": ["which account can change parameters or collect fees", "subsequent transaction success"]
+   },
+   {
+    "candidate_id": "RUB-C003",
+    "name": "pyramid multiplier",
+    "source": "changeMultiplier(uint _mult), allowed range 120..300",
+    "parameter_type": "uint256 owner-only function argument",
+    "feasible_values": [120, 150, 200, 300],
+    "valid_perturbations": [121, 200, 299],
+    "boundary_perturbations": [119, 120, 300, 301],
+    "invalid_perturbations": ["negative integer", "non-owner invocation"],
+    "affected_operation": "participant payout calculation",
+    "affected_state": "pyramidMultiplier and new Participant.payout",
+    "observable_outcomes": ["currentMultiplier", "participantDetails payout", "payout timing"]
+   },
+   {
+    "candidate_id": "RUB-C004",
+    "name": "fee percentage",
+    "source": "changeFeePercentage(uint _fee), upper bound 10",
+    "parameter_type": "uint256 owner-only function argument",
+    "feasible_values": [0, 1, 5, 10],
+    "valid_perturbations": [1, 5, 9],
+    "boundary_perturbations": [0, 10, 11],
+    "invalid_perturbations": ["negative integer", "non-owner invocation"],
+    "affected_operation": "fallback fee split",
+    "affected_state": "feePercent, balance, collectedFees",
+    "observable_outcomes": ["currentFeePercentage", "fee balance", "pyramid balance"]
+   },
+   {
+    "candidate_id": "RUB-C005",
+    "name": "fee withdrawal amount or percentage",
+    "source": "collectFeesInEther(uint _amt) and collectPercentOfFees(uint _pcent)",
+    "parameter_type": "uint256 owner-only function argument",
+    "feasible_values": [0, 1, "available fees", 100],
+    "valid_perturbations": ["withdraw a smaller positive amount", "withdraw a percentage from 1 through 100"],
+    "boundary_perturbations": ["amount equals available fees", "amount exceeds fees", "percentage 0", "percentage 100", "percentage 101"],
+    "invalid_perturbations": ["negative integer", "non-owner invocation"],
+    "affected_operation": "fee collection",
+    "affected_state": "collectedFees and creator ether balance",
+    "observable_outcomes": ["transaction success", "fees remaining", "creator balance delta"]
+   },
+   {
+    "candidate_id": "RUB-C006",
+    "name": "participation sequence",
+    "source": "participants.length thresholds and payoutOrder loop",
+    "parameter_type": "transaction ordering and caller sequence",
+    "feasible_values": ["fewer than 10 participants", "exactly 10", "exactly 25", "enough deposits to fund one or more payouts"],
+    "valid_perturbations": ["permute participant callers while preserving values"],
+    "boundary_perturbations": ["ninth versus tenth participant", "twenty-fourth versus twenty-fifth participant"],
+    "invalid_perturbations": ["sequence containing transactions that cannot pay gas or value"],
+    "affected_operation": "automatic multiplier changes and payout loop",
+    "affected_state": "participants, pyramidMultiplier, balance, payoutOrder",
+    "observable_outcomes": ["current multiplier", "participant queue length", "recipient ether balances"]
+   },
+   {
+    "candidate_id": "RUB-C007",
+    "name": "creator replacement address",
+    "source": "changeOwner(address _owner) onlyowner",
+    "parameter_type": "address owner-only function argument",
+    "feasible_values": ["another funded account", "zero address", "current creator"],
+    "valid_perturbations": ["replace the creator with a different account"],
+    "boundary_perturbations": ["zero address", "the current creator (no-op)"],
+    "invalid_perturbations": ["malformed non-address input", "non-owner invocation"],
+    "affected_operation": "onlyowner authorization for later calls",
+    "affected_state": "creator",
+    "observable_outcomes": ["which account can collect fees and change parameters", "later transaction success"]
+   },
+   {
+    "candidate_id": "RUB-C008",
+    "name": "participant query index",
+    "source": "participantDetails(uint orderInPyramid) and numberOfParticipantsWaitingForPayout",
+    "parameter_type": "uint256 view-function argument",
+    "feasible_values": [0, "last participant index", "index equal to participants.length"],
+    "valid_perturbations": ["query different participant indices"],
+    "boundary_perturbations": ["index equal to length", "index one past the last participant"],
+    "invalid_perturbations": ["negative integer", "value larger than uint256"],
+    "affected_operation": "read-only participant lookup",
+    "affected_state": "participants[orderInPyramid] selection",
+    "observable_outcomes": ["returned address and payout", "count of participants awaiting payout"]
+   },
+   {
+    "candidate_id": "RUB-C009",
+    "name": "payout recipient contract behavior",
+    "source": "addPayout: participants[payoutOrder].etherAddress.send(payoutToSend)",
+    "parameter_type": "recipient address behavior",
+    "feasible_values": ["externally owned account", "contract whose fallback accepts ether", "contract whose fallback reverts"],
+    "valid_perturbations": ["make an earlier participant a contract that rejects the transfer"],
+    "boundary_perturbations": ["recipient consuming the full gas budget", "send returning false"],
+    "invalid_perturbations": ["malformed non-address input"],
+    "affected_operation": "payout send and balance decrement",
+    "affected_state": "recipient balance and payoutOrder progression",
+    "observable_outcomes": ["whether the send succeeds", "balance after send", "payoutOrder advance"]
+   },
+   {
+    "candidate_id": "RUB-C010",
+    "name": "fee rebate threshold crossing",
+    "source": "init: if (msg.value >= 50 ether) _fee /= 2",
+    "parameter_type": "payable transaction value branch",
+    "feasible_values": ["below 50 ether", "50 ether", "above 50 ether"],
+    "valid_perturbations": ["vary value around the rebate threshold"],
+    "boundary_perturbations": ["50 ether - 1 wei", "50 ether"],
+    "invalid_perturbations": ["negative value", "value greater than caller funds"],
+    "affected_operation": "fee halving branch in init",
+    "affected_state": "effective fee, balance, collectedFees",
+    "observable_outcomes": ["effective fee rate", "pyramid balance", "collectedFees"]
+   },
+   {
+    "candidate_id": "RUB-C011",
+    "name": "fee withdrawal unit scaling",
+    "source": "collectFeesInEther(uint _amt): _amt *= 1 ether",
+    "parameter_type": "uint256 owner-only argument with scaling",
+    "feasible_values": [0, 1, "collectedFees in whole ether"],
+    "valid_perturbations": ["withdraw a value expressed in whole ether"],
+    "boundary_perturbations": ["amount 1", "amount whose scaled value exceeds collectedFees", "amount 0"],
+    "invalid_perturbations": ["negative integer", "non-owner invocation"],
+    "affected_operation": "fee collection amount comparison",
+    "affected_state": "collectedFees and creator balance",
+    "observable_outcomes": ["transaction success or full-collect fallback", "fees remaining", "creator balance delta"]
+   },
+   {
+    "candidate_id": "RUB-C012",
+    "name": "payout release boundary",
+    "source": "addPayout: while (balance > participants[payoutOrder].payout)",
+    "parameter_type": "internal comparison boundary",
+    "feasible_values": ["balance below payout", "balance equal to payout", "balance above payout"],
+    "valid_perturbations": ["reach the boundary via different value and multiplier combinations"],
+    "boundary_perturbations": ["balance equal to payout", "balance one wei above payout"],
+    "invalid_perturbations": ["sequence with no funded participants"],
+    "affected_operation": "payout loop release",
+    "affected_state": "balance, payoutOrder, paid participant balances",
+    "observable_outcomes": ["number of payouts", "recipient balances", "balance remaining"]
+   }
+  ]
+ }
+}

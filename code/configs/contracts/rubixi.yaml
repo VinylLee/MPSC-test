@@ -1,0 +1,116 @@
+schema_version: 1
+contract_id: rubixi
+source: experiment-data/subjects/Rubixi/Rubixi.sol
+compiler: "0.4.16"
+contract_name: Rubixi
+profile_status: abi_verified
+deployment:
+ constructor_args: []
+ deployer_role: owner
+roles:
+ owner: account_0
+ user_a: account_1
+ user_b: account_2
+initialization:
+ - function: initialize_owner
+   caller_role: owner
+   arguments: []
+role_model:
+ owner: last_caller_of_public_DynamicPyramid
+ users: may_reassign_owner_by_calling_DynamicPyramid
+mr_binding_status: verified_without_instance_records
+functions:
+ initialize_owner:
+  abi_type: function
+  solidity_name: DynamicPyramid
+  mutability: nonpayable
+  parameters: []
+ fallback:
+  abi_type: fallback
+  solidity_name: null
+  mutability: nonpayable
+  parameters: []
+ collect_all_fees:
+  abi_type: function
+  solidity_name: collectAllFees
+  mutability: nonpayable
+  parameters: []
+ collect_fees_in_ether:
+  abi_type: function
+  solidity_name: collectFeesInEther
+  mutability: nonpayable
+  parameters:
+   - {name: _amt, type: uint256}
+ collect_percent_of_fees:
+  abi_type: function
+  solidity_name: collectPercentOfFees
+  mutability: nonpayable
+  parameters:
+   - {name: _pcent, type: uint256}
+ change_owner:
+  abi_type: function
+  solidity_name: changeOwner
+  mutability: nonpayable
+  parameters:
+   - {name: _owner, type: address}
+ change_multiplier:
+  abi_type: function
+  solidity_name: changeMultiplier
+  mutability: nonpayable
+  parameters:
+   - {name: _mult, type: uint256}
+ change_fee_percentage:
+  abi_type: function
+  solidity_name: changeFeePercentage
+  mutability: nonpayable
+  parameters:
+   - {name: _fee, type: uint256}
+ current_multiplier:
+  abi_type: function
+  solidity_name: currentMultiplier
+  mutability: view
+  parameters: []
+ current_fee_percentage:
+  abi_type: function
+  solidity_name: currentFeePercentage
+  mutability: view
+  parameters: []
+ pyramid_balance:
+  abi_type: function
+  solidity_name: currentPyramidBalanceApproximately
+  mutability: view
+  parameters: []
+ next_payout:
+  abi_type: function
+  solidity_name: nextPayoutWhenPyramidBalanceTotalsApproximately
+  mutability: view
+  parameters: []
+ fee_balance:
+  abi_type: function
+  solidity_name: feesSeperateFromBalanceApproximately
+  mutability: view
+  parameters: []
+ participant_count:
+  abi_type: function
+  solidity_name: totalParticipants
+  mutability: view
+  parameters: []
+ waiting_participant_count:
+  abi_type: function
+  solidity_name: numberOfParticipantsWaitingForPayout
+  mutability: view
+  parameters: []
+ participant_details:
+  abi_type: function
+  solidity_name: participantDetails
+  mutability: view
+  parameters:
+   - {name: orderInPyramid, type: uint256}
+state_observers:
+ - {id: multiplier, kind: function, function: current_multiplier, arguments: []}
+ - {id: fee_percentage, kind: function, function: current_fee_percentage, arguments: []}
+ - {id: pyramid_balance, kind: function, function: pyramid_balance, arguments: []}
+ - {id: fee_balance, kind: function, function: fee_balance, arguments: []}
+ - {id: participant_count, kind: function, function: participant_count, arguments: []}
+ - {id: waiting_count, kind: function, function: waiting_participant_count, arguments: []}
+mutable_parameters: [caller, value, owner, amount, percentage, multiplier, gas_limit]

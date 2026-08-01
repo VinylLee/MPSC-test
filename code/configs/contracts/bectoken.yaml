@@ -1,0 +1,124 @@
+schema_version: 1
+contract_id: bectoken
+source: experiment-data/subjects/BecToken/BecToken.sol
+compiler: "0.4.16"
+contract_name: BecToken
+profile_status: abi_verified
+deployment:
+ constructor_args: []
+ deployer_role: owner
+roles:
+ owner: account_0
+ user_a: account_1
+ user_b: account_2
+initialization: []
+role_model:
+ owner: constructor_owner_and_initial_supply_holder
+ users: token_callers
+mr_binding_status: verified_without_instance_records
+functions:
+ transfer:
+  abi_type: function
+  solidity_name: transfer
+  mutability: nonpayable
+  parameters:
+   - {name: _to, type: address}
+   - {name: _value, type: uint256}
+ transfer_from:
+  abi_type: function
+  solidity_name: transferFrom
+  mutability: nonpayable
+  parameters:
+   - {name: _from, type: address}
+   - {name: _to, type: address}
+   - {name: _value, type: uint256}
+ approve:
+  abi_type: function
+  solidity_name: approve
+  mutability: nonpayable
+  parameters:
+   - {name: _spender, type: address}
+   - {name: _value, type: uint256}
+ batch_transfer:
+  abi_type: function
+  solidity_name: batchTransfer
+  mutability: nonpayable
+  parameters:
+   - {name: _receivers, type: "address[]"}
+   - {name: _value, type: uint256}
+ transfer_ownership:
+  abi_type: function
+  solidity_name: transferOwnership
+  mutability: nonpayable
+  parameters:
+   - {name: newOwner, type: address}
+ pause:
+  abi_type: function
+  solidity_name: pause
+  mutability: nonpayable
+  parameters: []
+ unpause:
+  abi_type: function
+  solidity_name: unpause
+  mutability: nonpayable
+  parameters: []
+ balance:
+  abi_type: function
+  solidity_name: balanceOf
+  mutability: view
+  parameters:
+   - {name: _owner, type: address}
+ allowance:
+  abi_type: function
+  solidity_name: allowance
+  mutability: view
+  parameters:
+   - {name: _owner, type: address}
+   - {name: _spender, type: address}
+ total_supply:
+  abi_type: function
+  solidity_name: totalSupply
+  mutability: view
+  parameters: []
+ owner:
+  abi_type: function
+  solidity_name: owner
+  mutability: view
+  parameters: []
+ paused:
+  abi_type: function
+  solidity_name: paused
+  mutability: view
+  parameters: []
+ name:
+  abi_type: function
+  solidity_name: name
+  mutability: view
+  parameters: []
+ symbol:
+  abi_type: function
+  solidity_name: symbol
+  mutability: view
+  parameters: []
+ version:
+  abi_type: function
+  solidity_name: version
+  mutability: view
+  parameters: []
+ decimals:
+  abi_type: function
+  solidity_name: decimals
+  mutability: view
+  parameters: []
+ fallback:
+  abi_type: fallback
+  solidity_name: null
+  mutability: nonpayable
+  parameters: []
+state_observers:
+ - {id: token_balance, kind: function, function: balance, arguments: [role_address]}
+ - {id: allowance, kind: function, function: allowance, arguments: [owner, spender]}
+ - {id: total_supply, kind: function, function: total_supply, arguments: []}
+ - {id: owner, kind: function, function: owner, arguments: []}
+ - {id: paused, kind: function, function: paused, arguments: []}
+mutable_parameters: [caller, recipient, spender, amount, recipient_list, gas_limit]

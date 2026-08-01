@@ -1,0 +1,16 @@
+{
+ "mutant_id": "FVC-S0007-V01",
+ "authoritative_record": "GnosisSafeProxy::FVC-S0007-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/GnosisSafeProxy/GnosisSafeProxy.sol",
+ "source_sha256": "d2060fd6992630d8adb77939be5f3390aa5893d8adccf39a2d9334f65940e335",
+ "mutant_file": "experiment-data/mutants/GnosisSafeProxy/FVC-S0007-V01/GnosisSafeProxy.sol",
+ "mutant_sha256": "ad25f1cb138d32cc42c2fdd2c748061ce08f58d51fa3fe11e2dd87a922b641fa",
+ "operator": "FVC",
+ "line": 85,
+ "original_text": ") internal returns (GnosisSafeProxy proxy) {",
+ "mutated_text": ") public returns (GnosisSafeProxy proxy) {",
+ "generation_success": true,
+ "compile_success": true,
+ "equivalence_status": "non_equivalent"
+}

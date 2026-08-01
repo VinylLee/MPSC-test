@@ -1,0 +1,32 @@
+schema_version: 2
+corpus_id: mytoken_canonical_controls_v2
+frozen_at_commit: 348619d
+hash_canonicalization: lf
+subject:
+  id: MyToken
+  path: experiment-data/subjects/MyToken.sol
+  sha256: c1542393c4e15b6c749286f79d82d4c7b3ddd7b59a4a7b63e816c86cf195fd91
+eligibility_policy:
+- file_sha256_matches_frozen_value
+- manifest_generation_success
+- manifest_compile_success
+- canonical_compiler_success
+mutants:
+- mutant_id: MUT-01
+  origin: local_engineering_generator
+  path: experiment-data/mutants/MyToken/MUT-01/MyToken.sol
+  sha256: 96944a900c34d107f6958670515e5846977d73e5cf78ebae0a82130943a1cf70
+  manifest: experiment-data/mutants/MyToken/MUT-01/manifest.json
+  eligibility_status: eligible
+- mutant_id: MUT-07
+  origin: local_engineering_generator
+  path: experiment-data/mutants/MyToken/MUT-07/MyToken.sol
+  sha256: b26424f2cfb952974e0f2bd5c463b8e40e2e2d2ffa841075765cb7f5a9631f6a
+  manifest: experiment-data/mutants/MyToken/MUT-07/manifest.json
+  eligibility_status: eligible
+- mutant_id: MUT-08
+  origin: local_engineering_generator
+  path: experiment-data/mutants/MyToken/MUT-08/MyToken.sol
+  sha256: c5dddc0be4a58864650883e2ee19f8c72e514ec7ac4ba811de9d2e1b0bb10046
+  manifest: experiment-data/mutants/MyToken/MUT-08/manifest.json
+  eligibility_status: eligible

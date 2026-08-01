@@ -1,0 +1,16 @@
+{
+ "mutant_id": "VTR-S0019-V01",
+ "authoritative_record": "BecToken::VTR-S0019-V01",
+ "source_type": "control",
+ "source_contract": "experiment-data/subjects/BecToken/BecToken.sol",
+ "source_sha256": "0d96ba65c6ef07ffeb79aa77a2b305b5d5f69984c501ebf702f06e89bf1ae0ec",
+ "mutant_file": "experiment-data/mutants/BecToken/VTR-S0019-V01/BecToken.sol",
+ "mutant_sha256": "1e17f42ee6faf9d24c21802d8fd4d1ad58d87af1358c27f889f2df2a0965e9d1",
+ "operator": "VTR",
+ "line": 48,
+ "original_text": "event Transfer(address indexed from, address indexed to, uint256 value);",
+ "mutated_text": "event Transfer(address indexed from, address indexed to, uint8 value);",
+ "generation_success": true,
+ "compile_success": false,
+ "equivalence_status": "non_equivalent"
+}

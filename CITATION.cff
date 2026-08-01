@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software or dataset, please cite it using this metadata."
+title: "MPSC implementation and dataset"
+type: software
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/VinylLee/MPSC"
+authors:
+  - family-names: Lee
+    given-names: Vinyl
+preferred-citation:
+  type: article
+  title: "MPSC: A Metamorphic Testing Approach based on Mutable Parameters for Smart Contracts"
+  authors:
+    - family-names: Chen
+    - family-names: Li
+    - family-names: Feng
+    - family-names: Cai
+    - family-names: Sun
+    - family-names: Shi
+  notes: "Publication venue and DOI are not stated in the distributed project metadata."

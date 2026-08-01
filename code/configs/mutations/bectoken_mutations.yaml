@@ -1,0 +1,30 @@
+# BecToken mutation config
+contract: experiment-data/subjects/BecToken/BecToken.sol
+compiler: "0.4.16"
+output_dir: experiment-data/runs/generated-mutants/BecToken
+mrs_for_detection: auto
+
+mutants:
+ - id: ROR-S01-V01
+   operator: ROR
+   name: "transfer value check: > to >="
+   source_type: control
+   line: 67
+   original: "_value > 0 && _value <= balances[msg.sender]"
+   mutated: "_value > 0 && _value < balances[msg.sender]"
+
+ - id: SDL-S01-V01
+   operator: SDL
+   name: "Delete sender deduction in transfer"
+   source_type: control
+   line: 70
+   original: "balances[msg.sender] = balances[msg.sender].sub(_value);"
+   mutated: "// balances[msg.sender] = balances[msg.sender].sub(_value);"
+
+ - id: RVR-S01-V01
+   operator: RVR
+   name: "Invert transfer success return"
+   source_type: control
+   line: 73
+   original: "return true;"
+   mutated: "return false;"

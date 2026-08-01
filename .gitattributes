@@ -1,0 +1,17 @@
+* text=auto
+*.py text eol=lf
+*.sol text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.sh text eol=lf
+
+# Local/private research material must never enter a source archive.
+/.research export-ignore
+/MPSC.pdf export-ignore
+/实验数据 export-ignore
+/实验数据origin export-ignore
+/experiment-data/raw export-ignore
+/experiment-data/runs export-ignore

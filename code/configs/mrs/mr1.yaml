@@ -1,0 +1,86 @@
+# MR1: Compiler-Version-Based Metamorphic Relations
+
+# MR1 tests whether compilation and deployment produce equivalent results
+# when the compiler version changes within a compatible range.
+
+# Key insight:
+# - MyToken uses pragma solidity ^0.4.11
+# - MR1.1: source > 0.4.11, followup = source + Δx, both > 0.4.11
+# - MR1.2: source > 0.4.11, followup = source - Δx, both > 0.4.11
+# - MR1.3: source > 0.4.11, followup = source - Δx, followup < 0.4.11
+# - MR1.4: source < 0.4.11, followup = source + Δx, both < 0.4.11
+# - MR1.5: source < 0.4.11, followup = source + Δx, followup > 0.4.11
+# - MR1.6: source < 0.4.11, followup = source - Δx, both < 0.4.11
+
+# For MVP: use available solc versions around 0.4.x
+# MyToken pragma: ^0.4.11 means >=0.4.11, <0.5.0
+
+category: MR1
+description: Compiler-Version-Based Metamorphic Relations
+contract:
+  path: experiment-data/subjects/MyToken.sol
+  name: MyToken
+  pragma: "^0.4.11"
+backend:
+  type: eth_tester
+  state_strategy: fresh_deployment_pair
+mrs:
+  - id: MR1.1
+    source_solc: "0.4.11"
+    followup_solc: "0.4.25"
+    description: "Increase compiler version within valid range"
+    predicates:
+      mu: "mu_f == mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    expected: "both compile, both deploy, results equivalent"
+
+  - id: MR1.2
+    source_solc: "0.4.25"
+    followup_solc: "0.4.11"
+    description: "Decrease compiler version within valid range"
+    predicates:
+      mu: "mu_f == mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    expected: "both compile, both deploy, results equivalent"
+
+  - id: MR1.3
+    source_solc: "0.4.11"
+    followup_solc: "0.4.0"
+    description: "Decrease to invalid version (< 0.4.11)"
+    predicates:
+      mu: "mu_f != mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    expected: "source compiles, followup may fail or produce different result"
+
+  - id: MR1.4
+    source_solc: "0.4.0"
+    followup_solc: "0.4.9"
+    description: "Increase within invalid range (< 0.4.11)"
+    predicates:
+      mu: "mu_f == mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    expected: "both invalid versions, same result"
+
+  - id: MR1.5
+    source_solc: "0.4.0"
+    followup_solc: "0.4.11"
+    description: "Increase from invalid to valid version"
+    predicates:
+      mu: "mu_f != mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    expected: "source invalid, followup valid, different results"
+
+  - id: MR1.6
+    source_solc: "0.4.0"
+    followup_solc: "0.4.9"
+    description: "Decrease within invalid range"
+    predicates:
+      mu: "mu_f == mu_s"
+      epsilon: "epsilon_f == epsilon_s"
+      delta: "delta_f == delta_s"
+    expected: "both invalid, same error result"
