@@ -44,6 +44,10 @@ build/
 .venv/
 .tmp/
 
+# Node/Rust dependency and build caches
+node_modules/
+target/
+
 # Misc
 *.tmp
 *.log
@@ -57,3 +61,6 @@ MPSC.pdf
 experiment-data/raw/
 experiment-data/runs/
 docs/
+
+# Recorded comparison logs are immutable campaign evidence.
+!experiment-data/results/canonical/ityfuzz/runs/**/*.log

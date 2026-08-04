@@ -27,12 +27,19 @@ EVIDENCE_CLASSES = {
     "verified",
 }
 TEXT_SUFFIXES = {
+    ".cff",
+    ".cfg",
     ".csv",
+    ".ini",
     ".json",
     ".md",
+    ".ps1",
     ".py",
+    ".rst",
+    ".sh",
     ".sol",
     ".toml",
+    ".txt",
     ".yaml",
     ".yml",
 }
@@ -75,6 +82,19 @@ EXPECTED_ARTIFACT_LINEAGE = {
     "timing_aggregates": (
         "computed",
         ("aggregate_results",),
+    ),
+    "ityfuzz_campaign_inputs": ("control", ()),
+    "ityfuzz_campaign_results": (
+        "control",
+        ("ityfuzz_campaign_inputs",),
+    ),
+    "ityfuzz_processed_results": (
+        "computed",
+        ("ityfuzz_campaign_results",),
+    ),
+    "ityfuzz_computed_figures": (
+        "computed",
+        ("ityfuzz_processed_results",),
     ),
 }
 EXPECTED_PROCESSED_MAPPINGS = {
@@ -964,13 +984,24 @@ def validate_results_evidence(
     _validate_dag(artifact_rows, errors)
 
     by_id = {artifact.get("artifact_id"): artifact for artifact in artifact_rows}
-    if set(by_id) != set(EXPECTED_ARTIFACT_LINEAGE) or len(artifacts) != 10:
-        errors.append("result artifacts must match the frozen 10-node set")
+    expected_artifact_count = len(EXPECTED_ARTIFACT_LINEAGE)
+    if (
+        set(by_id) != set(EXPECTED_ARTIFACT_LINEAGE)
+        or len(artifacts) != expected_artifact_count
+    ):
+        errors.append(
+            f"result artifacts must match the frozen {expected_artifact_count}-node set"
+        )
     observed_edge_count = sum(
         len(artifact.get("upstream", [])) for artifact in artifact_rows
     )
-    if observed_edge_count != 9:
-        errors.append("result lineage must contain exactly 9 edges")
+    expected_edge_count = sum(
+        len(upstream) for _, upstream in EXPECTED_ARTIFACT_LINEAGE.values()
+    )
+    if observed_edge_count != expected_edge_count:
+        errors.append(
+            f"result lineage must contain exactly {expected_edge_count} edges"
+        )
     for artifact_id, (
         evidence_class,
         upstream,

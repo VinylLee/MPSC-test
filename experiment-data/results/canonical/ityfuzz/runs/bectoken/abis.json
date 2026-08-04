@@ -1,0 +1,1 @@
+{"887db5715868498cff494b5dcc8eda6ce5b7652a":[[{"06fdde03":"name()"},{"18160ddd":"totalSupply()"},{"313ce567":"decimals()"},{"70a08231":"balanceOf(address)"},{"83f12fec":"batchTransfer(address[],uint256)"},{"95d89b41":"symbol()"},{"a9059cbb":"transfer(address,uint256)"},{"767b6190":"constructor(uint256)"}]]}

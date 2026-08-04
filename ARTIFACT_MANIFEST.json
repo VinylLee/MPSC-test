@@ -45,10 +45,10 @@
       },
       "integrity": {
         "strategy": "recursive_mixed_content_sha256",
-        "file_count": 65,
-        "lf_normalized_text_file_count": 65,
+        "file_count": 68,
+        "lf_normalized_text_file_count": 68,
         "binary_file_count": 0,
-        "sha256_tree": "6bb186c98de853f89d964bea0b41c790482060126f60785bde71e2d05eff924d",
+        "sha256_tree": "e6e17d50fd26cd4237cdbd803b12a7ebe1005a6ab59e9f07deba8f1a066aaf1a",
         "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
         "excluded": [
           "**/__pycache__/**",
@@ -70,7 +70,7 @@
         "file_count": 8,
         "lf_normalized_text_file_count": 8,
         "binary_file_count": 0,
-        "sha256_tree": "17d7f09cadeb2e668fd0a1d6074ee1c3d95a33cfd4d644014c8bac96d16c4415",
+        "sha256_tree": "4a8ef670d79ae16d2fbdcde8ad3fe720ed617571e17de309d4f61c4a3a82f350",
         "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
         "excluded": [
           "**/__pycache__/**",
@@ -89,10 +89,10 @@
       },
       "integrity": {
         "strategy": "recursive_mixed_content_sha256",
-        "file_count": 25,
-        "lf_normalized_text_file_count": 25,
+        "file_count": 28,
+        "lf_normalized_text_file_count": 28,
         "binary_file_count": 0,
-        "sha256_tree": "8bb195339d0b3158eaa09f7215f9d950238bed122cd88e3e675d32ea33d85fed",
+        "sha256_tree": "bd84b7fce450e79789bce719cf9465e160a065a7defa372fbb65ca1c5f709901",
         "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
         "excluded": [
           "**/__pycache__/**",
@@ -216,10 +216,10 @@
       },
       "integrity": {
         "strategy": "recursive_mixed_content_sha256",
-        "file_count": 20,
-        "lf_normalized_text_file_count": 20,
+        "file_count": 22,
+        "lf_normalized_text_file_count": 22,
         "binary_file_count": 0,
-        "sha256_tree": "4122fabdd728f3256bee4d6e4e80c73c046442abbcc6b56720a594549c211577",
+        "sha256_tree": "279321125150c4c5084aa47005f6bbb985d262381e308752c7d9c2a6c89e012f",
         "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
         "excluded": [
           "**/__pycache__/**",
@@ -251,6 +251,94 @@
       }
     },
     {
+      "id": "ityfuzz_comparison_inputs",
+      "path": "experiment-data/comparison/ityfuzz",
+      "type": "directory",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked mpsc verify-ityfuzz-campaign"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 12,
+        "lf_normalized_text_file_count": 12,
+        "binary_file_count": 0,
+        "sha256_tree": "de500fbe5510b958a0c916a3f65a0ed1a642077c31d199a363ba0e171aa42510",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "ityfuzz_campaign_results",
+      "path": "experiment-data/results/canonical/ityfuzz",
+      "type": "directory",
+      "commands": {
+        "generate": "scripts/run_ityfuzz.sh or scripts/run_ityfuzz_multi.sh",
+        "verify": "uv run --locked mpsc verify-ityfuzz-campaign"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 530,
+        "lf_normalized_text_file_count": 181,
+        "binary_file_count": 349,
+        "sha256_tree": "ac817cb1345264968a9b72a77e2963493ea91eb6cf815c1cbbc15dc69e63ed0a",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "ityfuzz_processed_results",
+      "path": "experiment-data/processed/ityfuzz",
+      "type": "directory",
+      "commands": {
+        "generate": null,
+        "verify": "uv run --locked pytest code/tests/evidence/test_ityfuzz_figures.py -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 2,
+        "lf_normalized_text_file_count": 2,
+        "binary_file_count": 0,
+        "sha256_tree": "c9305a5a56f17e66c74ec7f6bbdb337010a87a31fc4aa0f825767ef81210fcb3",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
+      "id": "ityfuzz_computed_figures",
+      "path": "experiment-data/results/reports/ityfuzz",
+      "type": "directory",
+      "commands": {
+        "generate": "uv run --locked mpsc render-ityfuzz-figures --output experiment-data/results/reports/ityfuzz",
+        "verify": "uv run --locked pytest code/tests/evidence/test_ityfuzz_figures.py -q"
+      },
+      "integrity": {
+        "strategy": "recursive_mixed_content_sha256",
+        "file_count": 3,
+        "lf_normalized_text_file_count": 1,
+        "binary_file_count": 2,
+        "sha256_tree": "7b3e8ca95f5786c9dd1190cc4cf6609a63e1f44793a2470801a1bc1d8c8485da",
+        "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
+        "excluded": [
+          "**/__pycache__/**",
+          "**/*.pyc",
+          "**/*.pyo"
+        ]
+      }
+    },
+    {
       "id": "five_subject_qualification_manifest",
       "path": "experiment-data/subjects/subject_manifest.json",
       "type": "file",
@@ -273,7 +361,7 @@
       },
       "integrity": {
         "strategy": "sha256_lf_normalized_text",
-        "sha256": "29ad3cf07fd8d57f456f524d262e014adee8d8f3f2af3196bb879c17a304db2c"
+        "sha256": "7b74a1a5ab7fa63dd55d20ce34662779af01e6e857dbd2b039856829aaf68640"
       }
     },
     {
@@ -299,10 +387,10 @@
       },
       "integrity": {
         "strategy": "recursive_mixed_content_sha256",
-        "file_count": 10,
-        "lf_normalized_text_file_count": 10,
+        "file_count": 12,
+        "lf_normalized_text_file_count": 12,
         "binary_file_count": 0,
-        "sha256_tree": "d94855c4994b1db8e2d8c865310cbcdcad40ee8523e703ba80728477479c28f7",
+        "sha256_tree": "e0782b5614044062646ef7dc49e0222d7e1e1427fb5123b312153250b79a8264",
         "record_format": "relative_path NUL digest_kind NUL content_sha256 LF, sorted by path",
         "excluded": [
           "**/__pycache__/**",
@@ -321,7 +409,7 @@
       },
       "integrity": {
         "strategy": "sha256_lf_normalized_text",
-        "sha256": "3b0c4fc8ef462d8a454a3ef1fe8850b864dc2fe93f8dd4d5d5dd99a76a9229f9"
+        "sha256": "1876cad0c901f32fe484eb5cdf7a9156f63bbec19255ad7448fa63f3e345b21e"
       }
     },
     {

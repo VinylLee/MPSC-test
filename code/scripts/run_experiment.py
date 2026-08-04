@@ -301,6 +301,16 @@ def _steps(
             ],
         },
         {
+            "id": "ityfuzz-campaign-quick",
+            "evidence_class": "control",
+            "command": [
+                python,
+                "-m",
+                "mpsc.cli",
+                "verify-ityfuzz-campaign",
+            ],
+        },
+        {
             "id": "release-tests",
             "evidence_class": "control",
             "command": [
@@ -390,6 +400,18 @@ def _steps(
                 "render-figures",
                 "--output",
                 str(output / "figures"),
+            ],
+        },
+        {
+            "id": "compute-ityfuzz-figures",
+            "evidence_class": "computed",
+            "command": [
+                python,
+                "-m",
+                "mpsc.cli",
+                "render-ityfuzz-figures",
+                "--output",
+                str(output / "ityfuzz-figures"),
             ],
         },
     ]

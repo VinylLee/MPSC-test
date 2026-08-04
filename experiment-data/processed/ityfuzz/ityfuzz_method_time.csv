@@ -1,0 +1,6 @@
+method,total_time_seconds,detected_vulnerabilities,source_artifact
+MPSC,2916,20,RQ6.pdf
+VDMBSCMT,2484,4,RQ6.pdf
+Solhint,72,8,RQ6.pdf
+Slither,108,9,RQ6.pdf
+ItyFuzz,522,8,RQ6.pdf

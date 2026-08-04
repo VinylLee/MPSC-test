@@ -49,7 +49,7 @@ dev = [
 mpsc = "mpsc.cli:main"
 
 [project.urls]
-Repository = "https://github.com/VinylLee/MPSC"
+Repository = "https://github.com/VinylLee/MPSC-dataset"
 
 [tool.setuptools.packages.find]
 where = ["code/src"]
@@ -68,6 +68,7 @@ target-version = ["py311"]
 [tool.ruff]
 line-length = 88
 target-version = "py311"
+extend-exclude = ["tools/ityfuzz"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP"]

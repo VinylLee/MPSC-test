@@ -1,0 +1,4 @@
+Contract: /home/ubuntu/MPSC/contracts/work_dir_MyToken/build/MyToken(0x887db5715868498cff494b5dcc8eda6ce5b7652a)
+Instruction Coverage: 149/204 (73.04%) 
+Branch Coverage: 6/12 (50.00%) 
+--------------------------------

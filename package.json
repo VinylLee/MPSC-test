@@ -1,0 +1,16 @@
+{
+  "name": "mpsc-dataset",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint:solhint": "solhint \"experiment-data/comparison/ityfuzz/subjects/**/*.sol\"",
+    "version:solhint": "solhint -V"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "Solidity analysis tooling for the MPSC comparison campaigns",
+  "devDependencies": {
+    "solhint": "^6.0.1"
+  }
+}

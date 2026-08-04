@@ -67,8 +67,8 @@ def test_results_index_hashes_dag_classes_and_dimensions_pass():
     assert "claim_boundary" not in index
     assert all("claim_boundary" not in artifact for artifact in index["artifacts"])
     assert result["status"] == "pass", result["errors"]
-    assert result["artifact_count"] == 10
-    assert result["lineage_edge_count"] == 9
+    assert result["artifact_count"] == 14
+    assert result["lineage_edge_count"] == 12
     assert result["processed_mapping_count"] == 14
     assert result["canonical_matrix_dimensions"] == {
         "mr_count": 3,
@@ -230,8 +230,8 @@ def test_exact_artifact_node_and_edge_contract_rejects_drift(tmp_path, mutation)
     result = _validate(path)
     assert result["status"] == "fail"
     assert any(
-        "frozen 10-node set" in error
-        or "exactly 9 edges" in error
+        "frozen 14-node set" in error
+        or "exactly 12 edges" in error
         or "upstream edge set changed" in error
         for error in result["errors"]
     )

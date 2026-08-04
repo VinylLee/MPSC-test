@@ -74,10 +74,10 @@
   {
    "artifact_id": "aggregate_results",
    "evidence_class": "computed",
-   "file_count": 20,
+   "file_count": 22,
    "kind": "directory",
    "path": "experiment-data/processed",
-   "sha256_tree": "4122fabdd728f3256bee4d6e4e80c73c046442abbcc6b56720a594549c211577",
+   "sha256_tree": "279321125150c4c5084aa47005f6bbb985d262381e308752c7d9c2a6c89e012f",
    "upstream": [],
    "verification_command": "uv run pytest code/tests/evidence -q"
   },
@@ -129,6 +129,52 @@
     "aggregate_results"
    ],
    "verification_command": "uv run pytest code/tests/evidence/test_five_contract_experiment_boundary.py -q"
+  },
+  {
+   "artifact_id": "ityfuzz_campaign_inputs",
+   "evidence_class": "control",
+   "file_count": 12,
+   "kind": "directory",
+   "path": "experiment-data/comparison/ityfuzz",
+   "sha256_tree": "de500fbe5510b958a0c916a3f65a0ed1a642077c31d199a363ba0e171aa42510",
+   "upstream": [],
+   "verification_command": "uv run mpsc verify-ityfuzz-campaign"
+  },
+  {
+   "artifact_id": "ityfuzz_campaign_results",
+   "evidence_class": "control",
+   "file_count": 530,
+   "kind": "directory",
+   "path": "experiment-data/results/canonical/ityfuzz",
+   "sha256_tree": "ac817cb1345264968a9b72a77e2963493ea91eb6cf815c1cbbc15dc69e63ed0a",
+   "upstream": [
+    "ityfuzz_campaign_inputs"
+   ],
+   "verification_command": "uv run mpsc verify-ityfuzz-campaign"
+  },
+  {
+   "artifact_id": "ityfuzz_processed_results",
+   "evidence_class": "computed",
+   "file_count": 2,
+   "kind": "directory",
+   "path": "experiment-data/processed/ityfuzz",
+   "sha256_tree": "c9305a5a56f17e66c74ec7f6bbdb337010a87a31fc4aa0f825767ef81210fcb3",
+   "upstream": [
+    "ityfuzz_campaign_results"
+   ],
+   "verification_command": "uv run pytest code/tests/evidence/test_ityfuzz_figures.py -q"
+  },
+  {
+   "artifact_id": "ityfuzz_computed_figures",
+   "evidence_class": "computed",
+   "file_count": 3,
+   "kind": "directory",
+   "path": "experiment-data/results/reports/ityfuzz",
+   "sha256_tree": "7b3e8ca95f5786c9dd1190cc4cf6609a63e1f44793a2470801a1bc1d8c8485da",
+   "upstream": [
+    "ityfuzz_processed_results"
+   ],
+   "verification_command": "uv run pytest code/tests/evidence/test_ityfuzz_figures.py -q"
   }
  ],
  "hash_policy": "LF-normalized SHA-256 for controlled text, byte SHA-256 for binary, deterministic recursive mixed-content tree hashes",

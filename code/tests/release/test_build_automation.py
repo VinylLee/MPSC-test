@@ -277,7 +277,7 @@ def test_current_suite_count_and_environment_contract_cannot_drift():
     assert collected is not None, collection.stdout + collection.stderr
     actual_count = int(collected.group(1))
 
-    assert actual_count == 307
+    assert actual_count == 310
     assert matrix["auxiliary_environment"]["full_suite_result"] == (
         f"{actual_count} passed"
     )

@@ -1,0 +1,18 @@
+{
+  "campaign_id": "mpsc-ityfuzz-comparison-v1",
+  "evidence_class": "computed",
+  "figure_count": 2,
+  "figures": [
+    {
+      "path": "experiment-data/results/reports/ityfuzz/ityfuzz_vulnerability_comparison.pdf",
+      "source_csv": "experiment-data/processed/ityfuzz/ityfuzz_vulnerability_comparison.csv",
+      "source_sha256": "5d31f9e84dfbdac65b3bae299eee6c38476b734a40e9c5309b997efd6f4a3d56"
+    },
+    {
+      "path": "experiment-data/results/reports/ityfuzz/ityfuzz_time_comparison.pdf",
+      "source_csv": "experiment-data/processed/ityfuzz/ityfuzz_method_time.csv",
+      "source_sha256": "5b71da9ed8b08be1c012b3ae99c574af6301b970f5ac771d489aecddaa2bc0ac"
+    }
+  ],
+  "schema_version": 1
+}

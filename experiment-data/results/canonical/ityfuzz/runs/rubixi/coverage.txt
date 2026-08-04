@@ -1,0 +1,4 @@
+Contract: /home/ubuntu/MPSC/contracts/work_dir_Rubixi/build/Rubixi(0x887db5715868498cff494b5dcc8eda6ce5b7652a)
+Instruction Coverage: 415/1380 (30.07%) 
+Branch Coverage: 65/132 (49.24%) 
+--------------------------------

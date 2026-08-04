@@ -1,0 +1,6 @@
+Reverted? false 
+ Txn:
+[38;2;205;121;221m[Sender] 0x8EF508Aca04B32Ff3ba5003177cb18BfA6Cd79dd[0m
+   ├─[1] [38;2;240;56;255m0x8ae70005049ead36d32e2FEb80fc38F996F038fF[0m.[38;2;255;123;114mpropose[0m([38;2;240;56;255m0x8ae70005049ead36d32e2FEb80fc38F996F038fF[0m, 0, "")
+   │  └─ ← 0x00
+   └─[1] [38;2;240;56;255m0x8ae70005049ead36d32e2FEb80fc38F996F038fF[0m.[38;2;255;123;114mexecute[0m(0)

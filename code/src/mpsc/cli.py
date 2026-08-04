@@ -218,6 +218,47 @@ def verify_results_evidence(
         raise click.exceptions.Exit(1)
 
 
+@main.command("verify-ityfuzz-campaign")
+@click.option(
+    "--config",
+    default="code/configs/comparison_tools/ityfuzz_campaign.yaml",
+    show_default=True,
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+)
+@click.option(
+    "--project-root",
+    default=".",
+    show_default=True,
+    type=click.Path(exists=True, file_okay=False, path_type=Path),
+)
+def verify_ityfuzz_campaign(config: Path, project_root: Path):
+    """Validate the pinned ItyFuzz campaign inputs and recorded runs."""
+
+    from .comparison.ityfuzz import validate_campaign
+
+    result = validate_campaign(config, project_root=project_root)
+    click.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if result["status"] != "pass":
+        raise click.exceptions.Exit(1)
+
+
+@main.command("analyze-ityfuzz-detection-time")
+@click.argument(
+    "run_dir",
+    type=click.Path(exists=True, file_okay=False, path_type=Path),
+)
+@click.option("--function-name", default="batchTransfer", show_default=True)
+def analyze_ityfuzz_detection_time(run_dir: Path, function_name: str):
+    """Estimate first detection time from an ItyFuzz corpus."""
+
+    from .comparison.ityfuzz import analyze_detection_time
+
+    result = analyze_detection_time(run_dir, function_name=function_name)
+    click.echo(json.dumps(result, ensure_ascii=False, indent=2))
+    if result["status"] == "fail":
+        raise click.exceptions.Exit(1)
+
+
 @main.command("run-mytoken-repetitions")
 @click.option(
     "--output",
@@ -387,6 +428,31 @@ def render_figures(processed_dir: str, output: str):
     from .reporting import generate_figures
 
     summary = generate_figures(
+        input_dir=processed_dir,
+        output_dir=output,
+    )
+    console.print_json(json.dumps(summary, ensure_ascii=False, default=str))
+
+
+@main.command("render-ityfuzz-figures")
+@click.option(
+    "--processed-dir",
+    default="experiment-data/processed",
+    show_default=True,
+    type=click.Path(exists=True, file_okay=False, path_type=Path),
+)
+@click.option(
+    "--output",
+    default="experiment-data/runs/ityfuzz-figures",
+    show_default=True,
+    type=click.Path(file_okay=False, path_type=Path),
+)
+def render_ityfuzz_figures(processed_dir: Path, output: Path):
+    """Render deterministic comparison figures that include ItyFuzz."""
+
+    from .reporting.ityfuzz import generate_ityfuzz_figures
+
+    summary = generate_ityfuzz_figures(
         input_dir=processed_dir,
         output_dir=output,
     )

@@ -1,0 +1,65 @@
+schema_version: 1
+campaign_id: mpsc-ityfuzz-comparison-v1
+evidence_class: control
+purpose: Dynamic comparison campaign for contract vulnerability detection
+tool:
+  name: ItyFuzz
+  repository: https://github.com/fuzzland/ityfuzz.git
+  commit: 35b7f08962fdd0c2e02df7ef8a43164913d514d9
+  source_path: tools/ityfuzz
+subjects:
+  - id: bectoken-ityfuzz
+    path: experiment-data/comparison/ityfuzz/subjects/BEC.sol
+    sha256: da5d1e71d37655cf19cf8791ea283c9a329096df9220b07199727b21b104c3c8
+  - id: deploy-harness
+    path: experiment-data/comparison/ityfuzz/subjects/Deploy.sol
+    sha256: 5f60f4d340a8b3582349948e6bd4e25beaa2d550c9bea1098025e86e686becc3
+  - id: mytoken-ityfuzz
+    path: experiment-data/comparison/ityfuzz/subjects/MyToken.sol
+    sha256: 67448ce10aaf3958b4d2a5c9d55f0ff1ebd0bead12dcb9d95516ba52f829bc3f
+  - id: rubixi-ityfuzz
+    path: experiment-data/comparison/ityfuzz/subjects/Rubixi.sol
+    sha256: 70eecb87fb0e7e8d3d83565734b7949e30bafdbc12d9516daad0d84cc46d43b5
+  - id: rubixi-invariant
+    path: experiment-data/comparison/ityfuzz/subjects/RubixiInvariant.sol
+    sha256: b75b700ab8792ab1b80dc9c6af6689a4eccb4df9e1cb5670dec45ec40f7bcada
+  - id: flash-loan-governance-attacker
+    path: experiment-data/comparison/ityfuzz/subjects/GovernanceToken/FlashLoanGovAttacker.sol
+    sha256: 0896e0ab78838fe9103a22a346b110ca47e9d8ac9e8b3f5915b250f4779aecf0
+  - id: flash-loan-pool
+    path: experiment-data/comparison/ityfuzz/subjects/GovernanceToken/FlashLoanPool.sol
+    sha256: b5e5d5d6037aef442052172b26ebafc6455c1a559c88ff09df2c11d1bb37e2ae
+  - id: governance-token
+    path: experiment-data/comparison/ityfuzz/subjects/GovernanceToken/GovToken.sol
+    sha256: 4c75f394750918171dfd5257e0998488a9805546b9f54d16dfac4b327d196b45
+  - id: vulnerable-governance
+    path: experiment-data/comparison/ityfuzz/subjects/GovernanceToken/VulnerableGovernance.sol
+    sha256: 829d4d663392b3a6fc2b4d97e8a525e2c73b4eee332887d99f12d7415f17435c
+  - id: parity-wallet-library
+    path: experiment-data/comparison/ityfuzz/subjects/ParityWallet/WalletLibrary.sol
+    sha256: 60ab037e0966db1f2e4841b16c2da8a823c1c7fa4c852d6eac9adbef646d673a
+  - id: parity-wallet-proxy
+    path: experiment-data/comparison/ityfuzz/subjects/ParityWallet/WalletProxy.sol
+    sha256: 642e51de85058d7c90195adda71cfe2593428543e7b84df09bef42b8d25cf543
+recorded_runs:
+  - id: bectoken
+    path: experiment-data/results/canonical/ityfuzz/runs/bectoken
+    file_count: 68
+  - id: mixed-contracts
+    path: experiment-data/results/canonical/ityfuzz/runs/mixed-contracts
+    file_count: 238
+  - id: mytoken
+    path: experiment-data/results/canonical/ityfuzz/runs/mytoken
+    file_count: 22
+  - id: rubixi
+    path: experiment-data/results/canonical/ityfuzz/runs/rubixi
+    file_count: 168
+supporting_artifacts:
+  - experiment-data/results/canonical/ityfuzz/build
+  - experiment-data/results/canonical/ityfuzz/static-analysis/slither-report.json
+  - experiment-data/results/canonical/ityfuzz/recorded-figures/RQ2.1.pdf
+  - experiment-data/results/canonical/ityfuzz/recorded-figures/RQ2.3.pdf
+  - experiment-data/results/canonical/ityfuzz/recorded-figures/RQ4.pdf
+  - experiment-data/results/canonical/ityfuzz/recorded-figures/RQ6.pdf
+  - package-lock.json
+  - .solhint.json
